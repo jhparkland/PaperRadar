@@ -22,9 +22,10 @@ export function isConfigured(env = process.env) {
 export function configProblem(env = process.env) {
   const value = env[ENV_VAR];
   if (typeof value !== 'string' || value.trim() === '') {
-    return `${ENV_VAR} is empty. Add the webhook URL as a repository secret named exactly ${ENV_VAR} `
-      + '(Settings → Secrets and variables → Actions → New repository secret). A secret stored under any '
-      + 'other name is not read, whatever the webhook itself is called in Google Chat.';
+    return `${ENV_VAR} is empty. Store the webhook URL as a repository secret (Settings → Secrets and `
+      + `variables → Actions). If you name that secret ${ENV_VAR}, it is picked up as is; if you prefer `
+      + 'another name, set the repository *variable* GOOGLE_CHAT_SECRET_NAME to that name. Locally, put '
+      + `${ENV_VAR}=… in .env.`;
   }
   if (!value.startsWith('https://chat.googleapis.com/')) {
     return `${ENV_VAR} does not look like a Google Chat webhook URL (expected it to start with `

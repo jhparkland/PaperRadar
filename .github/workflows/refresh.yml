@@ -52,7 +52,10 @@ jobs:
         continue-on-error: true
         run: npm run remind -- --test
         env:
-          GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.GOOGLE_CHAT_WEBHOOK_URL }}
+          # Name your secret whatever you like: set the repository *variable*
+          # GOOGLE_CHAT_SECRET_NAME to it (Settings → Secrets and variables →
+          # Actions → Variables). Unset means the secret is GOOGLE_CHAT_WEBHOOK_URL.
+          GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets[vars.GOOGLE_CHAT_SECRET_NAME || 'GOOGLE_CHAT_WEBHOOK_URL'] }}
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
           SMTP_USER: ${{ secrets.SMTP_USER }}
@@ -65,7 +68,10 @@ jobs:
         continue-on-error: true
         run: npm run remind
         env:
-          GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.GOOGLE_CHAT_WEBHOOK_URL }}
+          # Name your secret whatever you like: set the repository *variable*
+          # GOOGLE_CHAT_SECRET_NAME to it (Settings → Secrets and variables →
+          # Actions → Variables). Unset means the secret is GOOGLE_CHAT_WEBHOOK_URL.
+          GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets[vars.GOOGLE_CHAT_SECRET_NAME || 'GOOGLE_CHAT_WEBHOOK_URL'] }}
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
           SMTP_USER: ${{ secrets.SMTP_USER }}

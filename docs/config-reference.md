@@ -61,6 +61,12 @@ override a catalog venue with the same id. Prefer contributing to the catalog.
 Locally, put them in `.env` (ignored by git). In GitHub, add them under
 *Settings → Secrets and variables → Actions*.
 
+To keep a secret under a name of your own, leave it where it is and set the
+repository **variable** `GOOGLE_CHAT_SECRET_NAME` to that name — the workflow
+reads `secrets[vars.GOOGLE_CHAT_SECRET_NAME || 'GOOGLE_CHAT_WEBHOOK_URL']` and
+maps it onto the env var the scripts expect. The variable holds only the name,
+never the URL.
+
 ## Commands
 
 | Command | What it does |

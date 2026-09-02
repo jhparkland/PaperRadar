@@ -93,6 +93,9 @@ LLM은 그럴듯한 날짜를 만들어내기 쉽습니다. PaperRadar의 검증
 2. `main`에 push. *Deploy Pages* 워크플로가 `dist/`를 빌드해 배포합니다.
 3. *Settings → Secrets → Actions*에 `GOOGLE_CHAT_WEBHOOK_URL`
    ([설정 방법](docs/setup-google-chat.md)) 그리고/또는 SMTP 시크릿 추가.
+   시크릿 이름을 다르게 쓰고 싶으면 이름은 그대로 두고, 저장소 **변수**
+   `GOOGLE_CHAT_SECRET_NAME`에 그 이름을 적으면 됩니다 (예: `NOTI`).
+   변수에는 이름만 들어가고 URL은 들어가지 않습니다.
 4. *Actions → Daily refresh → Run workflow*에서 **test_notification**을 체크해
    채널이 동작하는지 확인.
 

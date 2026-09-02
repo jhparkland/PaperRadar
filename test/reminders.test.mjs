@@ -68,9 +68,9 @@ test('digest, Google Chat card and email message are well-formed', () => {
 test('google chat channel requires a chat.googleapis.com webhook and reports HTTP errors', async () => {
   assert.equal(isConfigured({}), false);
   assert.equal(isConfigured({ GOOGLE_CHAT_WEBHOOK_URL: 'https://evil.example/x' }), false);
-  // the two misconfigurations must be distinguishable — a wrongly *named*
-  // secret is the common one and the message has to say so
-  assert.match(configProblem({}), /named exactly GOOGLE_CHAT_WEBHOOK_URL/);
+  // the two misconfigurations must be distinguishable, and the "empty" case
+  // has to point at both ways of wiring a secret up
+  assert.match(configProblem({}), /GOOGLE_CHAT_SECRET_NAME/);
   assert.match(configProblem({ GOOGLE_CHAT_WEBHOOK_URL: '   ' }), /is empty/);
   assert.match(configProblem({ NOTI: 'https://chat.googleapis.com/v1/spaces/x' }), /is empty/);
   assert.match(configProblem({ GOOGLE_CHAT_WEBHOOK_URL: 'https://evil.example/x' }), /does not look like a Google Chat webhook/);

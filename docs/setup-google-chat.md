@@ -31,6 +31,26 @@ Repository → **Settings → Secrets and variables → Actions → New reposito
 - Name: `GOOGLE_CHAT_WEBHOOK_URL`
 - Secret: the URL from step 2
 
+### Prefer a different secret name?
+
+A workflow reads secret names literally, so a secret called `NOTI` is invisible
+to `${{ secrets.GOOGLE_CHAT_WEBHOOK_URL }}`. Instead of renaming your secret,
+tell the workflow which one to read:
+
+Repository → **Settings → Secrets and variables → Actions → Variables tab →
+New repository variable**
+
+- Name: `GOOGLE_CHAT_SECRET_NAME`
+- Value: the name of your secret, e.g. `NOTI`
+
+Variables are not secret — only the *name* is stored there, never the URL. Leave
+the variable unset and the default `GOOGLE_CHAT_WEBHOOK_URL` is used. With the
+`gh` CLI:
+
+```bash
+gh variable set GOOGLE_CHAT_SECRET_NAME --body "NOTI"
+```
+
 ## 4. Make sure the channel is enabled
 
 `config/radar.yaml`:
@@ -95,7 +115,7 @@ The very first run records a starting point and sends nothing. Disable with
 
 | Symptom | Cause / fix |
 |---|---|
-| `GOOGLE_CHAT_WEBHOOK_URL is empty` | The secret does not exist **under that exact name**. Workflows read the name literally, so a secret called `NOTI`, `CHAT_URL`, … is never seen — whatever you named the webhook inside Google Chat. Create a secret named `GOOGLE_CHAT_WEBHOOK_URL` with the same URL. Names are case-sensitive. |
+| `GOOGLE_CHAT_WEBHOOK_URL is empty` | No secret under the expected name. Either name the secret `GOOGLE_CHAT_WEBHOOK_URL`, or keep your name and set the repository variable `GOOGLE_CHAT_SECRET_NAME` to it (see above). Names are case-sensitive, and the name you gave the webhook inside Google Chat is unrelated. |
 | `does not look like a Google Chat webhook URL` | The value was truncated when pasted. Copy the whole URL including `?key=…&token=…`. |
 | `HTTP 400 … Invalid …` | The URL was truncated when pasted. Copy it again including `?key=…&token=…`. |
 | `HTTP 403` / `404` | The webhook was deleted, or the space was deleted. Create a new webhook. |

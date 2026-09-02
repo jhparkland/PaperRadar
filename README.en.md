@@ -93,7 +93,9 @@ final comparison against the official page is yours.
 1. Repository *Settings → Pages → Source: GitHub Actions*.
 2. Push to `main`. The *Deploy Pages* workflow builds and publishes `dist/`.
 3. *Settings → Secrets → Actions*: add `GOOGLE_CHAT_WEBHOOK_URL`
-   ([how](docs/setup-google-chat.md)) and/or the SMTP secrets.
+   ([how](docs/setup-google-chat.md)) and/or the SMTP secrets. To keep your own
+   secret name, leave it and set the repository **variable**
+   `GOOGLE_CHAT_SECRET_NAME` to that name (e.g. `NOTI`).
 4. *Actions → Daily refresh → Run workflow* with **test_notification** ticked
    to confirm the channel works.
 
