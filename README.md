@@ -61,6 +61,32 @@ CFP 페이지의 날짜 위치를 확인해 패턴을 채웁니다 →
 [docs/adding-a-venue.md](docs/adding-a-venue.md). 자동 파싱이 안 되는 페이지는
 `manual` 어댑터에 날짜와 확인일을 직접 적습니다.
 
+### 내 분야 venue 채우기 — LLM에게 맡기기
+
+카탈로그는 venue당 JSON 파일 하나에 스키마가 문서화되어 있어서, 정규식을 손으로
+짜는 대신 **LLM 코딩 에이전트(Claude Code, Codex, Cursor 등)에게 시키는 것**이
+가장 빠릅니다. 저장소 루트의 [AGENTS.md](AGENTS.md)에 에이전트가 지켜야 할 규칙이
+있으니, 저장소를 열고 이렇게 요청하면 됩니다:
+
+```text
+내 연구 분야는 <분야>야. 이 분야에서 투고할 만한 학술대회·저널·워크숍을
+catalog/venues/ 에 추가하고 config/radar.yaml 의 select 를 맞춰줘.
+- 각 venue 의 공식 CFP 페이지를 찾아 declarative 어댑터를 작성하고
+  `npm run probe -- --venue <id>` 로 실제 추출 결과를 확인해서 보여줘.
+- 자동 파싱이 안 되면 manual 어댑터로 넣되 verifiedAt 에 오늘 날짜를 적어.
+- 날짜·등급을 절대 지어내지 말고, 근거 URL 이 없는 값은 비워둬.
+- 마지막에 npm run validate 와 npm test 를 통과시켜.
+```
+
+에이전트가 끝내면 다음 두 가지만 사람이 확인하면 됩니다:
+
+1. `npm run probe -- --venue <id>` 출력의 날짜가 공식 페이지와 같은가
+2. `npm run doctor`에서 추적 목록이 원하는 대로 나오는가
+
+LLM은 그럴듯한 날짜를 만들어내기 쉽습니다. PaperRadar의 검증(`validate`, 연도
+타당성, 마감 순서, `verifiedAt` 필수)이 상당 부분 걸러주지만, 최종 대조는 사람이
+합니다.
+
 ### 배포
 
 1. 저장소 *Settings → Pages → Source: GitHub Actions*.
@@ -73,6 +99,67 @@ CFP 페이지의 날짜 위치를 확인해 패턴을 채웁니다 →
 이후 `refresh.yml`이 매일(기본 02:17 KST) 실행됩니다: 갱신 → 테스트 → 검증 →
 빌드 → 알림 → `data/` 커밋 → 배포. 출처 확인에 실패한 venue는
 `source-failure` 라벨 이슈 하나에 누적되고, 사이트는 마지막 확인 값을 유지합니다.
+
+## 알림은 언제, 어떻게 오나
+
+| 무엇 | 언제 | 어디로 |
+|---|---|---|
+| **마감 리마인더** | 확인된(Verified) 마감의 `daysBefore` 시점마다 한 번씩. 기본 60·30·15·3일 전 | Google Chat 스페이스 / 이메일 |
+| **출처 확인 실패** | 공식 페이지를 못 읽거나 문구가 바뀌어 재확인이 필요할 때 | GitHub 이슈 (하나에 누적, 복구되면 자동 닫힘) |
+| **일정 변경 다이제스트** | 날짜가 확정(TBA → 날짜)·변경·삭제되거나 출처가 다시 확인됐을 때, 그날 한 번 | Google Chat / 이메일 (`reminders.notifyChanges`, 기본 켜짐) + 사이트 *갱신·출처* 탭 |
+
+마감 리마인더의 규칙:
+
+- 매일 한 번 실행되며, 그날 해당되는 마감을 **메시지 하나로 묶어** 보냅니다.
+- 저자가 뭔가 해야 하는 항목만 알립니다: 초록·논문·최종본 마감. 결과 통보일과
+  행사일은 캘린더에는 들어가지만 알림은 오지 않습니다.
+- 각 시점은 마감당 한 번만. 발송 기록이 `data/state/reminders.json`에 남아 다시
+  실행해도 중복되지 않습니다. Actions가 하루 건너뛰면 다음 날 밀린 알림이 나갑니다.
+- 새 마감이 갑자기 10일 앞으로 등록되면 60/30/15를 다 보내지 않고 **D-10 한 건**만
+  보냅니다.
+- 시간대가 공식 페이지에 없는 마감(`unspecified`)은 사이트에 표시만 하고 알리지
+  않습니다. 추정으로 사람을 깨우지 않기 위해서입니다.
+
+받는 메시지 예:
+
+```text
+📡 PaperRadar · 마감 알림
+2건의 마감이 다가옵니다
+
+D-30 · EuroSys 2027 · 가을 논문 마감
+  공식: 2026-09-24 23:59 AoE
+  현지(Asia/Seoul): 2026-09-25 20:59
+  [CFP 열기]
+
+D-15 · IPDPS 2027 · 초록 마감
+  …
+확인된(Verified) 일정만 알립니다. 전체 일정: https://<you>.github.io/PaperRadar/
+```
+
+일정 변경 다이제스트는 이렇게 옵니다:
+
+```text
+📡 PaperRadar · 일정 변경
+2건이 바뀌었습니다
+
+🆕 확정 (TBA → 날짜) · HotOS 2027 · 논문 마감
+  TBA → 2027-01-15 23:59 AoE
+  현지(Asia/Seoul): 2027-01-16 20:59
+🔁 변경 · EuroSys 2027 · 가을 논문 마감
+  2026-09-24 23:59 AoE → 2026-10-01 23:59 AoE
+  …
+```
+
+- 처음 켠 날은 기준점만 기록하고 보내지 않습니다(이미 있던 마감 120건을 "확정"으로
+  쏟아내지 않기 위해). 그 다음 갱신부터 감지된 변경만 옵니다.
+- 출처 확인 실패는 GitHub 이슈로 가므로 기본 제외. `reminders.notifyFailures: true`로
+  포함할 수 있습니다.
+- 끄려면 `reminders.notifyChanges: false`.
+
+알림이 안 오면: ① `GOOGLE_CHAT_WEBHOOK_URL` 시크릿이 있는지 ② `radar.yaml`의
+`reminders.channels`에 `google-chat`이 있는지 ③ Actions 로그의 *Send due reminders*
+단계에 `nothing due today` / `changes: nothing new`가 찍혔는지 순서로 보세요. 상세는
+[docs/setup-google-chat.md](docs/setup-google-chat.md).
 
 ## 동작 구조
 
@@ -119,8 +206,24 @@ flowchart LR
 
 초기 카탈로그는 시스템·구조·HPC·클라우드·네트워킹·성능·지속가능(탄소 인식)
 컴퓨팅·ML/ML 시스템·에너지 저널을 다룹니다. 등급: KIISE 2024(BK21 참고),
-CORE 2026, SJR 분위. 다른 분야 기여를 환영합니다 →
-[CONTRIBUTING.md](CONTRIBUTING.md).
+CORE 2026, SJR 분위.
+
+## 기여하기
+
+이 저장소는 한 사람의 도구가 아니라 **분야별 카탈로그를 같이 키우는 곳**입니다.
+
+| 상황 | 방법 |
+|---|---|
+| 날짜가 틀렸다, 사이트가 깨졌다, 명령이 실패한다 | [Issue](../../issues) — 어떤 venue인지, 공식 페이지 URL, 재현 명령을 적어주세요 |
+| 내 분야 venue를 추가했다 / 어댑터를 고쳤다 | **Pull Request** — `catalog/venues/<id>.json`(+ 필요하면 `rankings/`)만 바꾸면 됩니다 |
+| 다른 등급 체계(CCF, 분야별 목록 등)를 넣고 싶다 | PR로 `catalog/rankings/<scheme>.json` 추가, 출처 URL 필수 |
+| 코드 버그·기능 개선 | PR — 동작 변경에는 `test/` 아래 테스트를 같이 넣어주세요 |
+
+PR을 올리면 CI가 `npm test → validate → build`를 자동으로 돌려 스키마 오류,
+깨진 정규식, 잘못된 날짜 형식을 잡아줍니다. 체크리스트와 규칙(공식 출처만,
+지어내지 않기, `verifiedAt`)은 [CONTRIBUTING.md](CONTRIBUTING.md)에 있습니다.
+카탈로그 파일을 LLM으로 만들었다면 PR 설명에 그렇게 적고 `probe` 결과를
+붙여주세요 — 리뷰가 훨씬 빨라집니다.
 
 ## 라이선스
 

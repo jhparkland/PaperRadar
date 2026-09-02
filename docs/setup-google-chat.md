@@ -73,6 +73,24 @@ Rules: only **Verified** deadlines; one message per threshold in `daysBefore`
 (if the job skips a day the reminder still fires the next day); what was sent
 is recorded in `data/state/reminders.json`, so re-running never repeats.
 
+A second message arrives on days when the daily refresh detected changes —
+a date announced (TBA → date), moved, removed, or a source verified again:
+
+```
+📡 PaperRadar · 일정 변경
+2건이 바뀌었습니다
+
+🆕 확정 (TBA → 날짜) · HotOS 2027 · 논문 마감
+  TBA → 2027-01-15 23:59 AoE
+  현지(Asia/Seoul): 2027-01-16 20:59
+🔁 변경 · EuroSys 2027 · 가을 논문 마감
+  2026-09-24 23:59 AoE → 2026-10-01 23:59 AoE
+```
+
+The very first run records a starting point and sends nothing. Disable with
+`reminders.notifyChanges: false`; include verification failures with
+`reminders.notifyFailures: true`.
+
 ## Troubleshooting
 
 | Symptom | Cause / fix |

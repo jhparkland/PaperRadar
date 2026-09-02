@@ -60,10 +60,19 @@ function validateSchedules(schedules, catalog, report) {
 }
 
 function validateState(report) {
-  for (const [name, path] of [['calendar', PATHS.calendarState], ['reminders', PATHS.reminderState]]) {
-    if (!existsSync(path)) continue;
-    const s = readJson(path);
-    if (typeof s !== 'object' || s === null || Array.isArray(s)) report.error(`data/state/${name}.json`, 'must be a mapping keyed by deadline uid');
+  if (existsSync(PATHS.calendarState)) {
+    const s = readJson(PATHS.calendarState);
+    if (typeof s !== 'object' || s === null || Array.isArray(s)) report.error('data/state/calendar.json', 'must be a mapping keyed by deadline uid');
+  }
+  if (existsSync(PATHS.reminderState)) {
+    const s = readJson(PATHS.reminderState);
+    const p = 'data/state/reminders.json';
+    if (typeof s !== 'object' || s === null || Array.isArray(s)) report.error(p, 'must be an object');
+    else if (s.version === 1) {
+      if (typeof s.deadlines !== 'object' || s.deadlines === null) report.error(`${p}.deadlines`, 'must be a mapping keyed by deadline uid');
+      const nt = s.changes?.notifiedThrough;
+      if (nt !== null && nt !== undefined && Number.isNaN(Date.parse(nt))) report.error(`${p}.changes.notifiedThrough`, 'must be an ISO timestamp or null');
+    }
   }
   if (existsSync(PATHS.updates)) {
     const u = readJson(PATHS.updates);

@@ -48,6 +48,8 @@ override a catalog venue with the same id. Prefer contributing to the catalog.
 | `daysBefore` | `[60, 30, 15, 3]` | Thresholds. For each verified deadline the closest unsent threshold ≥ remaining days fires once; larger ones are marked covered. |
 | `language` | first of `site.languages` | Language of reminder messages. |
 | `channels` | `[google-chat]` | Any of `google-chat`, `email`. Credentials come from environment variables / GitHub secrets — see [setup-google-chat.md](setup-google-chat.md). |
+| `notifyChanges` | `true` | Send one digest per day listing dates that were announced (TBA → date), moved, removed, or sources verified again since the last run. The first run only records a watermark. |
+| `notifyFailures` | `false` | Include source-verification failures in the change digest (they always open a GitHub issue regardless). |
 
 ## Environment variables (secrets)
 

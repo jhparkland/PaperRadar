@@ -23,7 +23,7 @@ export const DEFAULTS = Object.freeze({
   rankings: { show: [], primary: null },
   select: { fields: [], types: [...VENUE_TYPES], venues: [], exclude: [], tiers: null },
   custom: [],
-  reminders: { daysBefore: [60, 30, 15, 3], language: null, channels: ['google-chat'] },
+  reminders: { daysBefore: [60, 30, 15, 3], language: null, channels: ['google-chat'], notifyChanges: true, notifyFailures: false },
 });
 
 export function loadConfig(path = PATHS.config) {
@@ -223,6 +223,12 @@ function normalizeReminders(input, site, report) {
       reminders.channels = [...new Set(input.channels)];
     } else {
       report.error('reminders.channels', `must be a list drawn from ${CHANNELS.join(', ')}`);
+    }
+  }
+  for (const key of ['notifyChanges', 'notifyFailures']) {
+    if (input[key] !== undefined) {
+      if (typeof input[key] === 'boolean') reminders[key] = input[key];
+      else report.error(`reminders.${key}`, 'must be true or false');
     }
   }
   return reminders;

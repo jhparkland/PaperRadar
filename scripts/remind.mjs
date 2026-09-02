@@ -1,15 +1,21 @@
 #!/usr/bin/env node
-// `npm run remind` — send today's due reminders through the configured channels.
+// `npm run remind` — send today's due reminders and the schedule-change digest
+// through the configured channels.
 //
 //   --test       send a test message to every configured channel (checks secrets)
-//   --dry-run    print the digest, send nothing, write nothing
+//   --dry-run    print what would be sent, send nothing, write nothing
 //   --channel x  only this channel (google-chat | email)
+//
+// Two messages at most per run: deadline reminders (D-60/30/15/3) and, when
+// reminders.notifyChanges is on, one digest of dates that were announced,
+// moved, removed or verified again since the last run.
 //
 // Exit codes: 0 sent or nothing due · 1 every channel failed while something was due
 import { loadContext, loadDotEnv, nowIso, parseArgs } from './lib/context.mjs';
 import { ROOT, PATHS, readJson, writeJson, join } from './lib/io.mjs';
 import { emptySchedules, flattenDeadlines } from './lib/schedule.mjs';
 import { dueReminders, markSent } from './lib/reminders.mjs';
+import { normalizeReminderState, pendingChanges, isBootstrap, markChangesNotified, buildChangesDigest } from './lib/changes.mjs';
 import { buildDigest, testDigest } from './lib/notify/format.mjs';
 import * as googleChat from './lib/notify/google-chat.mjs';
 import * as email from './lib/notify/email.mjs';
@@ -22,48 +28,87 @@ async function main() {
   const ctx = loadContext();
   const { config, venues } = ctx;
   const now = nowIso();
+  const dryRun = Boolean(args['dry-run']);
   const channels = (typeof args.channel === 'string' ? [args.channel] : config.reminders.channels).filter((c) => {
     if (!CHANNELS[c]) console.error(`unknown channel "${c}"`);
     return CHANNELS[c];
   });
   const siteTitle = config.site.title;
   const lang = config.reminders.language;
+  const common = { lang, timeZone: config.site.timezone, siteTitle, siteUrl: config.site.baseUrl };
 
   if (args.test) {
-    const digest = testDigest({ lang, siteTitle });
-    const results = await deliver(digest, channels, { siteTitle, dryRun: Boolean(args['dry-run']) });
+    const results = await deliver(testDigest({ lang, siteTitle }), channels, { siteTitle, dryRun });
     process.exit(results.some((r) => r.ok) || channels.length === 0 ? 0 : 1);
   }
 
   const schedules = readJson(PATHS.schedules, emptySchedules());
-  const state = readJson(PATHS.reminderState, {});
+  const updates = readJson(PATHS.updates, { version: 1, entries: [] });
+  let state = normalizeReminderState(readJson(PATHS.reminderState, null));
   const rows = venues.flatMap((v) => flattenDeadlines(v, schedules.venues[v.id]));
-  const due = dueReminders(rows, state, { now, timeZone: config.site.timezone, daysBefore: config.reminders.daysBefore });
+  let anyFailure = false;
+  let stateDirty = false;
 
+  // ---- 1. deadline reminders
+  const due = dueReminders(rows, state.deadlines, { now, timeZone: config.site.timezone, daysBefore: config.reminders.daysBefore });
   if (due.length === 0) {
-    console.log('nothing due today');
-    return;
+    console.log('reminders: nothing due today');
+  } else {
+    const digest = buildDigest(due, common);
+    console.log(digest.text, '\n');
+    if (!dryRun) {
+      const results = await deliver(digest, channels, { siteTitle });
+      if (channels.length === 0) {
+        console.log('no channels configured — digest printed only (add reminders.channels in config/radar.yaml)');
+      } else if (results.some((r) => r.ok)) {
+        state = { ...state, deadlines: markSent(state.deadlines, due, rows, { now }) };
+        stateDirty = true;
+        console.log(`marked ${due.length} reminder(s) as sent`);
+      } else {
+        anyFailure = true;
+        console.error('reminders: no channel delivered — state left unchanged so it is retried next run');
+      }
+    }
   }
-  const digest = buildDigest(due, { lang, timeZone: config.site.timezone, siteTitle, siteUrl: config.site.baseUrl });
-  console.log(digest.text);
-  console.log('');
 
-  if (args['dry-run']) {
+  // ---- 2. schedule changes
+  if (config.reminders.notifyChanges) {
+    if (isBootstrap(state)) {
+      console.log('changes: first run — recording the starting point; changes from now on will be notified');
+      if (!dryRun) {
+        state = markChangesNotified(state, [], { now });
+        stateDirty = true;
+      }
+    } else {
+      const pending = pendingChanges(updates, state, { now, includeFailures: config.reminders.notifyFailures });
+      if (pending.length === 0) {
+        console.log('changes: nothing new');
+      } else {
+        const rowsByUid = new Map(rows.map((r) => [r.uid, r]));
+        const venuesById = new Map(venues.map((v) => [v.id, v]));
+        const digest = buildChangesDigest(pending, { ...common, rowsByUid, venuesById });
+        console.log(digest.text, '\n');
+        if (!dryRun) {
+          const results = await deliver(digest, channels, { siteTitle });
+          if (channels.length === 0 || results.some((r) => r.ok)) {
+            state = markChangesNotified(state, pending, { now });
+            stateDirty = true;
+            console.log(`changes: ${pending.length} entr${pending.length === 1 ? 'y' : 'ies'} notified`);
+          } else {
+            anyFailure = true;
+            console.error('changes: no channel delivered — will retry next run');
+          }
+        }
+      }
+    }
+  }
+
+  if (dryRun) {
     console.log('(dry run — nothing sent, state unchanged)');
     return;
   }
-  const results = await deliver(digest, channels, { siteTitle });
-  const delivered = results.filter((r) => r.ok).length;
-  if (delivered === 0 && channels.length > 0) {
-    console.error('no channel delivered the digest — state left unchanged so it is retried next run');
-    process.exit(1);
-  }
-  if (channels.length === 0) {
-    console.log('no channels configured — digest printed only (add reminders.channels in config/radar.yaml)');
-    return;
-  }
-  writeJson(PATHS.reminderState, markSent(state, due, rows, { now }));
-  console.log(`marked ${due.length} reminder(s) as sent`);
+  if (stateDirty) writeJson(PATHS.reminderState, state);
+  if (anyFailure) process.exit(1);
 }
 
 async function deliver(digest, channels, { siteTitle, dryRun = false }) {

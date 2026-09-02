@@ -9,7 +9,7 @@ export function isConfigured(env = process.env) {
 }
 
 export function buildMessage(digest, { env = process.env, siteTitle }) {
-  const subject = digest.isTest ? digest.title : t(digest.lang, 'email.subject', { title: siteTitle, count: digest.items.length });
+  const subject = digest.isTest ? digest.title : (digest.subject ?? t(digest.lang, 'email.subject', { title: siteTitle, count: digest.items.length }));
   const html = digest.isTest
     ? `<p>${escapeHtml(digest.text)}</p>`
     : [

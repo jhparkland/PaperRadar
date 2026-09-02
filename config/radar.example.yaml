@@ -56,3 +56,5 @@ reminders:
   daysBefore: [60, 30, 15, 3]   # one message per threshold; verified deadlines only
   language: ko
   channels: [google-chat]       # google-chat (webhook) and/or email (SMTP) — secrets in GitHub → Settings → Secrets
+  notifyChanges: true           # daily digest when dates get announced / moved / removed / re-verified
+  notifyFailures: false         # also include source-verification failures (they open a GitHub issue anyway)
