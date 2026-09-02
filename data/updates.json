@@ -2,6 +2,20 @@
   "version": 1,
   "entries": [
     {
+      "at": "2026-09-02T08:07:55Z",
+      "venueId": "osdi",
+      "editionId": "osdi-2027",
+      "kind": "failed",
+      "message": "fetch failed: HTTP 403"
+    },
+    {
+      "at": "2026-09-02T08:07:55Z",
+      "venueId": "nsdi",
+      "editionId": "nsdi-2027",
+      "kind": "failed",
+      "message": "fetch failed: HTTP 403"
+    },
+    {
       "at": "2026-09-02T08:04:08Z",
       "venueId": "sustain-hpc",
       "editionId": "sustain-hpc-2026",
