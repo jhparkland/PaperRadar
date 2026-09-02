@@ -46,7 +46,11 @@ async function main() {
   }
 
   if (args.sample) {
-    const n = Number(args.sample) > 0 ? Number(args.sample) : 5;
+    // `--sample` with no value parses to boolean true, and Number(true) is 1 —
+    // only treat an explicit numeric argument as a count.
+    const n = typeof args.sample === 'string' && Number.isInteger(Number(args.sample)) && Number(args.sample) > 0
+      ? Number(args.sample)
+      : 5;
     const rows = venues.flatMap((v) => flattenDeadlines(v, readJson(PATHS.schedules, emptySchedules()).venues[v.id]));
     const soon = upcomingDeadlines(rows, now, 365).filter(isRemindable).slice(0, n);
     if (soon.length === 0) {
