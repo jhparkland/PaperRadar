@@ -1,0 +1,51 @@
+# =============================================================================
+# catalog/systems-journals.yaml — 참조용 저널 카탈로그 (추적 목록이 아님)
+# =============================================================================
+# 분위 출처: Scimago SJR 2025 (scimagojr.com). JCR(Clarivate)은 유료라 미확인.
+# 카테고리 약어: CNC = Computer Networks and Communications, HA = Hardware and Architecture,
+#               CSA = Computer Science Applications, SW = Software, IS = Information Systems,
+#               EEPT = Energy Engineering and Power Technology, RESE = Renewable Energy, Sustainability and the Environment,
+#               CSmisc = Computer Science (miscellaneous)
+# 조사일 2026-09-02
+# =============================================================================
+version: 1
+source_date: "2026-09-02"
+quartile_source: "Scimago SJR 2025"
+
+journals:
+  - {id: TPDS,   name: "IEEE Transactions on Parallel and Distributed Systems", issn: "1045-9219", publisher: IEEE,     sjr2025: {Q1: [HA, "Computational Theory and Mathematics", "Signal Processing"]}, url: "https://www.scimagojr.com/journalsearch.php?q=26098&tip=sid"}
+  - {id: TCC,    name: "IEEE Transactions on Cloud Computing",                  issn: "2168-7161", publisher: IEEE,     sjr2025: {Q1: [CNC, CSA, HA, IS, SW]},                          url: "https://www.scimagojr.com/journalsearch.php?q=21100338351&tip=sid"}
+  - {id: TSUSC,  name: "IEEE Transactions on Sustainable Computing",            issn: "2377-3782", publisher: IEEE,     sjr2025: {Q1: [HA, SW], Q2: [RESE]},                             url: "https://www.scimagojr.com/journalsearch.php?q=21100970266&tip=sid"}
+  - {id: TOCS,   name: "ACM Transactions on Computer Systems",                  issn: "0734-2071", publisher: ACM,      sjr2025: {Q3: [CSmisc]}, note: "출판 공백으로 급락(2024 Q2). 2024-04 공동 EiC 임명 후 재가동. 평판상 top.", url: "https://www.scimagojr.com/journalsearch.php?q=12213&tip=sid"}
+  - {id: TC,     name: "IEEE Transactions on Computers",                        issn: "0018-9340", publisher: IEEE,     sjr2025: {Q1: [HA, SW, "Theoretical CS"]},                       url: "https://www.scimagojr.com/journalsearch.php?q=25033&tip=sid"}
+  - {id: TOPC,   name: "ACM Transactions on Parallel Computing",                issn: "2329-4949", publisher: ACM,      sjr2025: {Q3: [CSA, HA, SW]},                                     url: "https://www.scimagojr.com/journalsearch.php?q=21100881468&tip=sid"}
+  - {id: TNET,   name: "IEEE Transactions on Networking",                       issn: "2998-4157", publisher: IEEE,     sjr2025: {Q1: [CNC, CSA, SW]}, note: "2025 Vol.33부터 IEEE/ACM ToN(1063-6692) → TNET 개명", url: "https://www.scimagojr.com/journalsearch.php?q=21101329154&tip=sid"}
+  - {id: JSAC,   name: "IEEE Journal on Selected Areas in Communications",      issn: "0733-8716", publisher: IEEE,     sjr2025: {Q1: [CNC]},                                              url: "https://www.scimagojr.com/journalsearch.php?q=18902&tip=sid"}
+  - {id: ProcIEEE, name: "Proceedings of the IEEE",                             issn: "0018-9219", publisher: IEEE,     sjr2025: {Q1: [CSmisc]},                                           url: "https://www.scimagojr.com/journalsearch.php?q=17915&tip=sid"}
+  - {id: CACM,   name: "Communications of the ACM",                             issn: "0001-0782", publisher: ACM,      sjr2025: {Q1: [CSmisc]},                                           url: "https://www.scimagojr.com/journalsearch.php?q=13675&tip=sid"}
+  - {id: TSC,    name: "IEEE Transactions on Services Computing",               issn: "1939-1374", publisher: IEEE,     sjr2025: {Q1: [CNC, CSA, HA]},                                    url: "https://www.scimagojr.com/journalsearch.php?q=18300156728&tip=sid"}
+  - {id: CSUR,   name: "ACM Computing Surveys",                                 issn: "0360-0300", publisher: ACM,      sjr2025: {Q1: [CSmisc, "Theoretical CS"]},                        url: "https://www.scimagojr.com/journalsearch.php?q=23038&tip=sid"}
+  - {id: FGCS,   name: "Future Generation Computer Systems",                    issn: "0167-739X", publisher: Elsevier, sjr2025: {Q1: [CNC, HA, SW]},                                      url: "https://www.scimagojr.com/journalsearch.php?q=12264&tip=sid"}
+  - {id: JPDC,   name: "Journal of Parallel and Distributed Computing",         issn: "0743-7315", publisher: Elsevier, sjr2025: {Q1: [CNC, HA], Q2: [SW]},                               url: "https://www.scimagojr.com/journalsearch.php?q=25621&tip=sid"}
+  - {id: SUSCOM, name: "Sustainable Computing: Informatics and Systems",        issn: "2210-5379", publisher: Elsevier, sjr2025: {Q1: [CSmisc, "Electrical and Electronic Engineering"]}, url: "https://www.scimagojr.com/journalsearch.php?q=19700201455&tip=sid"}
+  - {id: JoCC,   name: "Journal of Cloud Computing",                            issn: "2192-113X", publisher: Springer, sjr2025: {Q1: [CNC, SW]},                                          url: "https://www.scimagojr.com/journalsearch.php?q=21100383744&tip=sid"}
+  - {id: IoTJ,   name: "IEEE Internet of Things Journal",                       issn: "2327-4662", publisher: IEEE,     sjr2025: {Q1: [CNC, CSA, HA, IS]},                                url: "https://www.scimagojr.com/journalsearch.php?q=21100338350&tip=sid"}
+  - {id: Access, name: "IEEE Access",                                           issn: "2169-3536", publisher: IEEE,     sjr2025: {Q1: [CSmisc, "Engineering (misc.)"]}, note: "컴퓨팅 세부 카테고리 미등재. 잡음 큼 → 기본 제외", url: "https://www.scimagojr.com/journalsearch.php?q=21100374601&tip=sid"}
+  - {id: CCPE,   name: "Concurrency and Computation: Practice and Experience",  issn: "1532-0626", publisher: Wiley,    sjr2025: {Q2: [CNC], Q3: [CSA, SW]},                              url: "https://www.scimagojr.com/journalsearch.php?q=27871&tip=sid"}
+  - {id: JSA,    name: "Journal of Systems Architecture",                       issn: "1383-7621", publisher: Elsevier, sjr2025: {Q1: [HA, SW]},                                           url: "https://www.scimagojr.com/journalsearch.php?q=12398&tip=sid"}
+  - {id: JNCA,   name: "Journal of Network and Computer Applications",          issn: "1084-8045", publisher: Elsevier, sjr2025: {Q1: [CNC, CSA, HA]},                                    url: "https://www.scimagojr.com/journalsearch.php?q=27277&tip=sid"}
+  - {id: COMNET, name: "Computer Networks",                                     issn: "1389-1286", publisher: Elsevier, sjr2025: {Q1: [CNC]},                                              url: "https://www.scimagojr.com/journalsearch.php?q=26811&tip=sid"}
+  - {id: CLUS,   name: "Cluster Computing",                                     issn: "1386-7857", publisher: Springer, sjr2025: {Q1: [CNC, SW]},                                          url: "https://www.scimagojr.com/journalsearch.php?q=24596&tip=sid"}
+  - {id: JGC,    name: "Journal of Grid Computing",                             issn: "1570-7873", publisher: Springer, sjr2025: {Q2: [CNC, HA, IS, SW]},                                 url: "https://www.scimagojr.com/journalsearch.php?q=800147111&tip=sid"}
+  - {id: SPE,    name: "Software: Practice and Experience",                     issn: "0038-0644", publisher: Wiley,    sjr2025: {Q2: [SW]},                                               url: "https://www.scimagojr.com/journalsearch.php?q=20007&tip=sid"}
+  - {id: APEN,   name: "Applied Energy",                                        issn: "0306-2619", publisher: Elsevier, sjr2025: {Q1: [EEPT, RESE]},                                       url: "https://www.scimagojr.com/journalsearch.php?q=28801&tip=sid"}
+  - {id: ENERGY, name: "Energy",                                                issn: "0360-5442", publisher: Elsevier, sjr2025: {Q1: [EEPT, RESE]},                                       url: "https://www.scimagojr.com/journalsearch.php?q=29348&tip=sid"}
+  - {id: RSER,   name: "Renewable and Sustainable Energy Reviews",              issn: "1364-0321", publisher: Elsevier, sjr2025: {Q1: [RESE]},                                             url: "https://www.scimagojr.com/journalsearch.php?q=27567&tip=sid"}
+  - {id: ENB,    name: "Energy and Buildings",                                  issn: "0378-7788", publisher: Elsevier, sjr2025: {Q1: ["Building and Construction", "Civil and Structural Engineering"]}, note: "컴퓨팅·에너지 대상 카테고리 미등재", url: "https://www.scimagojr.com/journalsearch.php?q=29359&tip=sid"}
+  - {id: TSG,    name: "IEEE Transactions on Smart Grid",                       issn: "1949-3053", publisher: IEEE,     sjr2025: {Q1: [CSmisc]}, note: "전력계통 중심",                   url: "https://www.scimagojr.com/journalsearch.php?q=19700170610&tip=sid"}
+  - {id: TGCN,   name: "IEEE Transactions on Green Communications and Networking", issn: "2473-2400", publisher: IEEE, sjr2025: {Q1: [CNC, RESE]},                                        url: "https://www.scimagojr.com/journalsearch.php?q=21100906361&tip=sid"}
+  - {id: TJSC,   name: "The Journal of Supercomputing",                         issn: "0920-8542", publisher: Springer, sjr2025: {Q2: [HA, IS, SW]},                                       url: "https://www.scimagojr.com/journalsearch.php?q=25623&tip=sid"}
+  - {id: SIMPAT, name: "Simulation Modelling Practice and Theory",              issn: "1569-190X", publisher: Elsevier, sjr2025: {Q1: [HA, SW, "Modeling and Simulation"]},                url: "https://www.scimagojr.com/journalsearch.php?q=12189&tip=sid"}
+  - {id: TOMPECS, name: "ACM Transactions on Modeling and Performance Evaluation of Computing Systems", issn: "2376-3639", publisher: ACM, sjr2025: {Q3: [CNC, HA, IS, SW]}, note: "Q1/Q2 미충족", url: "https://www.scimagojr.com/journalsearch.php?q=21100934924&tip=sid"}
+  - {id: PEVA,   name: "Performance Evaluation",                                issn: "0166-5316", publisher: Elsevier, sjr2025: {Q3: [CNC, CSA, HA, SW]}, note: "Q1/Q2 미충족",          url: "https://www.scimagojr.com/journalsearch.php?q=22313&tip=sid"}
+  - {id: CAEE,   name: "Computers and Electrical Engineering",                  issn: "0045-7906", publisher: Elsevier, sjr2025: {Q1: [CSmisc, "Electrical and Electronic Engineering"]}, note: "컴퓨팅 세부 카테고리 미등재", url: "https://www.scimagojr.com/journalsearch.php?q=18159&tip=sid"}

@@ -1,0 +1,133 @@
+# =============================================================================
+# profile.yaml — 나는 누구이고, 무엇을 우선하고, 어떻게 처리할지 (정현)
+# =============================================================================
+# venues.yaml 이 "어디를 볼지"라면, 이 파일은 "어떻게 고르고 어떻게 쓸지"다.
+# 리뷰 본문의 "내 연구와의 관련성" 표는 research.projects 를 그대로 행으로 쓴다.
+# =============================================================================
+
+version: 1
+
+user:
+  name: "정현"
+  affiliation: "동아대학교 컴퓨터공학과 박사과정"
+  language: "ko"            # 리뷰·보고 언어
+
+research:
+  summary: >
+    탄소 인식 클라우드 컴퓨팅. 전력망 탄소강도 예보를 입력으로 워크로드를
+    시간·공간·주파수 축에서 이동시켜 배출을 줄이는 스케줄링, 그리고 그 효과를
+    측정·회계·보고하는 플랫폼.
+  # 리뷰 표의 행이 된다. name 은 짧게, what 은 리뷰어가 연결점을 찾을 수 있게 구체적으로.
+  projects:
+    - name: "CAFTM"
+      what: "탄소강도 예보 기반 동적 마이그레이션·시간 이동 스케줄링 알고리즘"
+    - name: "GreenAccounter"
+      what: "탄소 측정·최적화·보고 툴킷 (오픈소스)"
+    - name: "CPS/CBG"
+      what: "딥러닝 학습의 carbon-aware 클럭 스케일링과 이동 게이트"
+  # 키워드 그룹에서 1편 고를 때의 관련성 순서 (앞이 우선)
+  keywords_priority:
+    - "carbon intensity / carbon-aware / embodied carbon"
+    - "energy efficiency / power capping / DVFS / GPU frequency"
+    - "workload shifting (temporal, spatial) / scheduling / migration"
+    - "cloud / serverless / kubernetes / datacenter"
+    - "deep learning training / inference serving"
+    - "forecasting / grid mix / renewable"
+
+# -----------------------------------------------------------------------------
+# 처리 정책 — venues.yaml 의 grade 별로 무엇을 할지
+#   full  : 전문 확보 시도 → 전체 리뷰 → self-refine → 이슈 등록
+#   brief : 초록 기반 요약만 이슈 등록 (self-refine 생략)
+#   skip  : 인식은 하되 처리 안 함 (보고서에 "관심 venue이나 정책상 pass"로 표시)
+# -----------------------------------------------------------------------------
+policy:
+  review_by_grade:
+    S: full
+    A: full
+    top: full
+    Q1: full
+    Q2: brief
+    W: full
+    P: full
+  # 키워드 그룹(알림 이메일 단위)당 최대 선택 편수
+  picks_per_group: 1
+  # 동점 처리 순서: grade 우선순위 → venue priority → 키워드 우선순위
+  tie_break: ["grade", "priority", "keywords"]
+  grade_order: ["S", "top", "A", "Q1", "W", "P", "Q2"]
+  # self-refine 체크 5개 중 통과 기준
+  self_refine_pass: 4
+  # 처리 실패 시 다음 논문으로 넘어가되, 최종 보고에 남긴다
+  continue_on_error: true
+
+# -----------------------------------------------------------------------------
+# 입력 — Gmail 구글 스칼라 알림
+# -----------------------------------------------------------------------------
+alerts:
+  gmail_query: "from:scholaralerts-noreply@google.com"
+  default_days: 1
+  # 알림 제목의 키워드 그룹명을 그대로 쓴다 (예: "carbon-aware computing - 새 논문")
+
+# -----------------------------------------------------------------------------
+# 출력 — GitHub 이슈
+# -----------------------------------------------------------------------------
+github:
+  # {username} 은 실행 시 GitHub MCP get_me 로 자동 채움
+  repo: "{username}/PaperRadar"
+  issue_title_prefix: "📄"
+  issue_title_max: 60
+  labels:
+    always: ["paper-review", "automated"]
+    by_type:
+      conference: "conference"
+      journal: "journal"
+      workshop: "workshop"
+      preprint: "arxiv"
+    by_grade:
+      S: "tier-S"
+      A: "tier-A"
+      top: "journal-top"
+      Q1: "journal-Q1"
+      Q2: "journal-Q2"
+      W: "workshop"
+      P: "arxiv"
+    by_source:
+      full_text: "full-text"
+      abstract_only: "abstract-only"
+      no_doi: "no-doi"
+    # 제목+초록 키워드 매칭 라벨 (소문자 부분 일치)
+    by_keyword:
+      carbon-aware: ["carbon", "emission", "energy", "green", "sustainab", "power", "renewable"]
+      cloud-computing: ["cloud", "edge", "fog", "serverless", "container", "kubernetes", "microservice", "datacenter", "data center"]
+      deep-learning: ["neural", "deep learning", "machine learning", "training", "inference", "LLM", "GPU"]
+      scheduling: ["schedul", "orchestrat", "allocation", "placement", "migration", "load balanc", "shifting"]
+    colors:
+      paper-review: "0075ca"
+      automated: "bfd4f2"
+      tier-S: "0e8a16"
+      tier-A: "5fd18c"
+      journal-top: "1d76db"
+      journal-Q1: "6fa8dc"
+      journal-Q2: "b4c7e7"
+      workshop: "fbca04"
+      arxiv: "e8f5a3"
+      conference: "c5def5"
+      journal: "c5def5"
+      full-text: "2ea44f"
+      abstract-only: "d93f0b"
+      no-doi: "e4e669"
+      carbon-aware: "1d76db"
+      cloud-computing: "5319e7"
+      deep-learning: "d876e3"
+      scheduling: "fbca04"
+
+# -----------------------------------------------------------------------------
+# PDF 확보
+# -----------------------------------------------------------------------------
+pdf:
+  # 브라우저 세션에 기관 인증이 있어야 IEEE/Springer 본문이 열린다
+  institution: "동아대학교 (IEEE Xplore: 'Access provided by: DONG A UNIVERSITY')"
+  filename_rule: "{year}_{venue}_{title-hyphenated}.pdf"
+  # (선택) 다운로드 폴더 → 서버 동기화. 공개 저장소라 값은 config/local.yaml(.gitignore 대상)에 둔다.
+  # local.yaml 형식:
+  #   archive: {host: "...", port: 22, user: "...", path: "/path/to/corpus/"}
+  # scripts/get_papers.ps1 -Upload 는 -RemoteHost/-RemoteUser/-RemotePath 인자로 받는다.

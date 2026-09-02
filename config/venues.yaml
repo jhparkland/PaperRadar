@@ -1,0 +1,598 @@
+# =============================================================================
+# venues.yaml — 내가 추적할 학회 · 저널 · 워크숍 (정현 / carbon-aware cloud computing)
+# =============================================================================
+# 이 파일에 있는 venue만 리뷰 대상이 된다. 여기 없으면 전부 pass.
+#
+# 각 항목:
+#   id       : 짧은 고유 식별자 (라벨·로그에 쓰임)
+#   name     : 정식 명칭 — 알림 이메일의 출처 문자열과 대조되는 1차 키
+#   aliases  : 약칭·변형 표기 — 2차 키. 3글자 이하 약칭은 연도가 붙은 형태("SC '24", "SC24")에서만 매칭됨
+#   type     : conference | journal | workshop | preprint
+#   grade    : conference → S(최우수) / A(우수)
+#              journal    → top / Q1 / Q2
+#              workshop   → W
+#              preprint   → P
+#   priority : high | normal | low  — 키워드 그룹당 1편 고를 때 가중치
+#   note     : 사람용 메모. 근거·주의점.
+#   source   : 등급 근거 URL (저널·워크숍은 필수, 학회는 catalog/ 참조)
+#
+# grade별 처리 방식(전체 리뷰 / 요약 / pass)은 profile.yaml의 policy 에서 정한다.
+# 검증: python scripts/validate.py
+# 매칭 테스트: python scripts/match.py "출처 문자열"
+# =============================================================================
+
+version: 1
+owner: "정현"
+domain: "carbon-aware cloud computing, green cloud, sustainable AI infrastructure"
+updated: "2026-09-02"
+
+# -----------------------------------------------------------------------------
+# 학회 — 등급 근거: KIISE 2024 우수학술대회 목록 (S=최우수, A=우수)
+#         catalog/systems-conferences.yaml 에 교차 순위(BK21+ IF / CORE / CSRankings) 있음
+# -----------------------------------------------------------------------------
+conferences:
+  # --- 운영체제 · 시스템 ---
+  - id: OSDI
+    name: "USENIX Symposium on Operating Systems Design and Implementation"
+    aliases: ["OSDI"]
+    type: conference
+    grade: S
+    priority: high
+  - id: SOSP
+    name: "ACM Symposium on Operating Systems Principles"
+    aliases: ["SOSP"]
+    type: conference
+    grade: S
+    priority: high
+  - id: ASPLOS
+    name: "ACM International Conference on Architectural Support for Programming Languages and Operating Systems"
+    aliases: ["ASPLOS"]
+    type: conference
+    grade: S
+    priority: high
+  - id: EuroSys
+    name: "European Conference on Computer Systems"
+    aliases: ["EuroSys", "ACM EuroSys"]
+    type: conference
+    grade: S
+    priority: high
+  - id: ATC
+    name: "USENIX Annual Technical Conference"
+    aliases: ["USENIX ATC", "ATC"]
+    type: conference
+    grade: S
+    priority: high
+  - id: SIGMETRICS
+    name: "ACM SIGMETRICS"
+    aliases: ["SIGMETRICS", "SIGMETRICS/Performance", "Proceedings of the ACM on Measurement and Analysis of Computing Systems", "POMACS"]
+    type: conference
+    grade: S
+    priority: normal
+  - id: MLSys
+    name: "Conference on Machine Learning and Systems"
+    aliases: ["MLSys"]
+    type: conference
+    grade: A
+    priority: high
+    note: "KIISE OS 소분야 우수. DL 워크로드 시스템 최적화 핵심."
+  - id: Middleware
+    name: "ACM/IFIP International Middleware Conference"
+    aliases: ["Middleware", "International Middleware Conference"]
+    type: conference
+    grade: A
+    priority: high
+
+  # --- 아키텍처 ---
+  - id: HPCA
+    name: "IEEE International Symposium on High-Performance Computer Architecture"
+    aliases: ["HPCA"]
+    type: conference
+    grade: S
+    priority: high
+  - id: ISCA
+    name: "International Symposium on Computer Architecture"
+    aliases: ["ISCA"]
+    type: conference
+    grade: S
+    priority: normal
+  - id: MICRO
+    name: "IEEE/ACM International Symposium on Microarchitecture"
+    aliases: ["MICRO"]
+    type: conference
+    grade: S
+    priority: normal
+  - id: ISPASS
+    name: "IEEE International Symposium on Performance Analysis of Systems and Software"
+    aliases: ["ISPASS"]
+    type: conference
+    grade: A
+    priority: low
+
+  # --- HPC · 분산 · 클라우드 ---
+  - id: SC
+    name: "International Conference for High Performance Computing, Networking, Storage and Analysis"
+    aliases: ["SC", "Supercomputing"]
+    type: conference
+    grade: S
+    priority: high
+    note: "약칭 SC는 2글자라 'SC24', \"SC '24\" 형태에서만 매칭됨."
+  - id: PPoPP
+    name: "ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming"
+    aliases: ["PPoPP"]
+    type: conference
+    grade: S
+    priority: low
+  - id: SoCC
+    name: "ACM Symposium on Cloud Computing"
+    aliases: ["SoCC", "Symposium on Cloud Computing"]
+    type: conference
+    grade: A
+    priority: high
+    note: "KIISE 우수. CORE 미등재·CSRankings 미포함이지만 클라우드 분야 실무 핵심."
+  - id: ICDCS
+    name: "IEEE International Conference on Distributed Computing Systems"
+    aliases: ["ICDCS"]
+    type: conference
+    grade: A
+    priority: high
+  - id: IPDPS
+    name: "IEEE International Parallel and Distributed Processing Symposium"
+    aliases: ["IPDPS"]
+    type: conference
+    grade: A
+    priority: high
+  - id: HPDC
+    name: "ACM International Symposium on High-Performance Parallel and Distributed Computing"
+    aliases: ["HPDC"]
+    type: conference
+    grade: A
+    priority: normal
+  - id: CCGrid
+    name: "IEEE/ACM International Symposium on Cluster, Cloud and Internet Computing"
+    aliases: ["CCGrid", "CCGRID", "Cluster, Cloud and Grid Computing"]
+    type: conference
+    grade: A
+    priority: high
+  - id: CLOUD
+    name: "IEEE International Conference on Cloud Computing"
+    aliases: ["IEEE CLOUD", "CLOUD"]
+    type: conference
+    grade: A
+    priority: high
+    note: "약칭 CLOUD는 일반 단어라 'IEEE CLOUD' 또는 정식 명칭으로만 매칭. 'CLOUD 2025' 형태도 인식."
+  - id: CLUSTER
+    name: "IEEE International Conference on Cluster Computing"
+    aliases: ["IEEE CLUSTER", "CLUSTER"]
+    type: conference
+    grade: A
+    priority: normal
+  - id: EuroPar
+    name: "International European Conference on Parallel and Distributed Computing"
+    aliases: ["Euro-Par", "EuroPar"]
+    type: conference
+    grade: A
+    priority: normal
+  - id: ICPP
+    name: "International Conference on Parallel Processing"
+    aliases: ["ICPP"]
+    type: conference
+    grade: A
+    priority: low
+  - id: ICS
+    name: "ACM International Conference on Supercomputing"
+    aliases: ["ICS"]
+    type: conference
+    grade: A
+    priority: low
+  - id: ICPE
+    name: "ACM/SPEC International Conference on Performance Engineering"
+    aliases: ["ICPE"]
+    type: conference
+    grade: A
+    priority: normal
+    note: "KIISE 미등재. 성능·에너지 공학 실무 학회라 추가."
+
+  # --- 네트워킹 ---
+  - id: SIGCOMM
+    name: "ACM SIGCOMM Conference"
+    aliases: ["SIGCOMM"]
+    type: conference
+    grade: S
+    priority: normal
+  - id: NSDI
+    name: "USENIX Symposium on Networked Systems Design and Implementation"
+    aliases: ["NSDI"]
+    type: conference
+    grade: S
+    priority: normal
+  - id: CoNEXT
+    name: "International Conference on emerging Networking EXperiments and Technologies"
+    aliases: ["CoNEXT"]
+    type: conference
+    grade: S
+    priority: low
+  - id: IMC
+    name: "ACM Internet Measurement Conference"
+    aliases: ["IMC"]
+    type: conference
+    grade: A
+    priority: low
+
+  # --- 에너지 · 지속가능성 (분야 핵심, KIISE 미등재) ---
+  - id: eEnergy
+    name: "ACM International Conference on Future and Sustainable Energy Systems"
+    aliases: ["e-Energy", "eEnergy", "ACM e-Energy", "Future Energy Systems"]
+    type: conference
+    grade: A
+    priority: high
+    note: "ACM SIGEnergy 대표 학회. KIISE 목록엔 없지만 carbon-aware computing의 본진."
+  - id: IGSC
+    name: "International Green and Sustainable Computing Conference"
+    aliases: ["IGSC", "Green and Sustainable Computing"]
+    type: conference
+    grade: A
+    priority: high
+    note: "KIISE 미등재. 2026부터 ACM 프로시딩(10.1145/3797248)."
+  - id: SustainCom
+    name: "IEEE International Conference on Sustainable Computing and Communications"
+    aliases: ["SustainCom"]
+    type: conference
+    grade: A
+    priority: low
+
+  # --- AI/ML (DL 워크로드 탄소 최적화 맥락에서만) ---
+  - id: NeurIPS
+    name: "Conference on Neural Information Processing Systems"
+    aliases: ["NeurIPS", "NIPS", "Advances in Neural Information Processing Systems"]
+    type: conference
+    grade: S
+    priority: low
+  - id: ICML
+    name: "International Conference on Machine Learning"
+    aliases: ["ICML"]
+    type: conference
+    grade: S
+    priority: low
+  - id: ICLR
+    name: "International Conference on Learning Representations"
+    aliases: ["ICLR"]
+    type: conference
+    grade: S
+    priority: low
+  # 필요하면 주석 해제:
+  # - {id: AAAI, name: "AAAI Conference on Artificial Intelligence", aliases: ["AAAI"], type: conference, grade: S, priority: low}
+  # - {id: KDD,  name: "ACM SIGKDD Conference on Knowledge Discovery and Data Mining", aliases: ["KDD", "SIGKDD"], type: conference, grade: S, priority: low}
+  # - {id: CVPR, name: "IEEE/CVF Conference on Computer Vision and Pattern Recognition", aliases: ["CVPR"], type: conference, grade: S, priority: low}
+
+# -----------------------------------------------------------------------------
+# 저널 — 등급 근거: Scimago SJR 2025 (JCR은 유료라 미확인). source 에 저널 페이지.
+#         top = 분야에서 최상위로 통용되는 저널 (SJR 분위와 무관하게 평판 기준)
+# -----------------------------------------------------------------------------
+journals:
+  # --- top ---
+  - id: TPDS
+    name: "IEEE Transactions on Parallel and Distributed Systems"
+    aliases: ["TPDS", "IEEE Trans. Parallel Distrib. Syst."]
+    type: journal
+    grade: top
+    priority: high
+    sjr: {year: 2025, quartile: Q1, category: "Hardware and Architecture"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=26098&tip=sid"
+  - id: TCC
+    name: "IEEE Transactions on Cloud Computing"
+    aliases: ["TCC", "IEEE Trans. Cloud Comput."]
+    type: journal
+    grade: top
+    priority: high
+    sjr: {year: 2025, quartile: Q1, category: "Computer Networks and Communications"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=21100338351&tip=sid"
+  - id: TSUSC
+    name: "IEEE Transactions on Sustainable Computing"
+    aliases: ["TSUSC", "IEEE Trans. Sustain. Comput."]
+    type: journal
+    grade: top
+    priority: high
+    sjr: {year: 2025, quartile: Q1, category: "Hardware and Architecture"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=21100970266&tip=sid"
+  - id: TC
+    name: "IEEE Transactions on Computers"
+    aliases: ["IEEE TC", "IEEE Trans. Comput."]
+    type: journal
+    grade: top
+    priority: normal
+    sjr: {year: 2025, quartile: Q1, category: "Hardware and Architecture"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=25033&tip=sid"
+  - id: TOCS
+    name: "ACM Transactions on Computer Systems"
+    aliases: ["TOCS", "ACM Trans. Comput. Syst."]
+    type: journal
+    grade: top
+    priority: normal
+    sjr: {year: 2025, quartile: Q3, category: "Computer Science (miscellaneous)"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=12213&tip=sid"
+    note: "출판 공백으로 SJR 급락(2024 Q2 → 2025 Q3). 2024-04 공동 EiC 임명 후 재가동. 평판 기준 top 유지."
+  - id: TSC
+    name: "IEEE Transactions on Services Computing"
+    aliases: ["IEEE TSC", "IEEE Trans. Serv. Comput."]
+    type: journal
+    grade: top
+    priority: normal
+    sjr: {year: 2025, quartile: Q1, category: "Computer Networks and Communications"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=18300156728&tip=sid"
+  - id: TNET
+    name: "IEEE Transactions on Networking"
+    aliases: ["IEEE/ACM Transactions on Networking", "ToN", "TNET", "IEEE/ACM Trans. Netw."]
+    type: journal
+    grade: top
+    priority: low
+    sjr: {year: 2025, quartile: Q1, category: "Computer Networks and Communications"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=21101329154&tip=sid"
+    note: "2025 Vol.33부터 IEEE/ACM ToN → IEEE TNET 개명. 두 명칭 모두 매칭."
+  - id: CSUR
+    name: "ACM Computing Surveys"
+    aliases: ["CSUR", "ACM Comput. Surv."]
+    type: journal
+    grade: top
+    priority: normal
+    sjr: {year: 2025, quartile: Q1, category: "Computer Science (miscellaneous)"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=23038&tip=sid"
+    note: "서베이 전용. related work 정리용으로 가치 높음."
+
+  # --- Q1 ---
+  - id: FGCS
+    name: "Future Generation Computer Systems"
+    aliases: ["FGCS", "Future Gener. Comput. Syst."]
+    type: journal
+    grade: Q1
+    priority: high
+    sjr: {year: 2025, quartile: Q1, category: "Computer Networks and Communications"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=12264&tip=sid"
+  - id: JPDC
+    name: "Journal of Parallel and Distributed Computing"
+    aliases: ["JPDC", "J. Parallel Distrib. Comput."]
+    type: journal
+    grade: Q1
+    priority: high
+    sjr: {year: 2025, quartile: Q1, category: "Computer Networks and Communications"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=25621&tip=sid"
+  - id: SUSCOM
+    name: "Sustainable Computing: Informatics and Systems"
+    aliases: ["SUSCOM", "Sustain. Comput. Inform. Syst."]
+    type: journal
+    grade: Q1
+    priority: high
+    sjr: {year: 2025, quartile: Q1, category: "Computer Science (miscellaneous)"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=19700201455&tip=sid"
+  - id: JoCC
+    name: "Journal of Cloud Computing"
+    aliases: ["JoCC", "Journal of Cloud Computing: Advances, Systems and Applications", "J. Cloud Comput."]
+    type: journal
+    grade: Q1
+    priority: normal
+    sjr: {year: 2025, quartile: Q1, category: "Computer Networks and Communications"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=21100383744&tip=sid"
+  - id: JSA
+    name: "Journal of Systems Architecture"
+    aliases: ["JSA", "J. Syst. Archit."]
+    type: journal
+    grade: Q1
+    priority: normal
+    sjr: {year: 2025, quartile: Q1, category: "Hardware and Architecture"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=12398&tip=sid"
+  - id: JNCA
+    name: "Journal of Network and Computer Applications"
+    aliases: ["JNCA", "J. Netw. Comput. Appl."]
+    type: journal
+    grade: Q1
+    priority: normal
+    sjr: {year: 2025, quartile: Q1, category: "Computer Networks and Communications"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=27277&tip=sid"
+  - id: ClusterComputing
+    name: "Cluster Computing"
+    aliases: ["Cluster Comput."]
+    type: journal
+    grade: Q1
+    priority: normal
+    sjr: {year: 2025, quartile: Q1, category: "Computer Networks and Communications"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=24596&tip=sid"
+  - id: IoTJ
+    name: "IEEE Internet of Things Journal"
+    aliases: ["IoT-J", "IoTJ", "IEEE Internet Things J."]
+    type: journal
+    grade: Q1
+    priority: low
+    sjr: {year: 2025, quartile: Q1, category: "Computer Networks and Communications"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=21100338350&tip=sid"
+  - id: TGCN
+    name: "IEEE Transactions on Green Communications and Networking"
+    aliases: ["TGCN", "IEEE Trans. Green Commun. Netw."]
+    type: journal
+    grade: Q1
+    priority: normal
+    sjr: {year: 2025, quartile: Q1, category: "Renewable Energy, Sustainability and the Environment"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=21100906361&tip=sid"
+  - id: SIMPAT
+    name: "Simulation Modelling Practice and Theory"
+    aliases: ["SIMPAT", "Simul. Model. Pract. Theory"]
+    type: journal
+    grade: Q1
+    priority: low
+    sjr: {year: 2025, quartile: Q1, category: "Hardware and Architecture"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=12189&tip=sid"
+    note: "CloudSim 계열 시뮬레이션 연구가 자주 실림."
+  - id: AppliedEnergy
+    name: "Applied Energy"
+    aliases: ["Appl. Energy"]
+    type: journal
+    grade: Q1
+    priority: normal
+    sjr: {year: 2025, quartile: Q1, category: "Energy Engineering and Power Technology"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=28801&tip=sid"
+    note: "데이터센터 전력·탄소강도 모델링 논문. 'Energy'(아래)와 구분하려면 정식 명칭 우선 매칭."
+  - id: Energy
+    name: "Energy"
+    aliases: []
+    match: exact          # 이름이 일반 단어 → 출처 문자열이 정확히 "Energy"일 때만
+    type: journal
+    grade: Q1
+    priority: low
+    sjr: {year: 2025, quartile: Q1, category: "Energy Engineering and Power Technology"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=29348&tip=sid"
+  - id: RSER
+    name: "Renewable and Sustainable Energy Reviews"
+    aliases: ["RSER", "Renew. Sustain. Energy Rev."]
+    type: journal
+    grade: Q1
+    priority: low
+    sjr: {year: 2025, quartile: Q1, category: "Renewable Energy, Sustainability and the Environment"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=27567&tip=sid"
+
+  # --- Q2 ---
+  - id: CCPE
+    name: "Concurrency and Computation: Practice and Experience"
+    aliases: ["CCPE", "Concurr. Comput. Pract. Exp."]
+    type: journal
+    grade: Q2
+    priority: normal
+    sjr: {year: 2025, quartile: Q2, category: "Computer Networks and Communications"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=27871&tip=sid"
+  - id: JGC
+    name: "Journal of Grid Computing"
+    aliases: ["JGC", "J. Grid Comput."]
+    type: journal
+    grade: Q2
+    priority: normal
+    sjr: {year: 2025, quartile: Q2, category: "Computer Networks and Communications"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=800147111&tip=sid"
+  - id: SPE
+    name: "Software: Practice and Experience"
+    aliases: ["SPE", "Softw. Pract. Exp."]
+    type: journal
+    grade: Q2
+    priority: low
+    sjr: {year: 2025, quartile: Q2, category: "Software"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=20007&tip=sid"
+  - id: TJSC
+    name: "The Journal of Supercomputing"
+    aliases: ["Journal of Supercomputing", "J. Supercomput."]
+    type: journal
+    grade: Q2
+    priority: normal
+    sjr: {year: 2025, quartile: Q2, category: "Hardware and Architecture"}
+    source: "https://www.scimagojr.com/journalsearch.php?q=25623&tip=sid"
+
+  # 의도적으로 제외 (근거는 catalog/systems-journals.yaml):
+  #   IEEE Access — SJR Q1이지만 CS misc. 카테고리만, 신호 대비 잡음 큼
+  #   TOMPECS, Performance Evaluation — SJR 2025 Q3
+  #   IEEE Trans. Smart Grid — 전력계통 중심, 컴퓨팅 카테고리 미등재
+
+# -----------------------------------------------------------------------------
+# 워크숍 — 활성 여부는 2026-09 기준 조사 (catalog/systems-workshops.yaml)
+# -----------------------------------------------------------------------------
+workshops:
+  - id: HotCarbon
+    name: "Workshop on Sustainable Computer Systems"
+    aliases: ["HotCarbon"]
+    type: workshop
+    grade: W
+    priority: high
+    colocated: "단독 (ACM SIGEnergy 연계)"
+    source: "https://hotcarbon.org/"
+    note: "분야 핵심 워크숍. 2026-07 5회차."
+  - id: HotOS
+    name: "Workshop on Hot Topics in Operating Systems"
+    aliases: ["HotOS"]
+    type: workshop
+    grade: W
+    priority: normal
+    colocated: "ACM SIGOPS, 격년"
+    source: "https://sigops.org/s/conferences/hotos/2025/"
+  - id: HotNets
+    name: "ACM Workshop on Hot Topics in Networks"
+    aliases: ["HotNets"]
+    type: workshop
+    grade: W
+    priority: low
+    colocated: "ACM SIGCOMM"
+    source: "https://conferences.sigcomm.org/hotnets/2025/"
+  - id: HotStorage
+    name: "ACM Workshop on Hot Topics in Storage and File Systems"
+    aliases: ["HotStorage"]
+    type: workshop
+    grade: W
+    priority: low
+    colocated: "2026부터 SOSP 병설"
+    source: "https://www.sigarch.org/call-contributions/hotstorage-sosp-2026/"
+  - id: HotInfra
+    name: "Workshop on Hot Topics in System Infrastructure"
+    aliases: ["HotInfra"]
+    type: workshop
+    grade: W
+    priority: normal
+    colocated: "ISCA/SOSP 교대"
+    source: "https://hotinfra.org/2026/"
+  - id: GreenSys
+    name: "International Workshop on Systems and Methods for Sustainable Large-Scale AI"
+    aliases: ["GreenSys"]
+    type: workshop
+    grade: W
+    priority: high
+    colocated: "EuroSys"
+    source: "https://greensys-org.github.io/workshop/"
+  - id: E2DC
+    name: "International Workshop on Energy-Efficient Data Centres"
+    aliases: ["E2DC"]
+    type: workshop
+    grade: W
+    priority: high
+    colocated: "ACM e-Energy"
+    source: "https://e2dc.eu/"
+  - id: EuroDW
+    name: "EuroSys Doctoral Workshop"
+    aliases: ["EuroDW"]
+    type: workshop
+    grade: W
+    priority: low
+    colocated: "EuroSys"
+    source: "https://eurodw.github.io/"
+  - id: CCAI
+    name: "Tackling Climate Change with Machine Learning"
+    aliases: ["Climate Change AI", "CCAI"]
+    type: workshop
+    grade: W
+    priority: low
+    colocated: "NeurIPS / ICLR / ICML"
+    source: "https://www.climatechange.ai/events"
+
+  # 종료·휴면 추정 — 알림에 오면 인식은 하되 priority low
+  - id: HotCloud
+    name: "USENIX Workshop on Hot Topics in Cloud Computing"
+    aliases: ["HotCloud"]
+    type: workshop
+    grade: W
+    priority: low
+    colocated: "USENIX ATC (2020 이후 개최 근거 없음)"
+    source: "https://dblp.org/db/conf/hotcloud/index.html"
+    note: "종료 추정. 과거 논문 인용 알림 대비로만 유지."
+  - id: NetZero
+    name: "Workshop on NetZero Carbon Computing"
+    aliases: ["NetZero"]
+    type: workshop
+    grade: W
+    priority: low
+    colocated: "HPCA 2023 (1회만 확인)"
+    source: "https://netzero.sysnet.ucsd.edu/"
+    note: "2회 이후 개최 근거 없음."
+
+# -----------------------------------------------------------------------------
+# 프리프린트
+# -----------------------------------------------------------------------------
+preprints:
+  - id: arXiv
+    name: "arXiv"
+    aliases: ["arxiv.org", "arXiv preprint", "arXiv:"]
+    type: preprint
+    grade: P
+    priority: normal
+    # 비어 있으면 전체 허용. 채우면 해당 카테고리만 (알림에 카테고리가 없으면 키워드로 판단)
+    categories: ["cs.DC", "cs.PF", "cs.OS", "cs.NI", "cs.AR", "cs.LG", "eess.SY"]

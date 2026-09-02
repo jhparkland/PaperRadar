@@ -1,0 +1,82 @@
+# =============================================================================
+# profile.example.yaml — 연구 프로필·정책 템플릿
+# =============================================================================
+# 이 파일을 config/profile.yaml 로 복사한 뒤 user / research / github.repo 를 채운다.
+# 나머지는 기본값으로 동작한다. 필드 설명은 config/profile.yaml 참조.
+# =============================================================================
+
+version: 1
+
+user:
+  name: "홍길동"
+  affiliation: "○○대학교 ○○학과 석사과정"
+  language: "ko"
+
+research:
+  summary: >
+    두세 문장으로. 무엇을 최적화하고, 무엇을 입력으로 쓰고, 무엇이 산출물인지.
+    리뷰어(Claude)가 "이 논문이 내 연구와 어디서 만나는지"를 판단하는 근거가 된다.
+  projects:
+    - name: "프로젝트A"
+      what: "한 줄. 리뷰 표의 행이 된다."
+    - name: "프로젝트B"
+      what: "한 줄."
+  keywords_priority:
+    - "1순위 키워드군"
+    - "2순위 키워드군"
+    - "3순위 키워드군"
+
+policy:
+  review_by_grade:        # full | brief | skip
+    S: full
+    A: full
+    top: full
+    Q1: full
+    Q2: brief
+    W: full
+    P: full
+  picks_per_group: 1
+  tie_break: ["grade", "priority", "keywords"]
+  grade_order: ["S", "top", "A", "Q1", "W", "P", "Q2"]
+  self_refine_pass: 4
+  continue_on_error: true
+
+alerts:
+  gmail_query: "from:scholaralerts-noreply@google.com"
+  default_days: 1
+
+github:
+  repo: "{username}/PaperRadar"     # {username} 은 실행 시 자동 채움
+  issue_title_prefix: "📄"
+  issue_title_max: 60
+  labels:
+    always: ["paper-review", "automated"]
+    by_type: {conference: "conference", journal: "journal", workshop: "workshop", preprint: "arxiv"}
+    by_grade: {S: "tier-S", A: "tier-A", top: "journal-top", Q1: "journal-Q1", Q2: "journal-Q2", W: "workshop", P: "arxiv"}
+    by_source: {full_text: "full-text", abstract_only: "abstract-only", no_doi: "no-doi"}
+    by_keyword:
+      # 라벨명: [제목·초록에서 찾을 소문자 부분 문자열]
+      my-topic-1: ["keyword", "another"]
+      my-topic-2: ["keyword"]
+    colors:
+      paper-review: "0075ca"
+      automated: "bfd4f2"
+      tier-S: "0e8a16"
+      tier-A: "5fd18c"
+      journal-top: "1d76db"
+      journal-Q1: "6fa8dc"
+      journal-Q2: "b4c7e7"
+      workshop: "fbca04"
+      arxiv: "e8f5a3"
+      conference: "c5def5"
+      journal: "c5def5"
+      full-text: "2ea44f"
+      abstract-only: "d93f0b"
+      no-doi: "e4e669"
+      my-topic-1: "1d76db"
+      my-topic-2: "5319e7"
+
+pdf:
+  institution: "○○대학교 (브라우저에 기관 인증 세션 필요)"
+  filename_rule: "{year}_{venue}_{title-hyphenated}.pdf"
+  # archive 블록은 선택. 서버로 보낼 게 없으면 통째로 지운다.

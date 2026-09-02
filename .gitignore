@@ -1,0 +1,5 @@
+config/local.yaml
+config/venues.draft.yaml
+*.pdf
+__pycache__/
+.DS_Store
