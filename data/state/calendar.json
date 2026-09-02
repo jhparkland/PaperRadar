@@ -375,63 +375,63 @@
     "cancelledAt": null
   },
   "nsdi/nsdi-2027/spring/full/abstract": {
-    "sequence": 1,
-    "fingerprint": "2026-04-16T23:59:00-04:00|NSDI 2027 · 봄 초록 마감|TENTATIVE",
+    "sequence": 2,
+    "fingerprint": "2026-04-16T23:59:00-04:00|NSDI 2027 · 봄 초록 마감|CONFIRMED",
     "cancelledAt": null
   },
   "nsdi/nsdi-2027/spring/full/paper": {
-    "sequence": 1,
-    "fingerprint": "2026-04-23T23:59:00-04:00|NSDI 2027 · 봄 논문 마감|TENTATIVE",
+    "sequence": 2,
+    "fingerprint": "2026-04-23T23:59:00-04:00|NSDI 2027 · 봄 논문 마감|CONFIRMED",
     "cancelledAt": null
   },
   "nsdi/nsdi-2027/spring/full/notification": {
-    "sequence": 1,
-    "fingerprint": "2026-07-23T23:59:00-04:00|NSDI 2027 · 봄 결과 통보|TENTATIVE",
+    "sequence": 2,
+    "fingerprint": "2026-07-23T23:59:00-04:00|NSDI 2027 · 봄 결과 통보|CONFIRMED",
     "cancelledAt": null
   },
   "nsdi/nsdi-2027/spring/full/camera-ready": {
-    "sequence": 1,
-    "fingerprint": "2026-10-20T23:59:00-04:00|NSDI 2027 · 봄 최종본 마감|TENTATIVE",
+    "sequence": 2,
+    "fingerprint": "2026-10-20T23:59:00-04:00|NSDI 2027 · 봄 최종본 마감|CONFIRMED",
     "cancelledAt": null
   },
   "nsdi/nsdi-2027/fall/full/abstract": {
-    "sequence": 1,
-    "fingerprint": "2026-09-10T23:59:00-04:00|NSDI 2027 · 가을 초록 마감|TENTATIVE",
+    "sequence": 2,
+    "fingerprint": "2026-09-10T23:59:00-04:00|NSDI 2027 · 가을 초록 마감|CONFIRMED",
     "cancelledAt": null
   },
   "nsdi/nsdi-2027/fall/full/paper": {
-    "sequence": 1,
-    "fingerprint": "2026-09-17T23:59:00-04:00|NSDI 2027 · 가을 논문 마감|TENTATIVE",
+    "sequence": 2,
+    "fingerprint": "2026-09-17T23:59:00-04:00|NSDI 2027 · 가을 논문 마감|CONFIRMED",
     "cancelledAt": null
   },
   "nsdi/nsdi-2027/fall/full/notification": {
-    "sequence": 1,
-    "fingerprint": "2026-12-08T23:59:00-04:00|NSDI 2027 · 가을 결과 통보|TENTATIVE",
+    "sequence": 2,
+    "fingerprint": "2026-12-08T23:59:00-04:00|NSDI 2027 · 가을 결과 통보|CONFIRMED",
     "cancelledAt": null
   },
   "nsdi/nsdi-2027/fall/full/camera-ready": {
-    "sequence": 1,
-    "fingerprint": "2027-03-04T23:59:00-04:00|NSDI 2027 · 가을 최종본 마감|TENTATIVE",
+    "sequence": 2,
+    "fingerprint": "2027-03-04T23:59:00-04:00|NSDI 2027 · 가을 최종본 마감|CONFIRMED",
     "cancelledAt": null
   },
   "osdi/osdi-2027/main/full/abstract": {
-    "sequence": 1,
-    "fingerprint": "2026-12-01T17:59:00-05:00|OSDI 2027 · 초록 마감|TENTATIVE",
+    "sequence": 2,
+    "fingerprint": "2026-12-01T17:59:00-05:00|OSDI 2027 · 초록 마감|CONFIRMED",
     "cancelledAt": null
   },
   "osdi/osdi-2027/main/full/paper": {
-    "sequence": 1,
-    "fingerprint": "2026-12-08T17:59:00-05:00|OSDI 2027 · 논문 마감|TENTATIVE",
+    "sequence": 2,
+    "fingerprint": "2026-12-08T17:59:00-05:00|OSDI 2027 · 논문 마감|CONFIRMED",
     "cancelledAt": null
   },
   "osdi/osdi-2027/main/full/notification": {
-    "sequence": 1,
-    "fingerprint": "2027-03-16T17:59:00-05:00|OSDI 2027 · 결과 통보|TENTATIVE",
+    "sequence": 2,
+    "fingerprint": "2027-03-16T17:59:00-05:00|OSDI 2027 · 결과 통보|CONFIRMED",
     "cancelledAt": null
   },
   "osdi/osdi-2027/main/full/camera-ready": {
-    "sequence": 1,
-    "fingerprint": "2027-06-03T17:59:00-05:00|OSDI 2027 · 최종본 마감|TENTATIVE",
+    "sequence": 2,
+    "fingerprint": "2027-06-03T17:59:00-05:00|OSDI 2027 · 최종본 마감|CONFIRMED",
     "cancelledAt": null
   },
   "ppopp/ppopp-2027/main/full/paper": {

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-02T08:07:55Z",
+  "updatedAt": "2026-09-02T08:09:18Z",
   "venues": {
     "asplos": {
       "editions": [
@@ -1454,12 +1454,12 @@
           "event": null,
           "source": {
             "url": "https://www.usenix.org/conference/nsdi27/call-for-papers",
-            "adapter": "declarative",
-            "status": "failed",
-            "checkedAt": "2026-09-02T08:07:55Z",
-            "lastOkAt": "2026-09-02T08:04:08Z",
-            "error": "fetch failed: HTTP 403",
-            "contentHash": "662140694ecb18e9abfb1c3adb4289ab7fe61577d025d85f38a06bf2650d309d"
+            "adapter": "manual",
+            "status": "manual",
+            "checkedAt": "2026-09-02T08:09:18Z",
+            "lastOkAt": "2026-09-02T08:09:18Z",
+            "error": null,
+            "contentHash": null
           },
           "rounds": [
             {
@@ -1477,8 +1477,9 @@
                   "tzLabel": "EDT",
                   "tzOffset": "-04:00",
                   "tzConfirmed": true,
-                  "sourceText": "Thursday, April 16, 2026",
-                  "verification": "needs-verification"
+                  "sourceText": "2026-04-16",
+                  "verification": "verified",
+                  "verifiedAt": "2026-09-02"
                 },
                 {
                   "type": "paper",
@@ -1487,8 +1488,9 @@
                   "tzLabel": "EDT",
                   "tzOffset": "-04:00",
                   "tzConfirmed": true,
-                  "sourceText": "Thursday, April 23, 2026",
-                  "verification": "needs-verification"
+                  "sourceText": "2026-04-23",
+                  "verification": "verified",
+                  "verifiedAt": "2026-09-02"
                 },
                 {
                   "type": "notification",
@@ -1497,8 +1499,9 @@
                   "tzLabel": "EDT",
                   "tzOffset": "-04:00",
                   "tzConfirmed": true,
-                  "sourceText": "Thursday, July 23, 2026",
-                  "verification": "needs-verification"
+                  "sourceText": "2026-07-23",
+                  "verification": "verified",
+                  "verifiedAt": "2026-09-02"
                 },
                 {
                   "type": "camera-ready",
@@ -1507,8 +1510,9 @@
                   "tzLabel": "EDT",
                   "tzOffset": "-04:00",
                   "tzConfirmed": true,
-                  "sourceText": "Tuesday, October 20, 2026",
-                  "verification": "needs-verification"
+                  "sourceText": "2026-10-20",
+                  "verification": "verified",
+                  "verifiedAt": "2026-09-02"
                 }
               ]
             },
@@ -1527,8 +1531,9 @@
                   "tzLabel": "EDT",
                   "tzOffset": "-04:00",
                   "tzConfirmed": true,
-                  "sourceText": "Thursday, September 10, 2026",
-                  "verification": "needs-verification"
+                  "sourceText": "2026-09-10",
+                  "verification": "verified",
+                  "verifiedAt": "2026-09-02"
                 },
                 {
                   "type": "paper",
@@ -1537,8 +1542,9 @@
                   "tzLabel": "EDT",
                   "tzOffset": "-04:00",
                   "tzConfirmed": true,
-                  "sourceText": "Thursday, September 17, 2026",
-                  "verification": "needs-verification"
+                  "sourceText": "2026-09-17",
+                  "verification": "verified",
+                  "verifiedAt": "2026-09-02"
                 },
                 {
                   "type": "notification",
@@ -1547,8 +1553,9 @@
                   "tzLabel": "EDT",
                   "tzOffset": "-04:00",
                   "tzConfirmed": true,
-                  "sourceText": "Tuesday, December 8, 2026",
-                  "verification": "needs-verification"
+                  "sourceText": "2026-12-08",
+                  "verification": "verified",
+                  "verifiedAt": "2026-09-02"
                 },
                 {
                   "type": "camera-ready",
@@ -1557,8 +1564,9 @@
                   "tzLabel": "EDT",
                   "tzOffset": "-04:00",
                   "tzConfirmed": true,
-                  "sourceText": "Thursday, March 4, 2027",
-                  "verification": "needs-verification"
+                  "sourceText": "2027-03-04",
+                  "verification": "verified",
+                  "verifiedAt": "2026-09-02"
                 }
               ]
             }
@@ -1577,12 +1585,12 @@
           },
           "source": {
             "url": "https://www.usenix.org/conference/osdi27/call-for-papers",
-            "adapter": "declarative",
-            "status": "failed",
-            "checkedAt": "2026-09-02T08:07:55Z",
-            "lastOkAt": "2026-09-02T08:04:08Z",
-            "error": "fetch failed: HTTP 403",
-            "contentHash": "5332a4a7e2537f5c969f53e3a8f72bc5a19f85e7f39a87b1af93b253e596fe07"
+            "adapter": "manual",
+            "status": "manual",
+            "checkedAt": "2026-09-02T08:09:18Z",
+            "lastOkAt": "2026-09-02T08:09:18Z",
+            "error": null,
+            "contentHash": null
           },
           "rounds": [
             {
@@ -1597,8 +1605,9 @@
                   "tzLabel": "EST",
                   "tzOffset": "-05:00",
                   "tzConfirmed": true,
-                  "sourceText": "Tuesday, December 1, 2026",
-                  "verification": "needs-verification"
+                  "sourceText": "2026-12-01",
+                  "verification": "verified",
+                  "verifiedAt": "2026-09-02"
                 },
                 {
                   "type": "paper",
@@ -1607,8 +1616,9 @@
                   "tzLabel": "EST",
                   "tzOffset": "-05:00",
                   "tzConfirmed": true,
-                  "sourceText": "Tuesday, December 8, 2026",
-                  "verification": "needs-verification"
+                  "sourceText": "2026-12-08",
+                  "verification": "verified",
+                  "verifiedAt": "2026-09-02"
                 },
                 {
                   "type": "notification",
@@ -1617,8 +1627,9 @@
                   "tzLabel": "EST",
                   "tzOffset": "-05:00",
                   "tzConfirmed": true,
-                  "sourceText": "Tuesday, March 16, 2027",
-                  "verification": "needs-verification"
+                  "sourceText": "2027-03-16",
+                  "verification": "verified",
+                  "verifiedAt": "2026-09-02"
                 },
                 {
                   "type": "camera-ready",
@@ -1627,8 +1638,9 @@
                   "tzLabel": "EST",
                   "tzOffset": "-05:00",
                   "tzConfirmed": true,
-                  "sourceText": "Thursday, June 3, 2027",
-                  "verification": "needs-verification"
+                  "sourceText": "2027-06-03",
+                  "verification": "verified",
+                  "verifiedAt": "2026-09-02"
                 }
               ]
             }

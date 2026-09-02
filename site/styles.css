@@ -43,7 +43,8 @@
 }
 
 * { box-sizing: border-box; }
-html { font-family: var(--font); font-size: 15px; line-height: 1.5; color: var(--text); background: var(--bg); }
+html { font-family: var(--font); font-size: 17px; line-height: 1.55; color: var(--text); background: var(--bg); }
+@media (min-width: 1400px) { html { font-size: 18px; } }
 body { margin: 0; }
 a { color: var(--accent); }
 code { font-family: var(--mono); font-size: 0.92em; background: var(--surface-2); padding: 0.1em 0.35em; border-radius: 4px; }
@@ -51,17 +52,17 @@ pre { font-family: var(--mono); font-size: 0.88em; background: var(--surface-2);
 pre code { background: none; padding: 0; }
 button { font: inherit; color: inherit; }
 table { border-collapse: collapse; width: 100%; }
-th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
-th { font-weight: 600; color: var(--muted); font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.02em; }
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 1rem; }
+th, td { text-align: left; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { font-weight: 600; color: var(--muted); font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.02em; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 1rem; }
 .skip { position: absolute; left: -999px; top: 0; background: var(--accent); color: #fff; padding: 0.5rem 1rem; z-index: 10; }
 .skip:focus { left: 1rem; top: 1rem; }
 
 /* header */
 .site-header { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 5; }
 .header-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; padding-top: 0.9rem; padding-bottom: 0.4rem; }
-.brand h1 { margin: 0; font-size: 1.35rem; letter-spacing: -0.01em; }
-.tagline { margin: 0.1rem 0 0; color: var(--muted); font-size: 0.92rem; }
+.brand h1 { margin: 0; font-size: 1.5rem; letter-spacing: -0.01em; }
+.tagline { margin: 0.1rem 0 0; color: var(--muted); font-size: 0.95rem; }
 .controls { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; background: var(--surface-2); }
 .seg button { border: 0; background: transparent; padding: 0.3rem 0.75rem; cursor: pointer; color: var(--muted); }
@@ -76,18 +77,20 @@ h2 { font-size: 1.1rem; margin: 1.5rem 0 0.75rem; }
 h2:first-child { margin-top: 0; }
 h3 { font-size: 1rem; margin: 1.25rem 0 0.5rem; }
 .muted { color: var(--muted); }
-.small { font-size: 0.88em; }
+.small { font-size: 0.92em; }
 .notice { background: var(--warn-soft); color: var(--warn); border-radius: var(--radius); padding: 0.75rem 1rem; }
 .empty { color: var(--muted); padding: 2rem 0; text-align: center; }
 
 /* badges */
-.badge { display: inline-block; font-size: 0.76em; font-weight: 600; padding: 0.12em 0.55em; border-radius: 999px; background: var(--info-soft); color: var(--info); white-space: nowrap; vertical-align: middle; }
+.badge { display: inline-block; font-size: 0.8em; font-weight: 600; padding: 0.15em 0.6em; border-radius: 999px; background: var(--info-soft); color: var(--info); white-space: nowrap; vertical-align: middle; }
 .badge.accent { background: var(--accent-soft); color: var(--accent); }
 .badge.ok { background: var(--ok-soft); color: var(--ok); }
 .badge.warn { background: var(--warn-soft); color: var(--warn); }
 .badge.bad { background: var(--bad-soft); color: var(--bad); }
 .badge.outline { background: transparent; border: 1px solid var(--border); color: var(--muted); }
 .dday { font-family: var(--mono); font-weight: 700; font-size: 1.05em; }
+td.lead .lead-venue { margin-left: 0.6rem; font-size: 1.05em; }
+td.lead { min-width: 14rem; }
 .dday.soon { color: var(--bad); }
 .dday.near { color: var(--warn); }
 .dday.past { color: var(--muted); }
@@ -105,8 +108,8 @@ h3 { font-size: 1rem; margin: 1.25rem 0 0.5rem; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 0.85rem; }
 .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 0.9rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
 .card-head { display: flex; justify-content: space-between; gap: 0.5rem; align-items: flex-start; }
-.card-title { margin: 0; font-size: 1.05rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
-.card-name { margin: 0; color: var(--muted); font-size: 0.9em; }
+.card-title { margin: 0; font-size: 1.15rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.card-name { margin: 0; color: var(--muted); font-size: 0.95em; }
 .next { display: grid; grid-template-columns: auto 1fr; gap: 0.15rem 0.75rem; align-items: baseline; padding: 0.5rem 0.65rem; background: var(--surface-2); border-radius: 8px; }
 .next .what { font-weight: 600; }
 .next .when { font-size: 0.9em; color: var(--muted); grid-column: 2; }
@@ -139,8 +142,27 @@ details.editions td, details.editions th { padding: 0.3rem 0.4rem; }
 
 .site-footer { padding: 1rem; color: var(--muted); font-size: 0.85em; border-top: 1px solid var(--border); margin-top: 2rem; }
 @media (max-width: 640px) {
-  html { font-size: 14px; }
+  html { font-size: 16px; }
   .grid { grid-template-columns: 1fr; }
   .next { grid-template-columns: 1fr; }
   .next .when { grid-column: 1; }
+  .header-row { padding-bottom: 0.6rem; }
+  .brand { min-width: 0; }
+  .controls { width: 100%; flex-direction: column; }
+  .seg { display: flex; width: 100%; }
+  .seg button { flex: 1 1 0; padding: 0.4rem 0.5rem; font-size: 0.92em; }
+  main { padding-left: 0.5rem; padding-right: 0.5rem; }
+}
+
+/* Narrow screens: deadline/source tables become stacked rows with inline labels
+   instead of squeezing eight columns into a few characters each. */
+@media (max-width: 760px) {
+  table.stack thead { display: none; }
+  table.stack, table.stack tbody, table.stack tr, table.stack td { display: block; width: 100%; }
+  table.stack tr { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
+  table.stack td { display: flex; gap: 0.75rem; padding: 0.15rem 0; border: 0; align-items: baseline; }
+  table.stack td::before { content: attr(data-label); flex: 0 0 5.5rem; color: var(--muted); font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.02em; }
+  table.stack td.lead { display: block; padding-bottom: 0.3rem; }
+  table.stack td.lead::before { display: none; }
+  table.stack td.lead .dday { font-size: 1.2em; margin-right: 0.6rem; }
 }

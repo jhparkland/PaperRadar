@@ -161,21 +161,22 @@
 
   function setTz(mode) { state.tzMode = mode; localStorage.setItem('pr.tz', mode); render(); }
 
-  function deadlineTable(rows, { past = false } = {}) {
+  function deadlineTable(rows) {
     const tz = timeZone();
-    return h('div', { class: 'table-wrap' }, h('table', {},
-      h('thead', {}, h('tr', {}, ['col_dday', 'col_venue', 'col_edition', 'col_what', 'col_official', 'col_local', 'col_status', 'col_link'].map((k) => h('th', {}, ui(k, { tz }))))),
+    const cols = ['col_edition', 'col_what', 'col_official', 'col_local', 'col_status', 'col_link'];
+    const label = (k) => ui(k, { tz });
+    return h('div', { class: 'table-wrap' }, h('table', { class: 'stack' },
+      h('thead', {}, h('tr', {}, h('th', {}, `${label('col_dday')} · ${label('col_venue')}`), ...cols.map((k) => h('th', {}, label(k))))),
       h('tbody', {}, rows.map((r) => {
         const n = daysUntil(r.at);
         return h('tr', { class: r.status === 'needs-verification' ? 'row-warn' : null },
-          h('td', {}, ddayEl(n)),
-          h('td', {}, h('strong', {}, r.acronym), h('div', { class: 'small muted' }, r.venueName)),
-          h('td', {}, r.editionLabel),
-          h('td', {}, whatText(r)),
-          h('td', { class: 'small' }, fmtOfficial(r)),
-          h('td', { class: 'small' }, fmtLocal(r.at)),
-          h('td', {}, statusBadge(r.status)),
-          h('td', {}, r.sourceUrl ? h('a', { href: r.sourceUrl, target: '_blank', rel: 'noopener' }, ui('link_cfp')) : '—'),
+          h('td', { class: 'lead', 'data-label': label('col_dday') }, ddayEl(n), h('strong', { class: 'lead-venue' }, r.acronym), h('div', { class: 'small muted' }, r.venueName)),
+          h('td', { 'data-label': label('col_edition') }, r.editionLabel),
+          h('td', { 'data-label': label('col_what') }, whatText(r)),
+          h('td', { class: 'small', 'data-label': label('col_official') }, fmtOfficial(r)),
+          h('td', { class: 'small', 'data-label': label('col_local') }, fmtLocal(r.at)),
+          h('td', { 'data-label': label('col_status') }, statusBadge(r.status)),
+          h('td', { 'data-label': label('col_link') }, r.sourceUrl ? h('a', { href: r.sourceUrl, target: '_blank', rel: 'noopener' }, ui('link_cfp')) : '—'),
         );
       })),
     ));
@@ -194,7 +195,7 @@
     const d = state.data;
     return h('section', {},
       h('h2', {}, ui('past_title', { days: d.site.archiveDays })),
-      d.archive.length ? deadlineTable(d.archive, { past: true }) : h('p', { class: 'empty' }, ui('past_empty')),
+      d.archive.length ? deadlineTable(d.archive) : h('p', { class: 'empty' }, ui('past_empty')),
     );
   }
 
@@ -324,12 +325,12 @@
       }))
       : h('p', { class: 'empty' }, ui('updates_empty'));
     const srcBadge = (s) => h('span', { class: `badge ${s === 'ok' ? 'ok' : s === 'failed' ? 'bad' : s === 'manual' ? 'accent' : 'outline'}` }, ui(`src_${s}`));
-    const sources = d.sources.length ? h('div', { class: 'table-wrap' }, h('table', {},
+    const sources = d.sources.length ? h('div', { class: 'table-wrap' }, h('table', { class: 'stack' },
       h('thead', {}, h('tr', {}, ['col_venue', 'col_edition', 'col_adapter', 'col_status', 'col_checked', 'col_lastok', 'col_error', 'col_source'].map((k) => h('th', {}, ui(k))))),
       h('tbody', {}, d.sources.map((s) => h('tr', { class: s.status === 'failed' ? 'row-warn' : null },
-        h('td', {}, h('strong', {}, s.acronym)), h('td', {}, s.editionLabel ?? '—'), h('td', {}, s.adapter), h('td', {}, srcBadge(s.status)),
-        h('td', { class: 'small' }, fmtStamp(s.checkedAt)), h('td', { class: 'small' }, fmtStamp(s.lastOkAt)), h('td', { class: 'small' }, s.error ?? ''),
-        h('td', {}, s.url ? h('a', { href: s.url, target: '_blank', rel: 'noopener' }, ui('link_cfp')) : '—'),
+        h('td', { class: 'lead' }, h('strong', {}, s.acronym)), h('td', { 'data-label': ui('col_edition') }, s.editionLabel ?? '—'), h('td', { 'data-label': ui('col_adapter') }, s.adapter), h('td', { 'data-label': ui('col_status') }, srcBadge(s.status)),
+        h('td', { class: 'small', 'data-label': ui('col_checked') }, fmtStamp(s.checkedAt)), h('td', { class: 'small', 'data-label': ui('col_lastok') }, fmtStamp(s.lastOkAt)), h('td', { class: 'small', 'data-label': ui('col_error') }, s.error ?? ''),
+        h('td', { 'data-label': ui('col_source') }, s.url ? h('a', { href: s.url, target: '_blank', rel: 'noopener' }, ui('link_cfp')) : '—'),
       ))),
     )) : h('p', { class: 'empty' }, ui('no_sources'));
     return h('section', {}, h('h2', {}, ui('sources_title')), sources, h('h2', {}, ui('updates_title')), updates);

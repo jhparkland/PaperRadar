@@ -10,11 +10,8 @@
   "homepage": "https://www.usenix.org/conferences/byname/179",
   "submission": "cfp",
   "cfp": {
-    "adapter": "declarative",
+    "adapter": "manual",
     "url": "https://www.usenix.org/conference/osdi27/call-for-papers",
-    "allowedHosts": [
-      "www.usenix.org"
-    ],
     "edition": {
       "year": 2027,
       "label": "OSDI 2027",
@@ -34,22 +31,30 @@
         "milestones": [
           {
             "type": "abstract",
-            "pattern": "Abstract registrations due:\\s*{{DATE}}"
+            "date": "2026-12-01",
+            "verifiedAt": "2026-09-02"
           },
           {
             "type": "paper",
-            "pattern": "Complete paper submissions due:\\s*{{DATE}}"
+            "date": "2026-12-08",
+            "verifiedAt": "2026-09-02"
           },
           {
             "type": "notification",
-            "pattern": "Notification to authors:\\s*{{DATE}}"
+            "date": "2027-03-16",
+            "verifiedAt": "2026-09-02"
           },
           {
             "type": "camera-ready",
-            "pattern": "Final papers due:\\s*{{DATE}}"
+            "date": "2027-06-03",
+            "verifiedAt": "2026-09-02"
           }
         ]
       }
     ]
+  },
+  "note": {
+    "ko": "USENIX 사이트가 GitHub Actions 등 자동 접근을 차단(HTTP 403)해 사람이 확인한 날짜를 manual 어댑터로 등록한다. 새 회차가 공지되면 catalog/venues/ 파일의 날짜와 verifiedAt을 갱신할 것.",
+    "en": "usenix.org blocks automated access from GitHub Actions (HTTP 403), so dates are entered by hand with the manual adapter. Update the dates and verifiedAt in catalog/venues/ when a new edition is announced."
   }
 }
