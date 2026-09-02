@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>PaperRadar</title>
+  <meta name="description" content="Deadline radar for the conferences, journals and workshops of your research field.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%231d4ed8'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='white' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='4' fill='none' stroke='white' stroke-width='2'/%3E%3Cpath d='M16 16 L27 8' stroke='white' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <div class="brand">
+        <h1 id="site-title">PaperRadar</h1>
+        <p id="site-tagline" class="tagline"></p>
+      </div>
+      <div class="controls" role="group" aria-label="Display">
+        <div id="lang-toggle" class="seg" role="group" aria-label="Language"></div>
+        <div id="tz-toggle" class="seg" role="group" aria-label="Timezone"></div>
+      </div>
+    </div>
+    <nav class="wrap" aria-label="Sections"><ul id="tabs" class="tabs" role="tablist"></ul></nav>
+  </header>
+
+  <main id="main" class="wrap" tabindex="-1">
+    <noscript><p class="notice">This page needs JavaScript to render the schedule. The calendar feeds under <code>calendars/</code> work without it.</p></noscript>
+    <div id="view" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer wrap">
+    <p id="footer-meta"></p>
+    <p id="footer-policy"></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

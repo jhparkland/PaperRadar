@@ -1,0 +1,13 @@
+{
+  "id": "jocc",
+  "acronym": "JoCC",
+  "name": "Journal of Cloud Computing",
+  "type": "journal",
+  "fields": [
+    "cloud"
+  ],
+  "topics": [],
+  "homepage": "https://journalofcloudcomputing.springeropen.com/",
+  "submission": "rolling",
+  "cfp": null
+}

@@ -1,0 +1,13 @@
+{
+  "id": "tsc",
+  "acronym": "IEEE TSC",
+  "name": "IEEE Transactions on Services Computing",
+  "type": "journal",
+  "fields": [
+    "cloud"
+  ],
+  "topics": [],
+  "homepage": "https://www.computer.org/csdl/journal/sc",
+  "submission": "rolling",
+  "cfp": null
+}

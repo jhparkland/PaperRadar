@@ -1,0 +1,26 @@
+{
+  "name": "paperradar",
+  "version": "1.0.0",
+  "description": "Config-driven deadline radar for the conferences, journals and workshops of your research field. Static site + ICS calendars + Google Chat/email reminders, refreshed daily by GitHub Actions.",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "doctor": "node scripts/doctor.mjs",
+    "validate": "node scripts/validate.mjs",
+    "refresh": "node scripts/refresh.mjs",
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs",
+    "remind": "node scripts/remind.mjs",
+    "probe": "node scripts/probe.mjs",
+    "new-venue": "node scripts/new-venue.mjs",
+    "test": "node --test \"test/**/*.test.mjs\""
+  },
+  "dependencies": {
+    "yaml": "^2.8.1"
+  },
+  "optionalDependencies": {
+    "nodemailer": "^7.0.6"
+  },
+  "license": "MIT"
+}

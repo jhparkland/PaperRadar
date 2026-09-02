@@ -1,0 +1,57 @@
+{
+  "id": "micro",
+  "acronym": "MICRO",
+  "name": "IEEE/ACM International Symposium on Microarchitecture",
+  "type": "conference",
+  "fields": [
+    "architecture"
+  ],
+  "topics": [],
+  "homepage": "https://www.microarch.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://microarch.org/micro59/submit/papers.php",
+    "allowedHosts": [
+      "microarch.org",
+      "www.microarch.org"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "MICRO 2026",
+      "event": {
+        "start": "2026-10-31",
+        "end": "2026-11-04"
+      }
+    },
+    "timezone": {
+      "label": "EDT",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Abstract Deadline:\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Full Paper Deadline:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Author Notification:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Camera Ready Deadline:\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

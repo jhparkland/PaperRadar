@@ -1,0 +1,57 @@
+{
+  "id": "ppopp",
+  "acronym": "PPoPP",
+  "name": "ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming",
+  "type": "conference",
+  "fields": [
+    "hpc"
+  ],
+  "topics": [],
+  "homepage": "https://ppopp.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://ppopp27.sigplan.org/track/PPoPP-2027-papers",
+    "allowedHosts": [
+      "ppopp27.sigplan.org"
+    ],
+    "edition": {
+      "year": 2027,
+      "label": "PPoPP 2027",
+      "event": {
+        "start": "2027-03-20",
+        "end": "2027-03-24",
+        "location": "Salt Lake City, USA"
+      }
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "state": "not-required"
+          },
+          {
+            "type": "paper",
+            "pattern": "Paper submission due\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Author notification\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Final paper due\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

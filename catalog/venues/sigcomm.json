@@ -1,0 +1,56 @@
+{
+  "id": "sigcomm",
+  "acronym": "SIGCOMM",
+  "name": "ACM SIGCOMM Conference",
+  "type": "conference",
+  "fields": [
+    "networking"
+  ],
+  "topics": [],
+  "homepage": "https://conferences.sigcomm.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://conferences.sigcomm.org/sigcomm/2026/cfp/",
+    "allowedHosts": [
+      "conferences.sigcomm.org"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "SIGCOMM 2026"
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Abstract registration deadline\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Paper submission deadline\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Review results notification\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Camera-ready deadline\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  },
+  "note": {
+    "ko": "SIGCOMM 2027 CFP 페이지는 아직 2026 내용의 자리표시자라 2026 회차를 참고용으로 추적한다. 2027 CFP가 공개되면 catalog/venues/sigcomm.json의 url·edition을 갱신할 것.",
+    "en": "The SIGCOMM 2027 CFP page is still a placeholder copy of 2026, so the 2026 edition is tracked for reference. Update url/edition in catalog/venues/sigcomm.json once the 2027 CFP is real."
+  }
+}

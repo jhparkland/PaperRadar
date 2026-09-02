@@ -1,0 +1,58 @@
+{
+  "id": "eesp",
+  "acronym": "EESP",
+  "name": "Workshop on Energy-Efficient and Sustainable Performance",
+  "type": "workshop",
+  "fields": [
+    "sustainable-computing",
+    "hpc"
+  ],
+  "topics": [],
+  "homepage": "https://ayeshaafzal91.github.io/eesp/",
+  "parent": "SC",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://ayeshaafzal91.github.io/eesp/",
+    "allowedHosts": [
+      "ayeshaafzal91.github.io"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "SC EESP 2026",
+      "event": {
+        "start": "2026-11-15",
+        "end": "2026-11-15"
+      }
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "state": "not-required"
+          },
+          {
+            "type": "paper",
+            "pattern": "Submission deadline:[\\s\\S]{0,30}?{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Notification:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Camera ready deadline:\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

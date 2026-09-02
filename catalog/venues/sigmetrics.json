@@ -1,0 +1,96 @@
+{
+  "id": "sigmetrics",
+  "acronym": "SIGMETRICS",
+  "name": "ACM SIGMETRICS International Conference on Measurement and Modeling of Computer Systems",
+  "type": "conference",
+  "fields": [
+    "performance",
+    "systems"
+  ],
+  "topics": [],
+  "homepage": "https://www.sigmetrics.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://www.sigmetrics.org/sigmetrics2027/pages/cfp.html",
+    "allowedHosts": [
+      "www.sigmetrics.org"
+    ],
+    "edition": {
+      "year": 2027,
+      "label": "SIGMETRICS 2027"
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "summer",
+        "label": {
+          "ko": "여름",
+          "en": "Summer"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Summer deadline[\\s\\S]{0,120}?Abstract registration[\\s\\S]{0,20}?{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Summer deadline[\\s\\S]{0,220}?Paper submission[\\s\\S]{0,20}?{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Summer deadline[\\s\\S]{0,320}?Notification[\\s\\S]{0,20}?{{DATE}}"
+          }
+        ]
+      },
+      {
+        "id": "fall",
+        "label": {
+          "ko": "가을",
+          "en": "Fall"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Fall deadline[\\s\\S]{0,120}?Abstract registration[\\s\\S]{0,20}?{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Fall deadline[\\s\\S]{0,220}?Paper submission[\\s\\S]{0,20}?{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Fall deadline[\\s\\S]{0,320}?Notification[\\s\\S]{0,20}?{{DATE}}"
+          }
+        ]
+      },
+      {
+        "id": "winter",
+        "label": {
+          "ko": "겨울",
+          "en": "Winter"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Winter deadline[\\s\\S]{0,120}?Abstract registration[\\s\\S]{0,20}?{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Winter deadline[\\s\\S]{0,220}?Paper submission[\\s\\S]{0,20}?{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Winter deadline[\\s\\S]{0,320}?Notification[\\s\\S]{0,20}?{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

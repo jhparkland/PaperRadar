@@ -1,0 +1,58 @@
+{
+  "id": "hotinfra",
+  "acronym": "HotInfra",
+  "name": "Workshop on Hot Topics in System Infrastructure",
+  "type": "workshop",
+  "fields": [
+    "systems",
+    "cloud"
+  ],
+  "topics": [],
+  "homepage": "https://hotinfra.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://hotinfra.org/2026/",
+    "allowedHosts": [
+      "hotinfra.org"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "HotInfra 2026",
+      "event": {
+        "start": "2026-06-28",
+        "end": "2026-06-28",
+        "location": "Raleigh, NC, USA"
+      }
+    },
+    "timezone": {
+      "label": "unspecified",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "state": "not-required"
+          },
+          {
+            "type": "paper",
+            "pattern": "Submission Deadline:\\s*[A-Z][a-z]+\\.? \\d{1,2}(?:st|nd|rd|th)?, \\d{4}\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Author Notifications:\\s*[A-Z][a-z]+\\.? \\d{1,2}(?:st|nd|rd|th)?, \\d{4}\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Camera-ready Paper due:\\s*[A-Z][a-z]+\\.? \\d{1,2}(?:st|nd|rd|th)?, \\d{4}\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

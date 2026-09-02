@@ -1,0 +1,13 @@
+{
+  "id": "spe",
+  "acronym": "SPE",
+  "name": "Software: Practice and Experience",
+  "type": "journal",
+  "fields": [
+    "systems"
+  ],
+  "topics": [],
+  "homepage": "https://onlinelibrary.wiley.com/journal/1097024x",
+  "submission": "rolling",
+  "cfp": null
+}

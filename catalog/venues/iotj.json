@@ -1,0 +1,14 @@
+{
+  "id": "iotj",
+  "acronym": "IoT-J",
+  "name": "IEEE Internet of Things Journal",
+  "type": "journal",
+  "fields": [
+    "iot",
+    "networking"
+  ],
+  "topics": [],
+  "homepage": "https://ieee-iotj.org/",
+  "submission": "rolling",
+  "cfp": null
+}

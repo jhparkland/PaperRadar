@@ -1,0 +1,13 @@
+{
+  "id": "jpdc",
+  "acronym": "JPDC",
+  "name": "Journal of Parallel and Distributed Computing",
+  "type": "journal",
+  "fields": [
+    "hpc"
+  ],
+  "topics": [],
+  "homepage": "https://www.sciencedirect.com/journal/journal-of-parallel-and-distributed-computing",
+  "submission": "rolling",
+  "cfp": null
+}

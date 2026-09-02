@@ -1,0 +1,16 @@
+{
+  "id": "icpe",
+  "acronym": "ICPE",
+  "name": "ACM/SPEC International Conference on Performance Engineering",
+  "type": "conference",
+  "fields": [
+    "performance"
+  ],
+  "topics": [],
+  "homepage": "https://icpe.spec.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "none",
+    "url": "https://icpe2027.spec.org/"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "tsusc",
+  "acronym": "TSUSC",
+  "name": "IEEE Transactions on Sustainable Computing",
+  "type": "journal",
+  "fields": [
+    "sustainable-computing"
+  ],
+  "topics": [],
+  "homepage": "https://www.computer.org/csdl/journal/su",
+  "submission": "rolling",
+  "cfp": null
+}

@@ -1,0 +1,14 @@
+{
+  "id": "fgcs",
+  "acronym": "FGCS",
+  "name": "Future Generation Computer Systems",
+  "type": "journal",
+  "fields": [
+    "cloud",
+    "hpc"
+  ],
+  "topics": [],
+  "homepage": "https://www.sciencedirect.com/journal/future-generation-computer-systems",
+  "submission": "rolling",
+  "cfp": null
+}

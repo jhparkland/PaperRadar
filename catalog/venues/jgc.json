@@ -1,0 +1,13 @@
+{
+  "id": "jgc",
+  "acronym": "JGC",
+  "name": "Journal of Grid Computing",
+  "type": "journal",
+  "fields": [
+    "cloud"
+  ],
+  "topics": [],
+  "homepage": "https://link.springer.com/journal/10723",
+  "submission": "rolling",
+  "cfp": null
+}

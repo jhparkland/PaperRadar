@@ -1,0 +1,13 @@
+{
+  "id": "conext",
+  "acronym": "CoNEXT",
+  "name": "International Conference on emerging Networking EXperiments and Technologies",
+  "type": "conference",
+  "fields": [
+    "networking"
+  ],
+  "topics": [],
+  "homepage": "https://conferences.sigcomm.org/co-next/",
+  "submission": "cfp",
+  "cfp": null
+}

@@ -1,0 +1,53 @@
+{
+  "id": "hpdc",
+  "acronym": "HPDC",
+  "name": "ACM International Symposium on High-Performance Parallel and Distributed Computing",
+  "type": "conference",
+  "fields": [
+    "hpc",
+    "cloud"
+  ],
+  "topics": [],
+  "homepage": "https://www.hpdc.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://hpdc.sci.utah.edu/2026/calls-cfp.html",
+    "allowedHosts": [
+      "hpdc.sci.utah.edu"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "HPDC 2026"
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "{{DATE}}\\.\\s*Abstract Registration \\(Technical Papers\\)"
+          },
+          {
+            "type": "paper",
+            "pattern": "{{DATE}}\\.\\s*\\(Firm\\) Paper Submission Deadline"
+          },
+          {
+            "type": "notification",
+            "pattern": "{{DATE}}\\.\\s*Notification of Acceptance"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "{{DATE}}\\.\\s*Camera-ready Version"
+          }
+        ]
+      }
+    ]
+  }
+}

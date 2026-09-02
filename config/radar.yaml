@@ -1,0 +1,33 @@
+# =============================================================================
+# config/radar.yaml — the only file you need to edit. See config/radar.example.yaml
+# for every option with comments, and run `npm run doctor` after changes.
+# =============================================================================
+version: 1
+
+site:
+  title: "PaperRadar"
+  tagline:
+    ko: "내 분야 학술대회·저널·워크숍 마감 레이더"
+    en: "Deadline radar for the venues of my research field"
+  languages: [ko, en]
+  timezone: "Asia/Seoul"
+  baseUrl: "https://jhparkland.github.io/PaperRadar/"
+  upcomingDays: 120
+  archiveDays: 400
+
+rankings:
+  show: [kiise-2024, core-2026, sjr-2025]
+  primary: kiise-2024
+
+select:
+  fields: [systems, cloud, hpc, sustainable-computing, architecture, networking, performance, ml-systems]
+  venues: [neurips, icml, iclr, csur, iotj, simpat, applied-energy, energy, rser, ccai]
+  types: [conference, journal, workshop]
+  exclude: []
+
+custom: []
+
+reminders:
+  daysBefore: [60, 30, 15, 3]
+  language: ko
+  channels: [google-chat]

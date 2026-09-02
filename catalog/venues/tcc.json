@@ -1,0 +1,13 @@
+{
+  "id": "tcc",
+  "acronym": "TCC",
+  "name": "IEEE Transactions on Cloud Computing",
+  "type": "journal",
+  "fields": [
+    "cloud"
+  ],
+  "topics": [],
+  "homepage": "https://www.computer.org/csdl/journal/cc",
+  "submission": "rolling",
+  "cfp": null
+}

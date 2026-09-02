@@ -1,0 +1,14 @@
+{
+  "id": "tpds",
+  "acronym": "TPDS",
+  "name": "IEEE Transactions on Parallel and Distributed Systems",
+  "type": "journal",
+  "fields": [
+    "hpc",
+    "cloud"
+  ],
+  "topics": [],
+  "homepage": "https://www.computer.org/csdl/journal/td",
+  "submission": "rolling",
+  "cfp": null
+}

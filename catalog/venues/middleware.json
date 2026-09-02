@@ -1,0 +1,82 @@
+{
+  "id": "middleware",
+  "acronym": "Middleware",
+  "name": "ACM/IFIP International Middleware Conference",
+  "type": "conference",
+  "fields": [
+    "systems",
+    "cloud"
+  ],
+  "topics": [],
+  "homepage": "https://middleware-conf.github.io/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://middleware-conf.github.io/2026/important-dates/",
+    "allowedHosts": [
+      "middleware-conf.github.io"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "Middleware 2026"
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "winter",
+        "label": {
+          "ko": "겨울",
+          "en": "Winter"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "\\(WINTER\\)[\\s\\S]{0,100}?Paper abstract registration\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "\\(WINTER\\)[\\s\\S]{0,170}?Full Paper Submission\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "\\(WINTER\\)[\\s\\S]{0,400}?Author Notification\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "\\(WINTER\\)[\\s\\S]{0,460}?Camera Ready Due\\s*{{DATE}}"
+          }
+        ]
+      },
+      {
+        "id": "summer",
+        "label": {
+          "ko": "여름",
+          "en": "Summer"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "\\(SUMMER\\)[\\s\\S]{0,100}?Paper abstract registration\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "\\(SUMMER\\)[\\s\\S]{0,170}?Full Paper Submission\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "\\(SUMMER\\)[\\s\\S]{0,400}?Author Notification\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "\\(SUMMER\\)[\\s\\S]{0,460}?Camera Ready Due\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

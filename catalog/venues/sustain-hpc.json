@@ -1,0 +1,87 @@
+{
+  "id": "sustain-hpc",
+  "acronym": "Sustain-HPC",
+  "name": "Workshop on Sustainable High-Performance Computing",
+  "type": "workshop",
+  "fields": [
+    "sustainable-computing",
+    "hpc"
+  ],
+  "topics": [],
+  "parent": "ICPP",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://icpp2026.github.io/sustain-hpc-2026/call-for-papers/",
+    "allowedHosts": [
+      "icpp2026.github.io"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "Sustain-HPC 2026",
+      "event": {
+        "start": "2026-09-28",
+        "end": "2026-09-28",
+        "location": "Singapore"
+      }
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "long",
+        "label": {
+          "ko": "장편",
+          "en": "Long papers"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "state": "not-required"
+          },
+          {
+            "type": "paper",
+            "pattern": "Long Papers Paper Submission:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Long Papers[\\s\\S]{0,100}?Acceptance Notification:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Long Papers[\\s\\S]{0,150}?Camera-ready Deadline:\\s*{{DATE}}"
+          }
+        ]
+      },
+      {
+        "id": "short",
+        "label": {
+          "ko": "단편",
+          "en": "Short papers"
+        },
+        "track": "short",
+        "milestones": [
+          {
+            "type": "abstract",
+            "state": "not-required"
+          },
+          {
+            "type": "paper",
+            "pattern": "Short Papers[\\s\\S]{0,80}?Paper Submission:\\s*[A-Z][a-z]+\\.? \\d{1,2}(?:st|nd|rd|th)?, \\d{4}\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Short Papers[\\s\\S]{0,160}?Acceptance Notification:\\s*[A-Z][a-z]+\\.? \\d{1,2}(?:st|nd|rd|th)?, \\d{4}\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Short Papers[\\s\\S]{0,240}?Camera-ready Deadline:\\s*[A-Z][a-z]+\\.? \\d{1,2}(?:st|nd|rd|th)?, \\d{4}\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

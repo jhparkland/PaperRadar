@@ -1,0 +1,14 @@
+{
+  "id": "ccai",
+  "acronym": "CCAI",
+  "name": "Tackling Climate Change with Machine Learning",
+  "type": "workshop",
+  "fields": [
+    "machine-learning",
+    "sustainable-computing"
+  ],
+  "topics": [],
+  "homepage": "https://www.climatechange.ai/events",
+  "submission": "cfp",
+  "cfp": null
+}

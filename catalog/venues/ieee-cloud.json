@@ -1,0 +1,57 @@
+{
+  "id": "ieee-cloud",
+  "acronym": "IEEE CLOUD",
+  "name": "IEEE International Conference on Cloud Computing",
+  "type": "conference",
+  "fields": [
+    "cloud"
+  ],
+  "topics": [],
+  "homepage": "https://services.conferences.computer.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://services.conferences.computer.org/2026/cloud/cloud-call-for-papers/",
+    "allowedHosts": [
+      "services.conferences.computer.org"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "IEEE CLOUD 2026",
+      "event": {
+        "start": "2026-07-13",
+        "end": "2026-07-18",
+        "location": "Sydney, Australia"
+      }
+    },
+    "timezone": {
+      "label": "unspecified",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "state": "not-required"
+          },
+          {
+            "type": "paper",
+            "pattern": "Paper Submission:\\s*\\d{1,2} [A-Z][a-z]+,? \\d{4}\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Acceptance Notifications:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Camera-ready and registration:\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

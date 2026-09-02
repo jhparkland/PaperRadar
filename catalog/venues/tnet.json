@@ -1,0 +1,17 @@
+{
+  "id": "tnet",
+  "acronym": "IEEE TNET",
+  "name": "IEEE Transactions on Networking",
+  "type": "journal",
+  "fields": [
+    "networking"
+  ],
+  "topics": [],
+  "homepage": "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=90",
+  "note": {
+    "ko": "2025년 Vol.33부터 IEEE/ACM ToN에서 개명.",
+    "en": "Renamed from IEEE/ACM Transactions on Networking (ToN) in 2025."
+  },
+  "submission": "rolling",
+  "cfp": null
+}

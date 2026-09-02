@@ -1,0 +1,77 @@
+{
+  "id": "socc",
+  "acronym": "SoCC",
+  "name": "ACM Symposium on Cloud Computing",
+  "type": "conference",
+  "fields": [
+    "cloud"
+  ],
+  "topics": [],
+  "homepage": "https://acmsocc.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://acmsocc.org/2026/papers.html",
+    "allowedHosts": [
+      "acmsocc.org"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "SoCC 2026"
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "round-1",
+        "label": {
+          "ko": "1차",
+          "en": "First round"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "First round: Abstract deadline:\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "First round:[\\s\\S]{0,100}?Submission deadline:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "First round:[\\s\\S]{0,250}?Author Notification:\\s*{{DATE}}"
+          }
+        ]
+      },
+      {
+        "id": "round-2",
+        "label": {
+          "ko": "2차",
+          "en": "Second round"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Second round:[\\s\\S]{0,250}?Abstract deadline:\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Second round:[\\s\\S]{0,350}?Submission deadline:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Second round:[\\s\\S]{0,500}?Author Notification:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Second round:[\\s\\S]{0,600}?Camera-ready deadline:\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

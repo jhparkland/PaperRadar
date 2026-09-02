@@ -1,0 +1,55 @@
+{
+  "id": "ipdps",
+  "acronym": "IPDPS",
+  "name": "IEEE International Parallel and Distributed Processing Symposium",
+  "type": "conference",
+  "fields": [
+    "hpc"
+  ],
+  "topics": [],
+  "homepage": "https://www.ipdps.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://www.ipdps.org/ipdps2027/2027-call-for-papers.html",
+    "allowedHosts": [
+      "www.ipdps.org"
+    ],
+    "edition": {
+      "year": 2027,
+      "label": "IPDPS 2027",
+      "event": {
+        "location": "Seattle, WA, USA"
+      }
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "IMPORTANT DATES Abstract submissions:\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "IMPORTANT DATES[\\s\\S]{0,120}?Full manuscript submissions \\(double-anonymous\\):\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "IMPORTANT DATES[\\s\\S]{0,500}?Final decisions:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "IMPORTANT DATES[\\s\\S]{0,600}?Camera-ready versions due:\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

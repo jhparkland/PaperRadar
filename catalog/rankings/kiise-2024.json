@@ -1,0 +1,49 @@
+{
+  "id": "kiise-2024",
+  "label": {
+    "ko": "KIISE 우수학술대회 2024",
+    "en": "KIISE Top Conferences 2024"
+  },
+  "url": "https://www.kiise.or.kr/TopConferences/",
+  "description": {
+    "ko": "한국정보과학회 「SW 분야 우수학술대회 목록 2024」. S = 최우수, A = 우수. 국내 BK21 등 평가에서 기준 자료로 쓰인다.",
+    "en": "Korean Institute of Information Scientists and Engineers list of top SW conferences (2024). S = highest, A = excellent. Used as a reference in Korean BK21 evaluations."
+  },
+  "tiers": [
+    "S",
+    "A"
+  ],
+  "entries": {
+    "osdi": "S",
+    "sosp": "S",
+    "asplos": "S",
+    "eurosys": "S",
+    "usenix-atc": "S",
+    "sigmetrics": "S",
+    "hpca": "S",
+    "isca": "S",
+    "micro": "S",
+    "sc": "S",
+    "ppopp": "S",
+    "sigcomm": "S",
+    "nsdi": "S",
+    "conext": "S",
+    "neurips": "S",
+    "icml": "S",
+    "iclr": "S",
+    "mlsys": "A",
+    "middleware": "A",
+    "ispass": "A",
+    "socc": "A",
+    "icdcs": "A",
+    "ipdps": "A",
+    "hpdc": "A",
+    "ccgrid": "A",
+    "ieee-cloud": "A",
+    "cluster": "A",
+    "euro-par": "A",
+    "icpp": "A",
+    "ics": "A",
+    "imc": "A"
+  }
+}

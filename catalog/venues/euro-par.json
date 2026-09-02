@@ -1,0 +1,52 @@
+{
+  "id": "euro-par",
+  "acronym": "Euro-Par",
+  "name": "International European Conference on Parallel and Distributed Computing",
+  "type": "conference",
+  "fields": [
+    "hpc"
+  ],
+  "topics": [],
+  "homepage": "https://www.euro-par.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://2026.euro-par.org/calls/papers",
+    "allowedHosts": [
+      "2026.euro-par.org"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "Euro-Par 2026"
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Abstract Submission :\\s*\\d{1,2} [A-Z][a-z]+,? \\d{4}\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Paper Submission :\\s*\\d{1,2} [A-Z][a-z]+,? \\d{4}\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Author Notification :\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Camera-Ready Papers :\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

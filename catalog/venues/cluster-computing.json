@@ -1,0 +1,14 @@
+{
+  "id": "cluster-computing",
+  "acronym": "Cluster Computing",
+  "name": "Cluster Computing",
+  "type": "journal",
+  "fields": [
+    "cloud",
+    "hpc"
+  ],
+  "topics": [],
+  "homepage": "https://link.springer.com/journal/10586",
+  "submission": "rolling",
+  "cfp": null
+}

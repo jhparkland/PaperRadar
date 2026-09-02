@@ -1,0 +1,17 @@
+{
+  "id": "greensys",
+  "acronym": "GreenSys",
+  "name": "International Workshop on Systems and Methods for Sustainable Large-Scale AI",
+  "type": "workshop",
+  "fields": [
+    "sustainable-computing",
+    "ml-systems"
+  ],
+  "topics": [],
+  "homepage": "https://greensys-org.github.io/workshop/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "none",
+    "url": "https://greensys-org.github.io/workshop/"
+  }
+}

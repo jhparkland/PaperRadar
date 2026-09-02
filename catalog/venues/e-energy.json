@@ -1,0 +1,21 @@
+{
+  "id": "e-energy",
+  "acronym": "e-Energy",
+  "name": "ACM International Conference on Future and Sustainable Energy Systems",
+  "type": "conference",
+  "fields": [
+    "sustainable-computing",
+    "energy-systems"
+  ],
+  "topics": [],
+  "homepage": "https://energy.acm.org/conferences/eenergy/",
+  "note": {
+    "ko": "공식 사이트가 자동 접근을 차단(HTTP 403)한다. manual 어댑터로 등록할 것.",
+    "en": "The official site blocks automated access (HTTP 403). Use the manual adapter."
+  },
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "none",
+    "url": "https://energy.acm.org/conferences/eenergy/2027/"
+  }
+}

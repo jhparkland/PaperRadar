@@ -1,0 +1,16 @@
+{
+  "id": "isca",
+  "acronym": "ISCA",
+  "name": "International Symposium on Computer Architecture",
+  "type": "conference",
+  "fields": [
+    "architecture"
+  ],
+  "topics": [],
+  "homepage": "https://iscaconf.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "none",
+    "url": "https://iscaconf.org/"
+  }
+}

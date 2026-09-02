@@ -1,0 +1,2222 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-02T08:04:08Z",
+  "venues": {
+    "asplos": {
+      "editions": [
+        {
+          "id": "asplos-2027",
+          "year": 2027,
+          "label": "ASPLOS 2027",
+          "event": null,
+          "source": {
+            "url": "https://www.asplos-conference.org/asplos2027/cfp/",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "c6f1b8193db7e9345df1309e4b468c1b461b0588cb8bc9419f3ba046eda637fa"
+          },
+          "rounds": [
+            {
+              "id": "april",
+              "label": {
+                "ko": "4월 사이클",
+                "en": "April cycle"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "not-required",
+                  "at": null,
+                  "tzLabel": null,
+                  "tzOffset": null,
+                  "sourceText": null,
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-04-15T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "April 15, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-07-27T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 27, 2026",
+                  "verification": "verified"
+                }
+              ]
+            },
+            {
+              "id": "september",
+              "label": {
+                "ko": "9월 사이클",
+                "en": "September cycle"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "not-required",
+                  "at": null,
+                  "tzLabel": null,
+                  "tzOffset": null,
+                  "sourceText": null,
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-09-09T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "September 9, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-12-21T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "December 21, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "ccgrid": {
+      "editions": [
+        {
+          "id": "ccgrid-2027",
+          "year": 2027,
+          "label": "CCGrid 2027",
+          "event": {
+            "start": "2027-05-24",
+            "end": "2027-05-27",
+            "location": "Dallas–Fort Worth, TX, USA"
+          },
+          "source": {
+            "url": "https://hpcclab.org/ccgrid27/",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "0cfe06a389af8f1c44083895adc7d186debd494e828382f38a157f1d546fd4d9"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-11-24T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Nov 24, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-12-01T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Dec 1, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2027-02-01T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Feb 1, 2027",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2027-03-16T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Mar 16, 2027",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "cluster": {
+      "editions": [
+        {
+          "id": "cluster-2026",
+          "year": 2026,
+          "label": "CLUSTER 2026",
+          "event": {
+            "start": "2026-09-22",
+            "end": "2026-09-25",
+            "location": "Alexandria, VA, USA"
+          },
+          "source": {
+            "url": "https://clustercomp.org/2026/papers/",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "f4db75586a7f594966ff02173acc99de59fe550bd2428b6d6468c1ab06b1d904"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-05-07T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "May 7, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-05-07T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "May 7, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-07-05T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 5, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-08-06T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "August 6, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "eesp": {
+      "editions": [
+        {
+          "id": "eesp-2026",
+          "year": 2026,
+          "label": "SC EESP 2026",
+          "event": {
+            "start": "2026-11-15",
+            "end": "2026-11-15"
+          },
+          "source": {
+            "url": "https://ayeshaafzal91.github.io/eesp/",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "d8370fcd569666425673c1ac0bd77b9f52c6cb86768ce4d950401311e1438692"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "not-required",
+                  "at": null,
+                  "tzLabel": null,
+                  "tzOffset": null,
+                  "sourceText": null,
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-08-05T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "August 5, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-09-02T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Sep 2, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-09-25T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Sep 25, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "euro-par": {
+      "editions": [
+        {
+          "id": "euro-par-2026",
+          "year": 2026,
+          "label": "Euro-Par 2026",
+          "event": null,
+          "source": {
+            "url": "https://2026.euro-par.org/calls/papers",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "276ce0eaf591cbbbbd62a074787a5292d25f0213e092889d6bba9649bbdb9286"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-03-06T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "6 March 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-03-13T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "13 March 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-04-30T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "30 April 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-05-22T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "22 May 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "eurosys": {
+      "editions": [
+        {
+          "id": "eurosys-2027",
+          "year": 2027,
+          "label": "EuroSys 2027",
+          "event": {
+            "start": "2027-04-19",
+            "end": "2027-04-23",
+            "location": "Rabat, Morocco"
+          },
+          "source": {
+            "url": "https://2027.eurosys.org/cfp.html",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "c946c319cb04af1d40ef89adfd1f8f9646c04b6875cb495e32e5067f98f67f6d"
+          },
+          "rounds": [
+            {
+              "id": "spring",
+              "label": {
+                "ko": "봄",
+                "en": "Spring"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-05-07T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Thursday, May 7, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-05-14T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Thursday, May 14, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-08-21T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Friday, August 21, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-09-25T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Friday, September 25, 2026",
+                  "verification": "verified"
+                }
+              ]
+            },
+            {
+              "id": "fall",
+              "label": {
+                "ko": "가을",
+                "en": "Fall"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-09-17T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Thursday, September 17, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-09-24T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Thursday, September 24, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2027-01-29T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Friday, January 29, 2027",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2027-03-05T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Friday, March 5, 2027",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hotcarbon": {
+      "editions": [
+        {
+          "id": "hotcarbon-2026",
+          "year": 2026,
+          "label": "HotCarbon 2026",
+          "event": {
+            "start": "2026-07-16",
+            "end": "2026-07-17",
+            "location": "Seattle, WA, USA"
+          },
+          "source": {
+            "url": "https://hotcarbon.org/cfp",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "af787ad86a9d9377bcde481421413878c39254c9ea2f24d56462247a44fbc75d"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-05-11T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "May 11, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-05-18T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "May 18, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-06-19T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "June 19, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hotinfra": {
+      "editions": [
+        {
+          "id": "hotinfra-2026",
+          "year": 2026,
+          "label": "HotInfra 2026",
+          "event": {
+            "start": "2026-06-28",
+            "end": "2026-06-28",
+            "location": "Raleigh, NC, USA"
+          },
+          "source": {
+            "url": "https://hotinfra.org/2026/",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "0ccb1c65e2755409f92787318b42d1c6715deffe66e18f9e2586e26ed9b86f98"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "not-required",
+                  "at": null,
+                  "tzLabel": null,
+                  "tzOffset": null,
+                  "sourceText": null,
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-05-30T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "May 30, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-06-06T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "June 6, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-06-15T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "June 15, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hotos": {
+      "editions": [
+        {
+          "id": "hotos-2027",
+          "year": 2027,
+          "label": "HotOS XXI (2027)",
+          "event": {
+            "start": "2027-05-24",
+            "end": "2027-05-26",
+            "location": "Burghausen, Germany"
+          },
+          "source": {
+            "url": "https://sigops.org/s/conferences/hotos/2027/cfp.html",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "5dd021c3bd43af9a1871f2264a0752501e34e08b4d6ab6d68f7efc9f83dac90c"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "not-required",
+                  "at": null,
+                  "tzLabel": null,
+                  "tzOffset": null,
+                  "sourceText": null,
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "tba",
+                  "at": null,
+                  "tzLabel": null,
+                  "tzOffset": null,
+                  "sourceText": null,
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "tba",
+                  "at": null,
+                  "tzLabel": null,
+                  "tzOffset": null,
+                  "sourceText": null,
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "tba",
+                  "at": null,
+                  "tzLabel": null,
+                  "tzOffset": null,
+                  "sourceText": null,
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hpdc": {
+      "editions": [
+        {
+          "id": "hpdc-2026",
+          "year": 2026,
+          "label": "HPDC 2026",
+          "event": null,
+          "source": {
+            "url": "https://hpdc.sci.utah.edu/2026/calls-cfp.html",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "76963e7053c29e11c0684db90144068f797bb843c3d23d3f976f1f1333abf8b3"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-01-29T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "January 29, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-02-05T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "February 5, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-03-31T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "March 31, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-04-30T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "April 30, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "icdcs": {
+      "editions": [
+        {
+          "id": "icdcs-2026",
+          "year": 2026,
+          "label": "ICDCS 2026",
+          "event": null,
+          "source": {
+            "url": "https://icdcs2026.icdcs.org/",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "10a8ea87d6660d08dfdcac89b44f5af8833be55ac47ff7682aaa2a6d59a6ccee"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-01-21T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "January 21, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-01-21T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "January 21, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-04-27T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "April 27, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-05-14T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "May 14, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "icpp": {
+      "editions": [
+        {
+          "id": "icpp-2026",
+          "year": 2026,
+          "label": "ICPP 2026",
+          "event": {
+            "start": "2026-09-28",
+            "end": "2026-10-01",
+            "location": "Singapore"
+          },
+          "source": {
+            "url": "https://icpp2026.github.io/call-for-papers/",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "d0443aeb14d7988356071349c7ce2e0fd4b07d6abde8bc41c88f0a8e3e7c5085"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-04-24T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "April 24, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-05-01T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "May 1, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-06-30T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "June 30, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-07-30T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 30, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "ics": {
+      "editions": [
+        {
+          "id": "ics-2026",
+          "year": 2026,
+          "label": "ICS 2026",
+          "event": {
+            "start": "2026-07-06",
+            "end": "2026-07-09",
+            "location": "Belfast, Northern Ireland"
+          },
+          "source": {
+            "url": "https://dipsa-qub.github.io/ICS2026-webpage/call-for/call-for-papers.html",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "6216bf753e339dabc5561ca2fdb7daef81223f6b4409826f65886a41d46682de"
+          },
+          "rounds": [
+            {
+              "id": "cycle-1",
+              "label": {
+                "ko": "사이클 1",
+                "en": "Cycle 1"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2025-12-09T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "December 9th, 2025",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2025-12-16T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "December 16th, 2025",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-02-24T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "Feb 24th, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-03-24T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "March 24th, 2026",
+                  "verification": "verified"
+                }
+              ]
+            },
+            {
+              "id": "cycle-2",
+              "label": {
+                "ko": "사이클 2",
+                "en": "Cycle 2"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-02-02T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "February 2nd, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-02-09T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "February 9th, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-04-06T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "April 6th, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-05-06T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "May 6th, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "ieee-cloud": {
+      "editions": [
+        {
+          "id": "ieee-cloud-2026",
+          "year": 2026,
+          "label": "IEEE CLOUD 2026",
+          "event": {
+            "start": "2026-07-13",
+            "end": "2026-07-18",
+            "location": "Sydney, Australia"
+          },
+          "source": {
+            "url": "https://services.conferences.computer.org/2026/cloud/cloud-call-for-papers/",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "0251c34e69574f2660575e02bf33150b82d8008e464b95d57be424bd4a67bb57"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "not-required",
+                  "at": null,
+                  "tzLabel": null,
+                  "tzOffset": null,
+                  "sourceText": null,
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-03-22T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "22 March, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-05-10T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "10 May, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-05-31T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "31 May, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "igsc": {
+      "editions": [
+        {
+          "id": "igsc-2026",
+          "year": 2026,
+          "label": "IGSC 2026",
+          "event": {
+            "start": "2026-06-22",
+            "end": "2026-06-24"
+          },
+          "source": {
+            "url": "https://www.igscc.org/",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "263519e75579b7f503746303b05dbe2fb68ddd0eb76d1d69fc1fbe487265a16a"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "not-required",
+                  "at": null,
+                  "tzLabel": null,
+                  "tzOffset": null,
+                  "sourceText": null,
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-04-07T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "April 7, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-04-30T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "April 30, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-05-15T23:59:00-12:00",
+                  "tzLabel": "unspecified",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": false,
+                  "sourceText": "May 15, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "ipdps": {
+      "editions": [
+        {
+          "id": "ipdps-2027",
+          "year": 2027,
+          "label": "IPDPS 2027",
+          "event": {
+            "location": "Seattle, WA, USA"
+          },
+          "source": {
+            "url": "https://www.ipdps.org/ipdps2027/2027-call-for-papers.html",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "e3f2d81ce2375cc60138860e243eacfc92607621d1e772520f78cbcea0dc0373"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-10-01T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "October 1, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-10-08T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "October 8, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2027-02-02T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "February 2, 2027",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2027-02-20T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "February 20, 2027",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "micro": {
+      "editions": [
+        {
+          "id": "micro-2026",
+          "year": 2026,
+          "label": "MICRO 2026",
+          "event": {
+            "start": "2026-10-31",
+            "end": "2026-11-04"
+          },
+          "source": {
+            "url": "https://microarch.org/micro59/submit/papers.php",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "0da81c09c826d710c91cd06426a4345a9456d2905fd02022d36b4eb96f5eec40"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-03-31T23:59:00-04:00",
+                  "tzLabel": "EDT",
+                  "tzOffset": "-04:00",
+                  "tzConfirmed": true,
+                  "sourceText": "March 31, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-04-07T23:59:00-04:00",
+                  "tzLabel": "EDT",
+                  "tzOffset": "-04:00",
+                  "tzConfirmed": true,
+                  "sourceText": "April 7, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-07-07T23:59:00-04:00",
+                  "tzLabel": "EDT",
+                  "tzOffset": "-04:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 7, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-09-11T23:59:00-04:00",
+                  "tzLabel": "EDT",
+                  "tzOffset": "-04:00",
+                  "tzConfirmed": true,
+                  "sourceText": "September 11, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "middleware": {
+      "editions": [
+        {
+          "id": "middleware-2026",
+          "year": 2026,
+          "label": "Middleware 2026",
+          "event": null,
+          "source": {
+            "url": "https://middleware-conf.github.io/2026/important-dates/",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "6417960162b5339bac761aadfacc94dadc5b26763397e89f9011fab773b335f4"
+          },
+          "rounds": [
+            {
+              "id": "winter",
+              "label": {
+                "ko": "겨울",
+                "en": "Winter"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2025-12-09T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "December 9, 2025",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2025-12-12T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "December 12, 2025",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-03-06T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "March 6, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-04-24T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "April 24, 2026",
+                  "verification": "verified"
+                }
+              ]
+            },
+            {
+              "id": "summer",
+              "label": {
+                "ko": "여름",
+                "en": "Summer"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-05-29T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "May 29, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-06-05T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "June 5, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-08-28T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "August 28, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-10-16T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "October 16, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "nsdi": {
+      "editions": [
+        {
+          "id": "nsdi-2027",
+          "year": 2027,
+          "label": "NSDI 2027",
+          "event": null,
+          "source": {
+            "url": "https://www.usenix.org/conference/nsdi27/call-for-papers",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "662140694ecb18e9abfb1c3adb4289ab7fe61577d025d85f38a06bf2650d309d"
+          },
+          "rounds": [
+            {
+              "id": "spring",
+              "label": {
+                "ko": "봄",
+                "en": "Spring"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-04-16T23:59:00-04:00",
+                  "tzLabel": "EDT",
+                  "tzOffset": "-04:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Thursday, April 16, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-04-23T23:59:00-04:00",
+                  "tzLabel": "EDT",
+                  "tzOffset": "-04:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Thursday, April 23, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-07-23T23:59:00-04:00",
+                  "tzLabel": "EDT",
+                  "tzOffset": "-04:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Thursday, July 23, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-10-20T23:59:00-04:00",
+                  "tzLabel": "EDT",
+                  "tzOffset": "-04:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Tuesday, October 20, 2026",
+                  "verification": "verified"
+                }
+              ]
+            },
+            {
+              "id": "fall",
+              "label": {
+                "ko": "가을",
+                "en": "Fall"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-09-10T23:59:00-04:00",
+                  "tzLabel": "EDT",
+                  "tzOffset": "-04:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Thursday, September 10, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-09-17T23:59:00-04:00",
+                  "tzLabel": "EDT",
+                  "tzOffset": "-04:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Thursday, September 17, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-12-08T23:59:00-04:00",
+                  "tzLabel": "EDT",
+                  "tzOffset": "-04:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Tuesday, December 8, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2027-03-04T23:59:00-04:00",
+                  "tzLabel": "EDT",
+                  "tzOffset": "-04:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Thursday, March 4, 2027",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "osdi": {
+      "editions": [
+        {
+          "id": "osdi-2027",
+          "year": 2027,
+          "label": "OSDI 2027",
+          "event": {
+            "location": "Baltimore, MD, USA"
+          },
+          "source": {
+            "url": "https://www.usenix.org/conference/osdi27/call-for-papers",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "5332a4a7e2537f5c969f53e3a8f72bc5a19f85e7f39a87b1af93b253e596fe07"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-12-01T17:59:00-05:00",
+                  "tzLabel": "EST",
+                  "tzOffset": "-05:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Tuesday, December 1, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-12-08T17:59:00-05:00",
+                  "tzLabel": "EST",
+                  "tzOffset": "-05:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Tuesday, December 8, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2027-03-16T17:59:00-05:00",
+                  "tzLabel": "EST",
+                  "tzOffset": "-05:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Tuesday, March 16, 2027",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2027-06-03T17:59:00-05:00",
+                  "tzLabel": "EST",
+                  "tzOffset": "-05:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Thursday, June 3, 2027",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "ppopp": {
+      "editions": [
+        {
+          "id": "ppopp-2027",
+          "year": 2027,
+          "label": "PPoPP 2027",
+          "event": {
+            "start": "2027-03-20",
+            "end": "2027-03-24",
+            "location": "Salt Lake City, USA"
+          },
+          "source": {
+            "url": "https://ppopp27.sigplan.org/track/PPoPP-2027-papers",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "29a21435259f948ebdf5c9833b18a74626322df68f6aa460a71de45148ab0746"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "not-required",
+                  "at": null,
+                  "tzLabel": null,
+                  "tzOffset": null,
+                  "sourceText": null,
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-08-03T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Monday, August 3, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-10-26T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Monday, October 26, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-12-18T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Friday, Dec 18, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "sigcomm": {
+      "editions": [
+        {
+          "id": "sigcomm-2026",
+          "year": 2026,
+          "label": "SIGCOMM 2026",
+          "event": null,
+          "source": {
+            "url": "https://conferences.sigcomm.org/sigcomm/2026/cfp/",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "fa1d6a7b651371565a062fe493202709782dfbd0583ebba13ed36f545b66bd64"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-01-30T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Friday, January 30, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-02-06T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Friday, February 6, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-05-11T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Monday, May 11, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-07-03T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "Friday, July 3, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "sigmetrics": {
+      "editions": [
+        {
+          "id": "sigmetrics-2027",
+          "year": 2027,
+          "label": "SIGMETRICS 2027",
+          "event": null,
+          "source": {
+            "url": "https://www.sigmetrics.org/sigmetrics2027/pages/cfp.html",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "1da6c38d2dd92cc4d859dc335b6a9773e450e63df6d8e3ad2a8429a6b9abb219"
+          },
+          "rounds": [
+            {
+              "id": "summer",
+              "label": {
+                "ko": "여름",
+                "en": "Summer"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-07-03T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 3, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-07-10T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 10, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-09-09T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "September 9, 2026",
+                  "verification": "verified"
+                }
+              ]
+            },
+            {
+              "id": "fall",
+              "label": {
+                "ko": "가을",
+                "en": "Fall"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-10-02T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "October 2, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-10-09T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "October 9, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-12-09T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "December 9, 2026",
+                  "verification": "verified"
+                }
+              ]
+            },
+            {
+              "id": "winter",
+              "label": {
+                "ko": "겨울",
+                "en": "Winter"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2027-01-04T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "January 4, 2027",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2027-01-11T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "January 11, 2027",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2027-03-10T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "March 10, 2027",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "socc": {
+      "editions": [
+        {
+          "id": "socc-2026",
+          "year": 2026,
+          "label": "SoCC 2026",
+          "event": null,
+          "source": {
+            "url": "https://acmsocc.org/2026/papers.html",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "8f41c7e79e5a2ed05c3019752a451dff2986e8504828e35843f65a256ef50f45"
+          },
+          "rounds": [
+            {
+              "id": "round-1",
+              "label": {
+                "ko": "1차",
+                "en": "First round"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-02-06T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "February 6, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-02-13T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "February 13, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-04-29T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "April 29, 2026",
+                  "verification": "verified"
+                }
+              ]
+            },
+            {
+              "id": "round-2",
+              "label": {
+                "ko": "2차",
+                "en": "Second round"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-07-07T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 7, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-07-14T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 14, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-09-26T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "September 26, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-10-17T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "October 17, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "sosp": {
+      "editions": [
+        {
+          "id": "sosp-2026",
+          "year": 2026,
+          "label": "SOSP 2026",
+          "event": null,
+          "source": {
+            "url": "https://sigops.org/s/conferences/sosp/2026/cfp.html",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "2cbd03c4deb2dfa2210bbb6aa288e30912a454c6764326d21bf27ae56458c8ea"
+          },
+          "rounds": [
+            {
+              "id": "main",
+              "label": "Main",
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "dated",
+                  "at": "2026-03-26T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "March 26, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-04-01T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "April 1, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-07-03T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 3rd, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-08-28T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "August 28, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "sustain-hpc": {
+      "editions": [
+        {
+          "id": "sustain-hpc-2026",
+          "year": 2026,
+          "label": "Sustain-HPC 2026",
+          "event": {
+            "start": "2026-09-28",
+            "end": "2026-09-28",
+            "location": "Singapore"
+          },
+          "source": {
+            "url": "https://icpp2026.github.io/sustain-hpc-2026/call-for-papers/",
+            "adapter": "declarative",
+            "status": "ok",
+            "checkedAt": "2026-09-02T08:04:08Z",
+            "lastOkAt": "2026-09-02T08:04:08Z",
+            "error": null,
+            "contentHash": "899acadd0a201818623c725ba7e3c4030b8618edffbcb234d074d305a3fb616a"
+          },
+          "rounds": [
+            {
+              "id": "long",
+              "label": {
+                "ko": "장편",
+                "en": "Long papers"
+              },
+              "track": "full",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "not-required",
+                  "at": null,
+                  "tzLabel": null,
+                  "tzOffset": null,
+                  "sourceText": null,
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-07-10T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 10, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-07-20T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 20, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-07-30T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 30, 2026",
+                  "verification": "verified"
+                }
+              ]
+            },
+            {
+              "id": "short",
+              "label": {
+                "ko": "단편",
+                "en": "Short papers"
+              },
+              "track": "short",
+              "milestones": [
+                {
+                  "type": "abstract",
+                  "state": "not-required",
+                  "at": null,
+                  "tzLabel": null,
+                  "tzOffset": null,
+                  "sourceText": null,
+                  "verification": "verified"
+                },
+                {
+                  "type": "paper",
+                  "state": "dated",
+                  "at": "2026-07-20T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 20, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "notification",
+                  "state": "dated",
+                  "at": "2026-07-31T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "July 31, 2026",
+                  "verification": "verified"
+                },
+                {
+                  "type": "camera-ready",
+                  "state": "dated",
+                  "at": "2026-08-07T23:59:00-12:00",
+                  "tzLabel": "AoE",
+                  "tzOffset": "-12:00",
+                  "tzConfirmed": true,
+                  "sourceText": "August 7, 2026",
+                  "verification": "verified"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

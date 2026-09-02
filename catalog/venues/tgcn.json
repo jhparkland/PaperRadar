@@ -1,0 +1,14 @@
+{
+  "id": "tgcn",
+  "acronym": "TGCN",
+  "name": "IEEE Transactions on Green Communications and Networking",
+  "type": "journal",
+  "fields": [
+    "sustainable-computing",
+    "networking"
+  ],
+  "topics": [],
+  "homepage": "https://www.comsoc.org/publications/journals/ieee-tgcn",
+  "submission": "rolling",
+  "cfp": null
+}

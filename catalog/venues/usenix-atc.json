@@ -1,0 +1,17 @@
+{
+  "id": "usenix-atc",
+  "acronym": "USENIX ATC",
+  "name": "USENIX Annual Technical Conference",
+  "type": "conference",
+  "fields": [
+    "systems"
+  ],
+  "topics": [],
+  "homepage": "https://www.usenix.org/conferences/byname/131",
+  "submission": "cfp",
+  "cfp": null,
+  "note": {
+    "ko": "USENIX ATC 2026 CFP 페이지 없음 (2025 이후 미공지).",
+    "en": "No USENIX ATC 2026 CFP page found (nothing announced after 2025)."
+  }
+}

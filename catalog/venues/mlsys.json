@@ -1,0 +1,21 @@
+{
+  "id": "mlsys",
+  "acronym": "MLSys",
+  "name": "Conference on Machine Learning and Systems",
+  "type": "conference",
+  "fields": [
+    "ml-systems",
+    "systems"
+  ],
+  "topics": [],
+  "homepage": "https://mlsys.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "none",
+    "url": "https://mlsys.org/Conferences/2026/Dates"
+  },
+  "note": {
+    "ko": "공식 일정 페이지가 JavaScript로 렌더링되어 자동 추적 불가. manual 어댑터 기여 환영.",
+    "en": "The official dates page is rendered with JavaScript and cannot be read automatically. A manual adapter contribution is welcome."
+  }
+}

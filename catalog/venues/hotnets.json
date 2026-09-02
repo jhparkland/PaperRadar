@@ -1,0 +1,13 @@
+{
+  "id": "hotnets",
+  "acronym": "HotNets",
+  "name": "ACM Workshop on Hot Topics in Networks",
+  "type": "workshop",
+  "fields": [
+    "networking"
+  ],
+  "topics": [],
+  "homepage": "https://conferences.sigcomm.org/hotnets/",
+  "submission": "cfp",
+  "cfp": null
+}

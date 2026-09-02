@@ -1,0 +1,41 @@
+{
+  "id": "core-2026",
+  "label": {
+    "ko": "CORE 2026",
+    "en": "CORE 2026"
+  },
+  "url": "https://portal.core.edu.au/conf-ranks/",
+  "description": {
+    "ko": "Computing Research and Education Association of Australasia 학술대회 등급 (ICORE2026). 시스템 분야 일부는 오분류가 있어 참고용.",
+    "en": "CORE conference rankings (ICORE2026). Some systems venues are misclassified; use as a reference only."
+  },
+  "tiers": [
+    "A*",
+    "A",
+    "B",
+    "C"
+  ],
+  "entries": {
+    "sosp": "A*",
+    "asplos": "A*",
+    "isca": "A*",
+    "micro": "A*",
+    "hpca": "A*",
+    "sigcomm": "A*",
+    "sigmetrics": "A*",
+    "neurips": "A*",
+    "icml": "A*",
+    "iclr": "A*",
+    "eurosys": "A",
+    "usenix-atc": "A",
+    "sc": "A",
+    "conext": "A",
+    "icdcs": "A",
+    "hpdc": "A",
+    "ics": "A",
+    "ipdps": "A",
+    "middleware": "A",
+    "imc": "A",
+    "ppopp": "B"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "ispass",
+  "acronym": "ISPASS",
+  "name": "IEEE International Symposium on Performance Analysis of Systems and Software",
+  "type": "conference",
+  "fields": [
+    "performance",
+    "architecture"
+  ],
+  "topics": [],
+  "homepage": "https://ispass.org/",
+  "submission": "cfp",
+  "cfp": null
+}

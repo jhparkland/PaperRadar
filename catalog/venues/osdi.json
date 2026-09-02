@@ -1,0 +1,55 @@
+{
+  "id": "osdi",
+  "acronym": "OSDI",
+  "name": "USENIX Symposium on Operating Systems Design and Implementation",
+  "type": "conference",
+  "fields": [
+    "systems"
+  ],
+  "topics": [],
+  "homepage": "https://www.usenix.org/conferences/byname/179",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://www.usenix.org/conference/osdi27/call-for-papers",
+    "allowedHosts": [
+      "www.usenix.org"
+    ],
+    "edition": {
+      "year": 2027,
+      "label": "OSDI 2027",
+      "event": {
+        "location": "Baltimore, MD, USA"
+      }
+    },
+    "timezone": {
+      "label": "EST",
+      "time": "17:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Abstract registrations due:\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Complete paper submissions due:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Notification to authors:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Final papers due:\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "hotcarbon",
+  "acronym": "HotCarbon",
+  "name": "Workshop on Sustainable Computer Systems",
+  "type": "workshop",
+  "fields": [
+    "sustainable-computing"
+  ],
+  "topics": [],
+  "homepage": "https://hotcarbon.org/",
+  "note": {
+    "ko": "공식 CFP 페이지가 2026/2027 연도를 혼용하고 있어 2026 회차(마감 2026-05)로 등록.",
+    "en": "The official CFP page mixes 2026 and 2027; registered as the 2026 edition (deadlines May 2026)."
+  },
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://hotcarbon.org/cfp",
+    "allowedHosts": [
+      "hotcarbon.org"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "HotCarbon 2026",
+      "event": {
+        "start": "2026-07-16",
+        "end": "2026-07-17",
+        "location": "Seattle, WA, USA"
+      }
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Paper registration Deadline:\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Submission Deadline:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Notifications:\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

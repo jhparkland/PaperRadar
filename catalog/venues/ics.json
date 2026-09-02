@@ -1,0 +1,86 @@
+{
+  "id": "ics",
+  "acronym": "ICS",
+  "name": "ACM International Conference on Supercomputing",
+  "type": "conference",
+  "fields": [
+    "hpc"
+  ],
+  "topics": [],
+  "homepage": "https://ics-conference.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://dipsa-qub.github.io/ICS2026-webpage/call-for/call-for-papers.html",
+    "allowedHosts": [
+      "dipsa-qub.github.io"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "ICS 2026",
+      "event": {
+        "start": "2026-07-06",
+        "end": "2026-07-09",
+        "location": "Belfast, Northern Ireland"
+      }
+    },
+    "timezone": {
+      "label": "unspecified",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "cycle-1",
+        "label": {
+          "ko": "사이클 1",
+          "en": "Cycle 1"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "\\(Cycle 1\\) Abstract submission:\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "\\(Cycle 1\\)[\\s\\S]{0,120}?Paper submission:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "\\(Cycle 1\\)[\\s\\S]{0,320}?Author notification:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "\\(Cycle 1\\)[\\s\\S]{0,380}?Camera ready:\\s*{{DATE}}"
+          }
+        ]
+      },
+      {
+        "id": "cycle-2",
+        "label": {
+          "ko": "사이클 2",
+          "en": "Cycle 2"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "\\(Cycle 2\\) Abstract submission:\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "\\(Cycle 2\\)[\\s\\S]{0,120}?Paper submission:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "\\(Cycle 2\\)[\\s\\S]{0,320}?Author notification:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "\\(Cycle 2\\)[\\s\\S]{0,380}?Camera ready:\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

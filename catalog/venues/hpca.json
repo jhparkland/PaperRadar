@@ -1,0 +1,16 @@
+{
+  "id": "hpca",
+  "acronym": "HPCA",
+  "name": "IEEE International Symposium on High-Performance Computer Architecture",
+  "type": "conference",
+  "fields": [
+    "architecture"
+  ],
+  "topics": [],
+  "homepage": "https://hpca-conf.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "none",
+    "url": "https://hpca-conf.org/2027/"
+  }
+}

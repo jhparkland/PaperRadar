@@ -1,0 +1,13 @@
+{
+  "id": "imc",
+  "acronym": "IMC",
+  "name": "ACM Internet Measurement Conference",
+  "type": "conference",
+  "fields": [
+    "networking",
+    "performance"
+  ],
+  "topics": [],
+  "submission": "cfp",
+  "cfp": null
+}

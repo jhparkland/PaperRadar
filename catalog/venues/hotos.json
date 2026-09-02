@@ -1,0 +1,62 @@
+{
+  "id": "hotos",
+  "acronym": "HotOS",
+  "name": "Workshop on Hot Topics in Operating Systems",
+  "type": "workshop",
+  "fields": [
+    "systems"
+  ],
+  "topics": [],
+  "homepage": "https://sigops.org/s/conferences/hotos/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://sigops.org/s/conferences/hotos/2027/cfp.html",
+    "allowedHosts": [
+      "sigops.org",
+      "www.sigops.org"
+    ],
+    "edition": {
+      "year": 2027,
+      "label": "HotOS XXI (2027)",
+      "event": {
+        "start": "2027-05-24",
+        "end": "2027-05-26",
+        "location": "Burghausen, Germany"
+      }
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "state": "not-required"
+          },
+          {
+            "type": "paper",
+            "state": "tba"
+          },
+          {
+            "type": "notification",
+            "state": "tba"
+          },
+          {
+            "type": "camera-ready",
+            "state": "tba"
+          }
+        ]
+      }
+    ]
+  },
+  "note": {
+    "ko": "2027 회차 일정은 아직 미공개(TBA). 공개되면 패턴을 추가할 것.",
+    "en": "2027 dates are still TBA; add patterns once announced."
+  }
+}

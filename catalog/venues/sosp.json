@@ -1,0 +1,53 @@
+{
+  "id": "sosp",
+  "acronym": "SOSP",
+  "name": "ACM Symposium on Operating Systems Principles",
+  "type": "conference",
+  "fields": [
+    "systems"
+  ],
+  "topics": [],
+  "homepage": "https://sosp.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://sigops.org/s/conferences/sosp/2026/cfp.html",
+    "allowedHosts": [
+      "sigops.org",
+      "www.sigops.org"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "SOSP 2026"
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Deadline to register abstracts\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Submission deadline\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Author notification\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Camera ready due\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

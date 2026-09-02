@@ -1,0 +1,56 @@
+{
+  "id": "icpp",
+  "acronym": "ICPP",
+  "name": "International Conference on Parallel Processing",
+  "type": "conference",
+  "fields": [
+    "hpc"
+  ],
+  "topics": [],
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://icpp2026.github.io/call-for-papers/",
+    "allowedHosts": [
+      "icpp2026.github.io"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "ICPP 2026",
+      "event": {
+        "start": "2026-09-28",
+        "end": "2026-10-01",
+        "location": "Singapore"
+      }
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Abstract Submission:\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Paper Submission:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Author Noti[\\s\\S]{0,4}?cation:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Camera-ready Paper Submission:\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

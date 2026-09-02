@@ -1,0 +1,52 @@
+{
+  "id": "icdcs",
+  "acronym": "ICDCS",
+  "name": "IEEE International Conference on Distributed Computing Systems",
+  "type": "conference",
+  "fields": [
+    "cloud",
+    "systems"
+  ],
+  "topics": [],
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://icdcs2026.icdcs.org/",
+    "allowedHosts": [
+      "icdcs2026.icdcs.org"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "ICDCS 2026"
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Research Papers Abstracts:\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Research Papers Abstracts:[\\s\\S]{0,40}?Papers:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Research Papers Abstracts:[\\s\\S]{0,40}?Papers:\\s*[A-Z][a-z]+\\.? \\d{1,2}(?:st|nd|rd|th)?, \\d{4}\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Research Papers Abstracts:[\\s\\S]{0,40}?Papers:\\s*[A-Z][a-z]+\\.? \\d{1,2}(?:st|nd|rd|th)?, \\d{4}\\s*[A-Z][a-z]+\\.? \\d{1,2}(?:st|nd|rd|th)?, \\d{4}\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

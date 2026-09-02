@@ -1,0 +1,12 @@
+{
+  "id": "sustaincom",
+  "acronym": "SustainCom",
+  "name": "IEEE International Conference on Sustainable Computing and Communications",
+  "type": "conference",
+  "fields": [
+    "sustainable-computing"
+  ],
+  "topics": [],
+  "submission": "cfp",
+  "cfp": null
+}

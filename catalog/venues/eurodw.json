@@ -1,0 +1,14 @@
+{
+  "id": "eurodw",
+  "acronym": "EuroDW",
+  "name": "EuroSys Doctoral Workshop",
+  "type": "workshop",
+  "fields": [
+    "systems"
+  ],
+  "topics": [],
+  "homepage": "https://eurodw.github.io/",
+  "parent": "EuroSys",
+  "submission": "cfp",
+  "cfp": null
+}

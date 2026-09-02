@@ -1,0 +1,14 @@
+{
+  "id": "jsa",
+  "acronym": "JSA",
+  "name": "Journal of Systems Architecture",
+  "type": "journal",
+  "fields": [
+    "systems",
+    "architecture"
+  ],
+  "topics": [],
+  "homepage": "https://www.sciencedirect.com/journal/journal-of-systems-architecture",
+  "submission": "rolling",
+  "cfp": null
+}

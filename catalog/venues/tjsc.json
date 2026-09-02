@@ -1,0 +1,13 @@
+{
+  "id": "tjsc",
+  "acronym": "TJSC",
+  "name": "The Journal of Supercomputing",
+  "type": "journal",
+  "fields": [
+    "hpc"
+  ],
+  "topics": [],
+  "homepage": "https://link.springer.com/journal/11227",
+  "submission": "rolling",
+  "cfp": null
+}

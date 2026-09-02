@@ -1,0 +1,74 @@
+{
+  "id": "asplos",
+  "acronym": "ASPLOS",
+  "name": "ACM International Conference on Architectural Support for Programming Languages and Operating Systems",
+  "type": "conference",
+  "fields": [
+    "systems",
+    "architecture"
+  ],
+  "topics": [],
+  "homepage": "https://www.asplos-conference.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://www.asplos-conference.org/asplos2027/cfp/",
+    "allowedHosts": [
+      "www.asplos-conference.org"
+    ],
+    "edition": {
+      "year": 2027,
+      "label": "ASPLOS 2027"
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "april",
+        "label": {
+          "ko": "4월 사이클",
+          "en": "April cycle"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "state": "not-required"
+          },
+          {
+            "type": "paper",
+            "pattern": "April Cycle Full paper submission\\s*[—–-]?\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "April Cycle[\\s\\S]{0,200}?Notification\\s*[—–-]?\\s*{{DATE}}"
+          }
+        ]
+      },
+      {
+        "id": "september",
+        "label": {
+          "ko": "9월 사이클",
+          "en": "September cycle"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "state": "not-required"
+          },
+          {
+            "type": "paper",
+            "pattern": "September Cycle Full paper submission\\s*[—–-]?\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "September Cycle[\\s\\S]{0,200}?Notification\\s*[—–-]?\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

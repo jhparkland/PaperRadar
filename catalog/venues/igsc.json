@@ -1,0 +1,57 @@
+{
+  "id": "igsc",
+  "acronym": "IGSC",
+  "name": "International Green and Sustainable Computing Conference",
+  "type": "conference",
+  "fields": [
+    "sustainable-computing"
+  ],
+  "topics": [],
+  "homepage": "https://www.igscc.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://www.igscc.org/",
+    "allowedHosts": [
+      "www.igscc.org",
+      "igscc.org"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "IGSC 2026",
+      "event": {
+        "start": "2026-06-22",
+        "end": "2026-06-24"
+      }
+    },
+    "timezone": {
+      "label": "unspecified",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "state": "not-required"
+          },
+          {
+            "type": "paper",
+            "pattern": "Conference Paper submission:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Notifications to authors:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Camera-ready deadline:\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,5 +1,9 @@
-config/local.yaml
-config/venues.draft.yaml
-*.pdf
-__pycache__/
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
 .DS_Store
+Thumbs.db
+.claude/

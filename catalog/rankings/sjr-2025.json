@@ -1,0 +1,45 @@
+{
+  "id": "sjr-2025",
+  "label": {
+    "ko": "SJR 분위 (2025)",
+    "en": "SJR quartile (2025)"
+  },
+  "url": "https://www.scimagojr.com/",
+  "description": {
+    "ko": "SCImago Journal Rank 분위. 저널에만 적용. 각 저널 페이지에서 최신 분위를 다시 확인할 것.",
+    "en": "SCImago Journal Rank quartiles. Journals only; re-check the latest quartile on each journal page."
+  },
+  "tiers": [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4"
+  ],
+  "entries": {
+    "tpds": "Q1",
+    "tcc": "Q1",
+    "tsusc": "Q1",
+    "tc": "Q1",
+    "tocs": "Q3",
+    "tsc": "Q1",
+    "tnet": "Q1",
+    "csur": "Q1",
+    "fgcs": "Q1",
+    "jpdc": "Q1",
+    "suscom": "Q1",
+    "jocc": "Q1",
+    "jsa": "Q1",
+    "jnca": "Q1",
+    "cluster-computing": "Q1",
+    "iotj": "Q1",
+    "tgcn": "Q1",
+    "simpat": "Q1",
+    "applied-energy": "Q1",
+    "energy": "Q1",
+    "rser": "Q1",
+    "ccpe": "Q2",
+    "jgc": "Q2",
+    "spe": "Q2",
+    "tjsc": "Q2"
+  }
+}

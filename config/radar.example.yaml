@@ -1,0 +1,58 @@
+# =============================================================================
+# config/radar.yaml — the only file you need to edit.
+#   1. copy this file to config/radar.yaml
+#   2. pick your fields / venues below
+#   3. npm run doctor
+# Every id below refers to catalog/ (fields.json, venues/*.json, rankings/*.json).
+# =============================================================================
+version: 1
+
+site:
+  title: "PaperRadar"
+  tagline:
+    ko: "내 분야 학술대회·저널·워크숍 마감 레이더"
+    en: "Deadline radar for the venues of my research field"
+  languages: [ko, en]        # first one is the default UI / calendar language
+  timezone: "Asia/Seoul"     # IANA name; deadlines are also shown in this timezone
+  baseUrl: ""                # e.g. https://<you>.github.io/PaperRadar/ — used for links in reminders
+  upcomingDays: 120          # "Upcoming" tab window
+  archiveDays: 400           # how far back "Past" goes
+
+rankings:
+  show: [kiise-2024, core-2026, sjr-2025]   # badges shown on cards, in this order
+  primary: kiise-2024                        # used for grouping / sorting and per-tier calendars
+
+select:
+  # Everything in these fields is tracked (see catalog/fields.json for ids) ...
+  fields: [systems, cloud, sustainable-computing]
+  # ... plus these specific venues ...
+  venues: [neurips, icml, tpds]
+  # ... limited to these types ...
+  types: [conference, journal, workshop]
+  # ... minus these.
+  exclude: []
+  # Optional: keep only venues at these tiers of one ranking.
+  # tiers: { scheme: kiise-2024, include: [S, A], keepUnranked: true }
+
+# Venues that are not in the catalog (same schema as catalog/venues/*.json).
+# Prefer contributing them to catalog/ so others benefit — see docs/adding-a-venue.md.
+custom: []
+#  - id: my-lab-workshop
+#    acronym: MLW
+#    name: "My Lab Workshop on Things"
+#    type: workshop
+#    fields: [systems]
+#    cfp:
+#      adapter: manual
+#      url: https://example.org/mlw/cfp
+#      edition: { year: 2027, label: "MLW 2027" }
+#      timezone: { label: AoE, time: "23:59" }
+#      rounds:
+#        - id: main
+#          milestones:
+#            - { type: paper, date: 2027-01-15, verifiedAt: 2026-09-02 }
+
+reminders:
+  daysBefore: [60, 30, 15, 3]   # one message per threshold; verified deadlines only
+  language: ko
+  channels: [google-chat]       # google-chat (webhook) and/or email (SMTP) — secrets in GitHub → Settings → Secrets

@@ -1,0 +1,14 @@
+{
+  "id": "hotstorage",
+  "acronym": "HotStorage",
+  "name": "ACM Workshop on Hot Topics in Storage and File Systems",
+  "type": "workshop",
+  "fields": [
+    "storage",
+    "systems"
+  ],
+  "topics": [],
+  "homepage": "https://www.hotstorage.org/",
+  "submission": "cfp",
+  "cfp": null
+}

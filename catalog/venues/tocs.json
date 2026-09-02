@@ -1,0 +1,13 @@
+{
+  "id": "tocs",
+  "acronym": "TOCS",
+  "name": "ACM Transactions on Computer Systems",
+  "type": "journal",
+  "fields": [
+    "systems"
+  ],
+  "topics": [],
+  "homepage": "https://dl.acm.org/journal/tocs",
+  "submission": "rolling",
+  "cfp": null
+}

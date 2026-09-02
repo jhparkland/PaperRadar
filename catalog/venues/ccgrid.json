@@ -1,0 +1,57 @@
+{
+  "id": "ccgrid",
+  "acronym": "CCGrid",
+  "name": "IEEE/ACM International Symposium on Cluster, Cloud and Internet Computing",
+  "type": "conference",
+  "fields": [
+    "cloud",
+    "hpc"
+  ],
+  "topics": [],
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://hpcclab.org/ccgrid27/",
+    "allowedHosts": [
+      "hpcclab.org"
+    ],
+    "edition": {
+      "year": 2027,
+      "label": "CCGrid 2027",
+      "event": {
+        "start": "2027-05-24",
+        "end": "2027-05-27",
+        "location": "Dallas–Fort Worth, TX, USA"
+      }
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Abstract submission deadline:\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Paper submission deadline:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Notification of acceptance:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Camera-ready submission:\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

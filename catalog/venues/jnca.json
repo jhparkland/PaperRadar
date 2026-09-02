@@ -1,0 +1,14 @@
+{
+  "id": "jnca",
+  "acronym": "JNCA",
+  "name": "Journal of Network and Computer Applications",
+  "type": "journal",
+  "fields": [
+    "networking",
+    "cloud"
+  ],
+  "topics": [],
+  "homepage": "https://www.sciencedirect.com/journal/journal-of-network-and-computer-applications",
+  "submission": "rolling",
+  "cfp": null
+}

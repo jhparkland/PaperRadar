@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "fields": [
+    {
+      "id": "computer-science",
+      "name": {
+        "ko": "컴퓨터과학 (전반)",
+        "en": "Computer science (general)"
+      }
+    },
+    {
+      "id": "systems",
+      "parent": "computer-science",
+      "name": {
+        "ko": "운영체제·시스템",
+        "en": "Operating systems & systems"
+      }
+    },
+    {
+      "id": "architecture",
+      "parent": "computer-science",
+      "name": {
+        "ko": "컴퓨터 구조",
+        "en": "Computer architecture"
+      }
+    },
+    {
+      "id": "hpc",
+      "parent": "computer-science",
+      "name": {
+        "ko": "고성능·병렬 컴퓨팅",
+        "en": "High-performance & parallel computing"
+      }
+    },
+    {
+      "id": "cloud",
+      "parent": "computer-science",
+      "name": {
+        "ko": "클라우드·분산 컴퓨팅",
+        "en": "Cloud & distributed computing"
+      }
+    },
+    {
+      "id": "networking",
+      "parent": "computer-science",
+      "name": {
+        "ko": "네트워킹",
+        "en": "Networking"
+      }
+    },
+    {
+      "id": "storage",
+      "parent": "computer-science",
+      "name": {
+        "ko": "스토리지",
+        "en": "Storage"
+      }
+    },
+    {
+      "id": "performance",
+      "parent": "computer-science",
+      "name": {
+        "ko": "성능 공학·측정",
+        "en": "Performance engineering & measurement"
+      }
+    },
+    {
+      "id": "sustainable-computing",
+      "parent": "computer-science",
+      "name": {
+        "ko": "지속가능·탄소 인식 컴퓨팅",
+        "en": "Sustainable & carbon-aware computing"
+      }
+    },
+    {
+      "id": "machine-learning",
+      "parent": "computer-science",
+      "name": {
+        "ko": "기계학습",
+        "en": "Machine learning"
+      }
+    },
+    {
+      "id": "ml-systems",
+      "parent": "computer-science",
+      "name": {
+        "ko": "ML 시스템",
+        "en": "Machine learning systems"
+      }
+    },
+    {
+      "id": "iot",
+      "parent": "computer-science",
+      "name": {
+        "ko": "사물인터넷·엣지",
+        "en": "IoT & edge"
+      }
+    },
+    {
+      "id": "simulation",
+      "parent": "computer-science",
+      "name": {
+        "ko": "시뮬레이션·모델링",
+        "en": "Simulation & modelling"
+      }
+    },
+    {
+      "id": "energy-systems",
+      "name": {
+        "ko": "에너지 시스템",
+        "en": "Energy systems"
+      }
+    }
+  ]
+}

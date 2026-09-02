@@ -1,0 +1,13 @@
+{
+  "id": "simpat",
+  "acronym": "SIMPAT",
+  "name": "Simulation Modelling Practice and Theory",
+  "type": "journal",
+  "fields": [
+    "simulation"
+  ],
+  "topics": [],
+  "homepage": "https://www.sciencedirect.com/journal/simulation-modelling-practice-and-theory",
+  "submission": "rolling",
+  "cfp": null
+}

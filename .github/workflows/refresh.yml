@@ -1,0 +1,114 @@
+# Daily: re-read every tracked CFP, send due reminders, commit data/, deploy the site.
+# A failed source never blocks the run — its last good dates are kept and an
+# issue is (re)opened so a human can look. A failed test/build stops before
+# anything is committed or deployed, so the last good site stays up.
+name: Daily refresh
+on:
+  schedule:
+    - cron: "17 17 * * *" # 02:17 KST — change to taste (UTC)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run: fetch and report, but commit nothing and send nothing"
+        type: boolean
+        default: false
+      test_notification:
+        description: "Send a test message to every configured reminder channel"
+        type: boolean
+        default: false
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+      - name: Refresh schedules from official CFPs
+        run: node scripts/refresh.mjs --report "$RUNNER_TEMP/failures.md" ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - run: npm run validate
+      - run: npm run build
+
+      - name: Test notification channels
+        if: ${{ inputs.test_notification }}
+        run: npm run remind -- --test
+        env:
+          GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.GOOGLE_CHAT_WEBHOOK_URL }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          REMINDER_EMAIL_TO: ${{ secrets.REMINDER_EMAIL_TO }}
+          REMINDER_EMAIL_FROM: ${{ secrets.REMINDER_EMAIL_FROM }}
+
+      - name: Send due reminders
+        if: ${{ !inputs.dry_run }}
+        continue-on-error: true
+        run: npm run remind
+        env:
+          GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.GOOGLE_CHAT_WEBHOOK_URL }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          REMINDER_EMAIL_TO: ${{ secrets.REMINDER_EMAIL_TO }}
+          REMINDER_EMAIL_FROM: ${{ secrets.REMINDER_EMAIL_FROM }}
+
+      - name: Commit refreshed data
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git config user.name "paperradar-bot"
+          git config user.email "paperradar-bot@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "no data changes"
+          else
+            git commit -m "chore(data): refresh $(date -u +%Y-%m-%d)"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+
+      - name: Open or update the source-failure issue
+        if: ${{ !inputs.dry_run }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: "Automation: official source verification failed"
+        run: |
+          REPORT="$RUNNER_TEMP/failures.md"
+          NUMBER=$(gh issue list --label source-failure --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')
+          if [ -s "$REPORT" ]; then
+            gh label create source-failure --color d93f0b --description "Automated CFP refresh could not verify a source" --force >/dev/null
+            if [ -n "$NUMBER" ]; then
+              gh issue comment "$NUMBER" --body-file "$REPORT"
+            else
+              gh issue create --title "$TITLE" --label source-failure --body-file "$REPORT"
+            fi
+          elif [ -n "$NUMBER" ]; then
+            gh issue close "$NUMBER" --comment "All sources verified again on $(date -u +%Y-%m-%d)."
+          fi
+
+      - name: Upload site
+        if: ${{ !inputs.dry_run }}
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy to GitHub Pages
+        if: ${{ !inputs.dry_run }}
+        id: deploy
+        uses: actions/deploy-pages@v4

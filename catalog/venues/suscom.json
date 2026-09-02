@@ -1,0 +1,13 @@
+{
+  "id": "suscom",
+  "acronym": "SUSCOM",
+  "name": "Sustainable Computing: Informatics and Systems",
+  "type": "journal",
+  "fields": [
+    "sustainable-computing"
+  ],
+  "topics": [],
+  "homepage": "https://www.sciencedirect.com/journal/sustainable-computing-informatics-and-systems",
+  "submission": "rolling",
+  "cfp": null
+}

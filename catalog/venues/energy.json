@@ -1,0 +1,13 @@
+{
+  "id": "energy",
+  "acronym": "Energy",
+  "name": "Energy",
+  "type": "journal",
+  "fields": [
+    "energy-systems"
+  ],
+  "topics": [],
+  "homepage": "https://www.sciencedirect.com/journal/energy",
+  "submission": "rolling",
+  "cfp": null
+}

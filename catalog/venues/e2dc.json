@@ -1,0 +1,16 @@
+{
+  "id": "e2dc",
+  "acronym": "E2DC",
+  "name": "International Workshop on Energy-Efficient Data Centres",
+  "type": "workshop",
+  "fields": [
+    "sustainable-computing"
+  ],
+  "topics": [],
+  "homepage": "https://e2dc.eu/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "none",
+    "url": "https://e2dc.eu/"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ccpe",
+  "acronym": "CCPE",
+  "name": "Concurrency and Computation: Practice and Experience",
+  "type": "journal",
+  "fields": [
+    "hpc"
+  ],
+  "topics": [],
+  "homepage": "https://onlinelibrary.wiley.com/journal/15320634",
+  "submission": "rolling",
+  "cfp": null
+}

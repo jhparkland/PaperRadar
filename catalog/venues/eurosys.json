@@ -1,0 +1,86 @@
+{
+  "id": "eurosys",
+  "acronym": "EuroSys",
+  "name": "European Conference on Computer Systems",
+  "type": "conference",
+  "fields": [
+    "systems"
+  ],
+  "topics": [],
+  "homepage": "https://www.eurosys.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://2027.eurosys.org/cfp.html",
+    "allowedHosts": [
+      "2027.eurosys.org"
+    ],
+    "edition": {
+      "year": 2027,
+      "label": "EuroSys 2027",
+      "event": {
+        "start": "2027-04-19",
+        "end": "2027-04-23",
+        "location": "Rabat, Morocco"
+      }
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "spring",
+        "label": {
+          "ko": "봄",
+          "en": "Spring"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Spring Deadline Paper titles and abstracts due:\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Spring Deadline[\\s\\S]{0,120}?Full paper submissions due:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Spring Deadline[\\s\\S]{0,400}?Notification to authors:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Spring Deadline[\\s\\S]{0,500}?Camera-ready deadline:\\s*{{DATE}}"
+          }
+        ]
+      },
+      {
+        "id": "fall",
+        "label": {
+          "ko": "가을",
+          "en": "Fall"
+        },
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Fall Deadline Paper titles and abstracts due:\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Fall Deadline[\\s\\S]{0,120}?Full paper submissions due:\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Fall Deadline[\\s\\S]{0,400}?Notification to authors:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Fall Deadline[\\s\\S]{0,500}?Camera-ready deadline:\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

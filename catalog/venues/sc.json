@@ -1,0 +1,16 @@
+{
+  "id": "sc",
+  "acronym": "SC",
+  "name": "International Conference for High Performance Computing, Networking, Storage and Analysis",
+  "type": "conference",
+  "fields": [
+    "hpc"
+  ],
+  "topics": [],
+  "homepage": "https://supercomputing.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "none",
+    "url": "https://sc26.supercomputing.org/program/papers/"
+  }
+}

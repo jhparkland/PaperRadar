@@ -1,0 +1,58 @@
+{
+  "id": "cluster",
+  "acronym": "CLUSTER",
+  "name": "IEEE International Conference on Cluster Computing",
+  "type": "conference",
+  "fields": [
+    "hpc",
+    "cloud"
+  ],
+  "topics": [],
+  "homepage": "https://clustercomp.org/",
+  "submission": "cfp",
+  "cfp": {
+    "adapter": "declarative",
+    "url": "https://clustercomp.org/2026/papers/",
+    "allowedHosts": [
+      "clustercomp.org"
+    ],
+    "edition": {
+      "year": 2026,
+      "label": "CLUSTER 2026",
+      "event": {
+        "start": "2026-09-22",
+        "end": "2026-09-25",
+        "location": "Alexandria, VA, USA"
+      }
+    },
+    "timezone": {
+      "label": "AoE",
+      "time": "23:59"
+    },
+    "rounds": [
+      {
+        "id": "main",
+        "label": "Main",
+        "track": "full",
+        "milestones": [
+          {
+            "type": "abstract",
+            "pattern": "Abstract submission:\\s*[A-Z][a-z]+\\.? \\d{1,2}(?:st|nd|rd|th)?, \\d{4}\\s*{{DATE}}"
+          },
+          {
+            "type": "paper",
+            "pattern": "Full Papers submission:\\s*[A-Z][a-z]+\\.? \\d{1,2}(?:st|nd|rd|th)?, \\d{4}\\s*{{DATE}}"
+          },
+          {
+            "type": "notification",
+            "pattern": "Paper Acceptance Notification:\\s*{{DATE}}"
+          },
+          {
+            "type": "camera-ready",
+            "pattern": "Camera-ready deadline:\\s*{{DATE}}"
+          }
+        ]
+      }
+    ]
+  }
+}

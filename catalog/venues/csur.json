@@ -1,0 +1,13 @@
+{
+  "id": "csur",
+  "acronym": "CSUR",
+  "name": "ACM Computing Surveys",
+  "type": "journal",
+  "fields": [
+    "computer-science"
+  ],
+  "topics": [],
+  "homepage": "https://dl.acm.org/journal/csur",
+  "submission": "rolling",
+  "cfp": null
+}

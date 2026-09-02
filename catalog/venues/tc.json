@@ -1,0 +1,14 @@
+{
+  "id": "tc",
+  "acronym": "IEEE TC",
+  "name": "IEEE Transactions on Computers",
+  "type": "journal",
+  "fields": [
+    "architecture",
+    "systems"
+  ],
+  "topics": [],
+  "homepage": "https://www.computer.org/csdl/journal/tc",
+  "submission": "rolling",
+  "cfp": null
+}
