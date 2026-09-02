@@ -1,6 +1,94 @@
 {
   "version": 1,
-  "deadlines": {},
+  "deadlines": {
+    "asplos/asplos-2027/september/full/paper": {
+      "sent": {
+        "15": "2026-09-02T08:41:57Z",
+        "30": "2026-09-02T08:41:57Z",
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "nsdi/nsdi-2027/fall/full/abstract": {
+      "sent": {
+        "15": "2026-09-02T08:41:57Z",
+        "30": "2026-09-02T08:41:57Z",
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "micro/micro-2026/main/full/camera-ready": {
+      "sent": {
+        "15": "2026-09-02T08:41:57Z",
+        "30": "2026-09-02T08:41:57Z",
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "eurosys/eurosys-2027/fall/full/abstract": {
+      "sent": {
+        "30": "2026-09-02T08:41:57Z",
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "nsdi/nsdi-2027/fall/full/paper": {
+      "sent": {
+        "30": "2026-09-02T08:41:57Z",
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "eurosys/eurosys-2027/fall/full/paper": {
+      "sent": {
+        "30": "2026-09-02T08:41:57Z",
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "eesp/eesp-2026/main/full/camera-ready": {
+      "sent": {
+        "30": "2026-09-02T08:41:57Z",
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "eurosys/eurosys-2027/spring/full/camera-ready": {
+      "sent": {
+        "30": "2026-09-02T08:41:57Z",
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "ipdps/ipdps-2027/main/full/abstract": {
+      "sent": {
+        "30": "2026-09-02T08:41:57Z",
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "sigmetrics/sigmetrics-2027/fall/full/abstract": {
+      "sent": {
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "ipdps/ipdps-2027/main/full/paper": {
+      "sent": {
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "sigmetrics/sigmetrics-2027/fall/full/paper": {
+      "sent": {
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "middleware/middleware-2026/summer/full/camera-ready": {
+      "sent": {
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "socc/socc-2026/round-2/full/camera-ready": {
+      "sent": {
+        "60": "2026-09-02T08:41:57Z"
+      }
+    },
+    "nsdi/nsdi-2027/spring/full/camera-ready": {
+      "sent": {
+        "60": "2026-09-02T08:41:57Z"
+      }
+    }
+  },
   "changes": {
     "notifiedThrough": "2026-09-02T08:32:25Z"
   }
