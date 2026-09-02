@@ -71,6 +71,31 @@ export function parseArgs(argv) {
   return out;
 }
 
+/**
+ * The GitHub Pages URL a repository publishes to, derived from a git remote.
+ * Used to warn a fork whose site.baseUrl still points at the upstream author's
+ * site — otherwise its reminders link readers to someone else's radar.
+ * Returns null for anything that is not a github.com remote.
+ */
+export function githubPagesUrl(remoteUrl) {
+  if (typeof remoteUrl !== 'string') return null;
+  const m = remoteUrl.trim().match(/github\.com[:/]+([^/]+)\/(.+?)(?:\.git)?\/?$/i);
+  if (!m) return null;
+  const [, owner, repo] = m;
+  return `https://${owner.toLowerCase()}.github.io/${repo}/`;
+}
+
+/** `githubPagesUrl` for the checkout in `cwd`, or null when git is unavailable. */
+export async function localPagesUrl(cwd) {
+  try {
+    const { execFileSync } = await import('node:child_process');
+    const out = execFileSync('git', ['remote', 'get-url', 'origin'], { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+    return githubPagesUrl(out);
+  } catch {
+    return null;
+  }
+}
+
 /** Load .env into process.env for local runs (never overrides existing vars). */
 export async function loadDotEnv(path) {
   const { existsSync, readFileSync } = await import('node:fs');

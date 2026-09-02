@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { parseConfig, normalizeConfig } from '../scripts/lib/config.mjs';
+import { githubPagesUrl } from '../scripts/lib/context.mjs';
 
 const GOOD = `
 version: 1
@@ -53,6 +54,22 @@ test('invalid YAML is reported, not thrown', () => {
   const { config, report } = parseConfig('site: [unclosed');
   assert.equal(config, null);
   assert.equal(report.errors.length, 1);
+});
+
+test('githubPagesUrl derives the Pages URL a fork publishes to', () => {
+  // doctor compares this with site.baseUrl so a fork does not keep linking
+  // reminders back to the upstream author's site
+  const expected = 'https://someone.github.io/PaperRadar/';
+  for (const remote of [
+    'https://github.com/Someone/PaperRadar.git',
+    'https://github.com/someone/PaperRadar',
+    'git@github.com:someone/PaperRadar.git\n',
+    'ssh://git@github.com/someone/PaperRadar.git',
+  ]) {
+    assert.equal(githubPagesUrl(remote), expected, remote);
+  }
+  assert.equal(githubPagesUrl('https://gitlab.com/someone/PaperRadar.git'), null);
+  assert.equal(githubPagesUrl(undefined), null);
 });
 
 test('empty selection produces a warning', () => {

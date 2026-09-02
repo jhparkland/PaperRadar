@@ -10,6 +10,19 @@ A config-driven deadline tracker for academic venues. Users edit
 `scripts/` and `.github/workflows/` reads official CFP pages daily, builds a
 static site into `dist/`, exports ICS calendars and sends reminders.
 
+**The bundled catalog is an example, not a canonical list.** It covers the
+original author's field (systems, cloud, HPC, carbon-aware computing). When a
+user asks you to set this up for *their* field, the expected work is to add
+their venues and remove the ones that do not apply — not to treat the existing
+files as fixed. `catalog/fields.json` and `catalog/rankings/` are equally
+replaceable.
+
+Two things in `config/radar.yaml` are personal to whoever runs a fork and must
+be updated rather than inherited: `site.baseUrl` (their own Pages URL) and
+`select` (their own field). Notification credentials live in GitHub secrets and
+never travel with a fork — never write a webhook URL or SMTP password into any
+tracked file.
+
 | Path | Purpose | Edit? |
 |---|---|---|
 | `config/radar.yaml` | The user's choices (fields, venues, rankings, timezone, reminders) | yes, when asked to set up a field |

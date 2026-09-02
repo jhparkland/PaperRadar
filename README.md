@@ -57,36 +57,62 @@ reminders:
   channels: [google-chat]
 ```
 
-카탈로그에 없는 학회는 `npm run new-venue`로 파일을 만들고 `npm run probe`로
-CFP 페이지의 날짜 위치를 확인해 패턴을 채웁니다 →
-[docs/adding-a-venue.md](docs/adding-a-venue.md). 자동 파싱이 안 되는 페이지는
-`manual` 어댑터에 날짜와 확인일을 직접 적습니다.
+### 카탈로그는 예시입니다 — 내 분야로 채워 넣으세요
 
-### 내 분야 venue 채우기 — LLM에게 맡기기
+`catalog/`에 들어 있는 venue 71개는 **작성자 분야(시스템·클라우드·탄소 인식
+컴퓨팅)로 만들어 둔 예시**입니다. 모든 분야를 아우르는 목록이 아니고, 그대로
+쓰라고 넣은 것도 아닙니다. 포크했다면 **자기 분야 venue로 새로 채우세요.**
+남겨둘 것은 구조(스키마와 어댑터 방식)뿐이고, 필요 없는 항목은 지우거나
+`select`에서 빼면 됩니다.
 
-카탈로그는 venue당 JSON 파일 하나에 스키마가 문서화되어 있어서, 정규식을 손으로
-짜는 대신 **LLM 코딩 에이전트(Claude Code, Codex, Cursor 등)에게 시키는 것**이
-가장 빠릅니다. 저장소 루트의 [AGENTS.md](AGENTS.md)에 에이전트가 지켜야 할 규칙이
-있으니, 저장소를 열고 이렇게 요청하면 됩니다:
+가장 빠른 방법은 **LLM 코딩 에이전트(Claude Code, Codex, Cursor 등)에게 맡기는
+것**입니다. venue 하나가 문서화된 JSON 파일 하나라서 에이전트가 다루기 좋고,
+저장소 루트의 [AGENTS.md](AGENTS.md)에 지켜야 할 규칙이 적혀 있습니다. 저장소를
+열고 이렇게 요청하세요:
 
 ```text
-내 연구 분야는 <분야>야. 이 분야에서 투고할 만한 학술대회·저널·워크숍을
-catalog/venues/ 에 추가하고 config/radar.yaml 의 select 를 맞춰줘.
+내 연구 분야는 <분야>야. catalog/venues/ 의 기존 항목은 다른 분야의 예시이니
+내 분야에 맞게 새로 채워줘.
+- 내가 투고할 만한 학술대회·저널·워크숍을 조사해서 catalog/venues/ 에 추가하고,
+  내 분야와 무관한 기존 파일은 지워줘. catalog/fields.json 도 내 분야에 맞게 고쳐.
 - 각 venue 의 공식 CFP 페이지를 찾아 declarative 어댑터를 작성하고
-  `npm run probe -- --venue <id>` 로 실제 추출 결과를 확인해서 보여줘.
+  `npm run probe -- --venue <id>` 로 실제 추출 결과를 보여줘.
 - 자동 파싱이 안 되면 manual 어댑터로 넣되 verifiedAt 에 오늘 날짜를 적어.
 - 날짜·등급을 절대 지어내지 말고, 근거 URL 이 없는 값은 비워둬.
-- 마지막에 npm run validate 와 npm test 를 통과시켜.
+- 내 분야의 등급 체계가 있으면 catalog/rankings/ 에 출처 URL 과 함께 추가해줘.
+- 마지막에 config/radar.yaml 의 select 를 맞추고 npm run validate 와 npm test 를
+  통과시켜.
 ```
 
-에이전트가 끝내면 다음 두 가지만 사람이 확인하면 됩니다:
+에이전트가 끝내면 사람이 두 가지만 확인하면 됩니다:
 
 1. `npm run probe -- --venue <id>` 출력의 날짜가 공식 페이지와 같은가
-2. `npm run doctor`에서 추적 목록이 원하는 대로 나오는가
+2. `npm run doctor`의 추적 목록이 원하는 대로 나오는가
 
-LLM은 그럴듯한 날짜를 만들어내기 쉽습니다. PaperRadar의 검증(`validate`, 연도
-타당성, 마감 순서, `verifiedAt` 필수)이 상당 부분 걸러주지만, 최종 대조는 사람이
-합니다.
+LLM은 그럴듯한 날짜를 잘 만들어냅니다. PaperRadar의 검증(스키마, 연도 타당성,
+마감 순서, `verifiedAt` 필수)이 상당 부분 걸러주지만 **최종 대조는 사람 몫**입니다.
+직접 넣고 싶다면 `npm run new-venue` + `npm run probe` →
+[docs/adding-a-venue.md](docs/adding-a-venue.md).
+
+### 포크한 뒤 반드시 바꿀 것
+
+**시크릿과 변수는 포크에 따라오지 않습니다.** 알림은 각자 자기 채널을 연결해야
+동작합니다.
+
+| 항목 | 어디서 | 왜 |
+|---|---|---|
+| `site.baseUrl` | `config/radar.yaml` | 내 Pages 주소로. 안 바꾸면 알림 링크가 원저자 사이트로 갑니다 (`npm run doctor`가 잡아줍니다) |
+| `site.title` · `tagline` · `timezone` · `languages` | `config/radar.yaml` | 내 기준으로 |
+| `select.fields` · `select.venues` | `config/radar.yaml` | 내 분야로 |
+| `reminders.language` · `daysBefore` | `config/radar.yaml` | 내 취향으로 |
+| `GOOGLE_CHAT_WEBHOOK_URL` 또는 SMTP 시크릿 | GitHub *Settings → Secrets and variables → Actions* | **개인 채널.** 포크에 복사되지 않습니다 |
+
+- **웹훅 URL은 비밀번호와 같습니다.** 그 URL을 아는 사람은 누구나 내 스페이스에
+  글을 쓸 수 있습니다. 저장소에 커밋하거나 이슈·PR에 붙여넣지 말고 반드시
+  시크릿에 두세요.
+- 로컬 실행용은 `.env`(`.gitignore` 대상)에 넣습니다: `cp .env.example .env`
+- **알림을 설정하지 않아도 나머지는 전부 동작합니다** — 사이트, 캘린더 구독,
+  매일 갱신은 시크릿 없이 그대로입니다. 알림만 조용할 뿐입니다.
 
 ### 배포
 

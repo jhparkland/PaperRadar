@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // `npm run doctor` — a friendly health check for people setting PaperRadar up.
 // Explains what is configured, what will be tracked and what is still missing.
-import { loadContext, loadDotEnv } from './lib/context.mjs';
+import { loadContext, loadDotEnv, localPagesUrl } from './lib/context.mjs';
 import { ROOT, PATHS, readJson, existsSync, join } from './lib/io.mjs';
 import { emptySchedules } from './lib/schedule.mjs';
 import * as googleChat from './lib/notify/google-chat.mjs';
@@ -44,7 +44,14 @@ async function main() {
   for (const w of ctx.report.warnings) lines.push(info(`warning · ${w.path}: ${w.message}`));
   const { config, catalog, venues } = ctx;
   lines.push(ok(`site "${config.site.title}" · languages ${config.site.languages.join('/')} · timezone ${config.site.timezone}`));
-  if (!config.site.baseUrl) lines.push(info('site.baseUrl is empty — reminders will not include a link to the site'));
+  const expected = await localPagesUrl(ROOT);
+  if (!config.site.baseUrl) {
+    lines.push(info(`site.baseUrl is empty — reminders will not link to the site${expected ? `. This checkout would publish to ${expected}` : ''}`));
+  } else if (expected && config.site.baseUrl.toLowerCase() !== expected.toLowerCase()) {
+    lines.push(bad(`site.baseUrl is ${config.site.baseUrl} but this repository publishes to ${expected}`));
+    lines.push(info('after forking, point site.baseUrl at your own Pages URL — otherwise your reminders link readers to someone else\'s site'));
+    failed = true;
+  }
   lines.push(ok(`rankings shown: ${config.rankings.show.join(', ') || '(none)'}`));
 
   // Selection

@@ -58,26 +58,32 @@ reminders:
   channels: [google-chat]
 ```
 
-Venues missing from the catalog? `npm run new-venue` scaffolds a file and
-`npm run probe` helps you write the pattern —
-[docs/adding-a-venue.md](docs/adding-a-venue.md). Pages that cannot be
-parsed take a `manual` adapter with the date you checked them.
+### The catalog is an example — fill it with your own field
 
-### Filling in your field — let an LLM do it
+The 71 venues in `catalog/` are **a worked example from the author's field**
+(systems, cloud, carbon-aware computing). It is not a universal list and it is
+not meant to be used as-is. After forking, **replace it with the venues of your
+field.** Keep the structure (schema and adapter mechanics); delete what you do
+not need, or drop it from `select`.
 
-The catalog is one documented JSON file per venue, so the fastest way to cover
-a field is to **hand the job to a coding agent** (Claude Code, Codex, Cursor,
-…). [AGENTS.md](AGENTS.md) at the repo root tells agents the rules. Open the
-repository and ask:
+The fastest way is to **hand the job to a coding agent** (Claude Code, Codex,
+Cursor, …): one venue is one documented JSON file, and [AGENTS.md](AGENTS.md)
+at the repo root spells out the rules. Open the repository and ask:
 
 ```text
-My research field is <field>. Add the conferences, journals and workshops I
-should submit to under catalog/venues/ and set select in config/radar.yaml.
+My research field is <field>. The entries in catalog/venues/ are an example
+from a different field — replace them with mine.
+- Research the conferences, journals and workshops I should submit to, add
+  them under catalog/venues/, and delete the files unrelated to my field.
+  Update catalog/fields.json to match.
 - For each venue find the official CFP page, write a declarative adapter and
   show me the real extraction via `npm run probe -- --venue <id>`.
 - If a page cannot be parsed, use the manual adapter with today's verifiedAt.
 - Never invent dates or ranking tiers; leave out anything without a source URL.
-- Finish with npm run validate and npm test passing.
+- If my field has a ranking scheme, add it under catalog/rankings/ with its
+  source URL.
+- Finish by updating select in config/radar.yaml and getting npm run validate
+  and npm test to pass.
 ```
 
 When it is done, two human checks remain:
@@ -87,7 +93,29 @@ When it is done, two human checks remain:
 
 LLMs produce plausible dates easily. PaperRadar's validation (schema, year
 plausibility, milestone order, mandatory `verifiedAt`) catches a lot, but the
-final comparison against the official page is yours.
+**final comparison against the official page is yours**. To do it by hand:
+`npm run new-venue` + `npm run probe` →
+[docs/adding-a-venue.md](docs/adding-a-venue.md).
+
+### What every fork must change
+
+**Secrets and variables do not travel with a fork.** Notifications only work
+once you connect your own channel.
+
+| Setting | Where | Why |
+|---|---|---|
+| `site.baseUrl` | `config/radar.yaml` | your own Pages URL — otherwise your reminders link readers to the original author's site (`npm run doctor` flags this) |
+| `site.title` · `tagline` · `timezone` · `languages` | `config/radar.yaml` | yours |
+| `select.fields` · `select.venues` | `config/radar.yaml` | your field |
+| `reminders.language` · `daysBefore` | `config/radar.yaml` | your preference |
+| `GOOGLE_CHAT_WEBHOOK_URL` or the SMTP secrets | GitHub *Settings → Secrets and variables → Actions* | **personal channel**, never copied into a fork |
+
+- **A webhook URL is a password.** Anyone holding it can post into your space.
+  Never commit it or paste it into an issue or PR — keep it in a secret.
+- For local runs put it in `.env` (git-ignored): `cp .env.example .env`
+- **Everything else works without notifications** — the site, the calendar
+  feeds and the daily refresh need no secrets at all. Only the messages stay
+  silent.
 
 ### Deploy
 

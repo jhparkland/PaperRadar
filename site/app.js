@@ -30,11 +30,11 @@
       s2_t: 'config/radar.yaml 편집', s2_p: '유일하게 손대는 파일입니다. 분야(select.fields), 개별 venue(select.venues), 시간대, 언어, 사이트 주소(baseUrl)를 정합니다. 사용할 수 있는 id는 catalog/ 폴더에 있습니다.',
       s3_t: '로컬에서 확인', s3_p: '문제가 있으면 doctor가 어떤 줄을 고쳐야 하는지 알려줍니다.',
       s4_t: 'GitHub Pages 켜기', s4_p: '저장소 Settings → Pages → Build and deployment → Source를 "GitHub Actions"로 설정합니다. main에 push하면 자동 배포됩니다.',
-      s5_t: 'Google Chat 알림 연결', s5_p: 'Google Workspace 계정이 필요합니다(개인 @gmail.com은 웹훅을 지원하지 않습니다). 혼자만 있는 스페이스를 만들면 개인 알림처럼 쓸 수 있습니다.',
-      s5_steps: ['Google Chat → 새 스페이스 만들기 (이름 예: PaperRadar)', '스페이스 이름 ▾ → 앱 및 통합 → 웹훅 → 웹훅 추가 → 이름 입력 → 저장 → URL 복사', 'GitHub 저장소 → Settings → Secrets and variables → Actions → New repository secret → 이름 GOOGLE_CHAT_WEBHOOK_URL, 값에 URL 붙여넣기', 'config/radar.yaml의 reminders.channels에 google-chat 포함 (기본값)', 'Actions → "Daily refresh" → Run workflow → test_notification 체크 → 실행. 스페이스에 테스트 메시지가 오면 완료'],
+      s5_t: 'Google Chat 알림 연결 (개인 설정)', s5_p: '알림은 각자 자기 채널을 연결해야 동작합니다. 시크릿은 포크에 복사되지 않습니다. 웹훅 URL은 비밀번호와 같으니 저장소에 커밋하지 말고 반드시 시크릿에 두세요. Google Workspace 계정이 필요하며(개인 @gmail.com은 웹훅 미지원), 혼자만 있는 스페이스를 만들면 개인 알림처럼 쓸 수 있습니다. 설정하지 않아도 사이트·캘린더·갱신은 그대로 동작합니다.',
+      s5_steps: ['Google Chat → 새 스페이스 만들기 (혼자만 있어도 됩니다)', '스페이스 이름 ▾ → 앱 및 통합 → 웹훅 → 웹훅 추가 → 이름 입력 → 저장 → URL 복사', 'GitHub 저장소 → Settings → Secrets and variables → Actions → New repository secret → 이름 GOOGLE_CHAT_WEBHOOK_URL, 값에 URL 붙여넣기 (다른 이름을 쓰고 싶으면 변수 GOOGLE_CHAT_SECRET_NAME 에 그 이름을 적으면 됩니다)', 'config/radar.yaml의 reminders.channels에 google-chat 포함 (기본값)', 'Actions → "Daily refresh" → Run workflow → test_notification 체크 → 실행. 스페이스에 테스트 메시지가 오면 완료'],
       s6_t: '(선택) 이메일 알림', s6_p: 'SMTP 정보를 시크릿으로 넣고 reminders.channels에 email을 추가합니다: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, REMINDER_EMAIL_TO, REMINDER_EMAIL_FROM.',
       s7_t: '매일 자동 갱신', s7_p: '.github/workflows/refresh.yml이 매일 공식 CFP를 다시 읽고, 확인된 마감을 분류해 하루 한 번 알림을 보내며, 변경 데이터를 커밋하고 사이트를 다시 배포합니다. 출처 확인에 실패하면 마지막 값을 유지하고 이슈를 엽니다.',
-      s8_t: 'venue 추가하기', s8_p: '카탈로그에 없는 학회는 npm run new-venue로 파일을 만들고, npm run probe로 CFP 페이지의 날짜 위치를 확인해 패턴을 채웁니다. 자동 파싱이 어려우면 manual 어댑터로 날짜와 확인일을 직접 적습니다. 자세한 절차는 docs/adding-a-venue.md에 있습니다.',
+      s8_t: '카탈로그를 내 분야로 채우기', s8_p: 'catalog/ 의 venue 목록은 작성자 분야로 만든 예시입니다. 그대로 쓰지 말고 자기 분야로 새로 채우세요. 가장 빠른 방법은 LLM 코딩 에이전트에게 맡기는 것입니다(README와 AGENTS.md에 프롬프트가 있습니다). 직접 넣으려면 npm run new-venue 로 파일을 만들고 npm run probe 로 CFP 페이지의 날짜 위치를 확인해 패턴을 채웁니다. 자동 파싱이 어려우면 manual 어댑터로 날짜와 확인일을 적습니다. 날짜는 절대 추정하지 마세요.',
     },
     en: {
       tab_upcoming: 'Upcoming', tab_venues: 'All venues', tab_past: 'Past', tab_sources: 'Sources & updates', tab_calendars: 'Calendars', tab_setup: 'Setup guide',
@@ -62,11 +62,11 @@
       s2_t: 'Edit config/radar.yaml', s2_p: 'The only file you touch. Choose fields (select.fields), individual venues (select.venues), timezone, languages and your site address (baseUrl). Valid ids live in the catalog/ folder.',
       s3_t: 'Check locally', s3_p: 'If something is off, doctor tells you which line to fix.',
       s4_t: 'Enable GitHub Pages', s4_p: 'Repository Settings → Pages → Build and deployment → Source: "GitHub Actions". Every push to main deploys.',
-      s5_t: 'Connect Google Chat reminders', s5_p: 'Requires a Google Workspace account (personal @gmail.com cannot add webhooks). A space with only you in it works as a personal channel.',
+      s5_t: 'Connect Google Chat reminders (personal)', s5_p: 'Notifications only work once you connect your own channel — secrets are never copied into a fork. A webhook URL is a password: keep it in a secret, never in a committed file. Requires a Google Workspace account (personal @gmail.com cannot add webhooks); a space with only you in it works as a personal channel. Without it the site, calendars and daily refresh still work.',
       s5_steps: ['Google Chat → create a space (e.g. "PaperRadar")', 'Space name ▾ → Apps & integrations → Webhooks → Add webhook → name it → Save → copy the URL', 'GitHub repo → Settings → Secrets and variables → Actions → New repository secret → name GOOGLE_CHAT_WEBHOOK_URL, paste the URL', 'Keep google-chat in reminders.channels in config/radar.yaml (default)', 'Actions → "Daily refresh" → Run workflow → tick test_notification → Run. A test message in the space means you are done'],
       s6_t: '(Optional) Email reminders', s6_p: 'Add SMTP secrets and put email in reminders.channels: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, REMINDER_EMAIL_TO, REMINDER_EMAIL_FROM.',
       s7_t: 'Daily automation', s7_p: '.github/workflows/refresh.yml re-reads every official CFP daily, sends one grouped digest a day for verified deadlines, commits changed data and redeploys the site. When a source cannot be verified the last value is kept and an issue is opened.',
-      s8_t: 'Add a venue', s8_p: 'For venues missing from the catalog, scaffold a file with npm run new-venue, use npm run probe to see where the CFP page shows its dates, and fill in the patterns. If a page cannot be parsed, use the manual adapter and write the dates with the day you checked them. Full walkthrough in docs/adding-a-venue.md.',
+      s8_t: 'Fill the catalog with your field', s8_p: 'The venues in catalog/ are an example from one research field — replace them with your own. The fastest way is to hand it to an LLM coding agent (prompt in the README and AGENTS.md). By hand: scaffold with npm run new-venue, use npm run probe to see where the CFP page shows its dates, and fill in the patterns; if a page cannot be parsed use the manual adapter with the day you checked it. Never guess a date.',
     },
   };
 

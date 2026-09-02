@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 // `npm run build` — produce dist/: the static site, data.json and ICS feeds.
 // Pure: reads config, catalog and data/, never writes outside dist/.
+import { Script } from 'node:vm';
+import { readdirSync } from 'node:fs';
 import { loadContext, nowIso } from './lib/context.mjs';
-import { PATHS, readJson, writeJson, writeText, emptyDir, cpSync, join } from './lib/io.mjs';
+import { PATHS, readJson, readText, writeJson, writeText, emptyDir, cpSync, join } from './lib/io.mjs';
 import { emptySchedules, flattenDeadlines } from './lib/schedule.mjs';
 import { buildSiteModel } from './lib/site-model.mjs';
 import { planCalendar, feedsFor, renderIcs } from './lib/ics.mjs';
@@ -19,6 +21,7 @@ function main() {
 
   const model = buildSiteModel({ config, catalog, venues, schedules, updates, now });
 
+  checkSiteScripts();
   emptyDir(PATHS.dist);
   cpSync(PATHS.site, PATHS.dist, { recursive: true });
   writeJson(join(PATHS.dist, 'data.json'), model);
@@ -36,6 +39,22 @@ function main() {
   }
 
   console.log(`built dist/ — ${model.venues.length} venues, ${model.upcoming.length} upcoming, ${events.length} calendar events, ${files} feeds`);
+}
+
+/**
+ * Parse every script in site/ before copying it. `site/` is served verbatim,
+ * so without this a syntax error ships and the page renders blank — with a
+ * green build and a green deploy.
+ */
+function checkSiteScripts() {
+  for (const name of readdirSync(PATHS.site).filter((f) => f.endsWith('.js'))) {
+    const file = join(PATHS.site, name);
+    try {
+      new Script(readText(file), { filename: file });
+    } catch (err) {
+      throw new Error(`site/${name} has a syntax error and would ship a blank page:\n  ${err.message}`);
+    }
+  }
 }
 
 function feedName(key, { venues, catalog, lang, title }) {
