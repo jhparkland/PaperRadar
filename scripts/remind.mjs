@@ -2,7 +2,9 @@
 // `npm run remind` — send today's due reminders and the schedule-change digest
 // through the configured channels.
 //
-//   --test       send a test message to every configured channel (checks secrets)
+//   --test       send a plain "channel works" ping to every configured channel
+//   --sample [n] send what a real digest looks like, built from the next n (default 5)
+//                verified deadlines, without touching the sent-state
 //   --dry-run    print what would be sent, send nothing, write nothing
 //   --channel x  only this channel (google-chat | email)
 //
@@ -13,8 +15,9 @@
 // Exit codes: 0 sent or nothing due · 1 every channel failed while something was due
 import { loadContext, loadDotEnv, nowIso, parseArgs } from './lib/context.mjs';
 import { ROOT, PATHS, readJson, writeJson, join } from './lib/io.mjs';
-import { emptySchedules, flattenDeadlines } from './lib/schedule.mjs';
-import { dueReminders, markSent } from './lib/reminders.mjs';
+import { emptySchedules, flattenDeadlines, upcomingDeadlines } from './lib/schedule.mjs';
+import { dueReminders, markSent, isRemindable } from './lib/reminders.mjs';
+import { daysUntil } from './lib/dates.mjs';
 import { normalizeReminderState, pendingChanges, isBootstrap, markChangesNotified, buildChangesDigest } from './lib/changes.mjs';
 import { buildDigest, testDigest } from './lib/notify/format.mjs';
 import * as googleChat from './lib/notify/google-chat.mjs';
@@ -40,6 +43,24 @@ async function main() {
   if (args.test) {
     const results = await deliver(testDigest({ lang, siteTitle }), channels, { siteTitle, dryRun });
     process.exit(results.some((r) => r.ok) || channels.length === 0 ? 0 : 1);
+  }
+
+  if (args.sample) {
+    const n = Number(args.sample) > 0 ? Number(args.sample) : 5;
+    const rows = venues.flatMap((v) => flattenDeadlines(v, readJson(PATHS.schedules, emptySchedules()).venues[v.id]));
+    const soon = upcomingDeadlines(rows, now, 365).filter(isRemindable).slice(0, n);
+    if (soon.length === 0) {
+      console.log('sample: no verified upcoming deadlines to show');
+      return;
+    }
+    const digest = buildDigest(
+      soon.map((r) => ({ row: r, remaining: daysUntil(r.at, now, config.site.timezone), threshold: 0, covers: [] })),
+      common,
+    );
+    console.log(digest.text, '\n');
+    const results = await deliver(digest, channels, { siteTitle, dryRun });
+    console.log('(sample — sent-state untouched, these deadlines will still be reminded normally)');
+    process.exit(dryRun || results.some((r) => r.ok) || channels.length === 0 ? 0 : 1);
   }
 
   const schedules = readJson(PATHS.schedules, emptySchedules());

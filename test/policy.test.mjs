@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { validateVenue } from '../scripts/lib/catalog.mjs';
 import { extractDeclarative } from '../scripts/lib/adapters/declarative.mjs';
 import { flattenDeadlines, nextDeadline, ACTION_TYPES } from '../scripts/lib/schedule.mjs';
-import { dueReminders } from '../scripts/lib/reminders.mjs';
+import { dueReminders, isRemindable } from '../scripts/lib/reminders.mjs';
 import { planCalendar } from '../scripts/lib/ics.mjs';
 import { Report } from '../scripts/lib/errors.mjs';
 import { htmlToText } from '../scripts/lib/fetch.mjs';
@@ -49,6 +49,9 @@ test('reminders skip unconfirmed timezones and notification dates; calendars sti
   assert.equal(nextDeadline(rows, NOW).type, 'paper', 'next deadline may be an unconfirmed-tz date (it is shown, just not pushed)');
   const due = dueReminders(rows, {}, { now: NOW, timeZone: 'Asia/Seoul', daysBefore: [60, 30, 15, 3] });
   assert.deepEqual(due.map((d) => d.row.type), ['camera-ready']);
+  // the same predicate drives `remind --sample`, so a preview cannot show
+  // something a real digest would never send
+  assert.deepEqual(rows.filter(isRemindable).map((r) => r.type), ['camera-ready']);
   const { events } = planCalendar(rows, {}, { now: NOW, lang: 'en', timeZone: 'Asia/Seoul' });
   assert.equal(events.length, 3);
   assert.match(events[0].description, /states no timezone/);

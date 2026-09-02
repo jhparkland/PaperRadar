@@ -35,7 +35,15 @@ export function configProblem(env = process.env) {
   return null;
 }
 
-/** Build the webhook payload: plain-text fallback + a Cards v2 card. */
+/**
+ * Build the webhook payload: one Cards v2 card.
+ *
+ * `text` and `cardsV2` are NOT alternatives — Google Chat renders both, so
+ * sending the plain digest alongside the card posts everything twice (and the
+ * raw URLs in it also trigger link-preview cards). The plain rendering belongs
+ * in `fallbackText`, which is used only where cards cannot be drawn, such as
+ * mobile push notifications.
+ */
 export function buildPayload(digest) {
   if (digest.isTest) return { text: digest.text };
   const sections = digest.items.map((i) => ({
@@ -54,7 +62,7 @@ export function buildPayload(digest) {
   }));
   sections.push({ widgets: [{ textParagraph: { text: `<i>${escapeHtml(digest.footer)}</i>` } }] });
   return {
-    text: digest.text,
+    fallbackText: digest.text,
     cardsV2: [
       {
         cardId: `paperradar-${Date.now()}`,

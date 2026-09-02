@@ -16,6 +16,10 @@ on:
         description: "Send a test message to every configured reminder channel"
         type: boolean
         default: false
+      sample_notification:
+        description: "Send a sample digest (real upcoming deadlines) to preview the formatting"
+        type: boolean
+        default: false
 permissions:
   contents: write
   issues: write
@@ -55,6 +59,19 @@ jobs:
           # Name your secret whatever you like: set the repository *variable*
           # GOOGLE_CHAT_SECRET_NAME to it (Settings → Secrets and variables →
           # Actions → Variables). Unset means the secret is GOOGLE_CHAT_WEBHOOK_URL.
+          GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets[vars.GOOGLE_CHAT_SECRET_NAME || 'GOOGLE_CHAT_WEBHOOK_URL'] }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          REMINDER_EMAIL_TO: ${{ secrets.REMINDER_EMAIL_TO }}
+          REMINDER_EMAIL_FROM: ${{ secrets.REMINDER_EMAIL_FROM }}
+
+      - name: Send a sample digest
+        if: ${{ inputs.sample_notification }}
+        continue-on-error: true
+        run: npm run remind -- --sample
+        env:
           GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets[vars.GOOGLE_CHAT_SECRET_NAME || 'GOOGLE_CHAT_WEBHOOK_URL'] }}
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}

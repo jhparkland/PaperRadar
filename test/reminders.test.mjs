@@ -57,6 +57,10 @@ test('digest, Google Chat card and email message are well-formed', () => {
   assert.equal(payload.cardsV2[0].card.header.title, '📡 Radar · 마감 알림');
   assert.equal(payload.cardsV2[0].card.sections[0].header, 'D-11 · X 2027');
   assert.equal(payload.cardsV2[0].card.sections[0].widgets[1].buttonList.buttons[0].onClick.openLink.url, 'https://x.example/cfp');
+  // Google Chat renders `text` *and* `cardsV2` when both are present, which
+  // would post the same digest twice and unfurl every raw URL in it.
+  assert.equal(payload.text, undefined, 'a card payload must not carry `text`');
+  assert.equal(payload.fallbackText, digest.text, 'the plain rendering goes to fallbackText');
   const mail = buildMessage(digest, { env: { REMINDER_EMAIL_TO: 'me@x', SMTP_USER: 'u' }, siteTitle: 'Radar' });
   assert.equal(mail.subject, '[Radar] 마감 알림 · 1건');
   assert.equal(mail.from, 'u');

@@ -76,6 +76,8 @@ test('the digest names venues, milestones and before → after, in Korean and En
   const payload = buildPayload(ko);
   assert.equal(payload.cardsV2[0].card.header.title, ko.title);
   assert.equal(payload.cardsV2[0].card.sections[0].header, '❌ 삭제 · EuroSys 2027');
+  assert.equal(payload.text, undefined, 'card payloads must not duplicate the digest as plain text');
+  assert.equal(payload.fallbackText, ko.text);
   const mail = buildMessage(ko, { env: { REMINDER_EMAIL_TO: 'me@x', SMTP_USER: 'u' }, siteTitle: 'Radar' });
   assert.equal(mail.subject, '[Radar] 일정 변경 · 4건');
 });

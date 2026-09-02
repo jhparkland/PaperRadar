@@ -10,13 +10,22 @@
 import { daysUntil } from './dates.mjs';
 import { ACTION_TYPES } from './schedule.mjs';
 
+/**
+ * Whether a deadline row may ever produce a reminder. Kept in one place so a
+ * preview (`remind --sample`) shows exactly what a real digest would contain.
+ */
+export function isRemindable(r) {
+  if (r.status !== 'verified' || !r.at) return false;
+  if (!ACTION_TYPES.has(r.type)) return false; // notification / event dates are not something to act on
+  if (r.tzConfirmed === false) return false; // the page states no timezone — we will not wake anyone on an assumption
+  return true;
+}
+
 export function dueReminders(rows, state, { now, timeZone, daysBefore }) {
   const thresholds = [...daysBefore].sort((a, b) => b - a);
   const due = [];
   for (const r of rows) {
-    if (r.status !== 'verified' || !r.at) continue;
-    if (!ACTION_TYPES.has(r.type)) continue; // notification / event dates are not something to act on
-    if (r.tzConfirmed === false) continue; // the page states no timezone — we will not wake anyone on an assumption
+    if (!isRemindable(r)) continue;
     const remaining = daysUntil(r.at, now, timeZone);
     if (remaining < 0) continue;
     const sent = state[r.uid]?.sent ?? {};
