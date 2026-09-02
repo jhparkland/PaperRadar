@@ -45,7 +45,8 @@ override a catalog venue with the same id. Prefer contributing to the catalog.
 
 | Key | Default | Notes |
 |---|---|---|
-| `daysBefore` | `[60, 30, 15, 3]` | Thresholds. For each verified deadline the closest unsent threshold ≥ remaining days fires once; larger ones are marked covered. |
+| `daysBefore` | `[30, 15, 3, 0]` | Thresholds, one digest section each. For each verified deadline the closest unsent threshold ≥ remaining days fires once; larger ones are marked covered. `0` means the day of the deadline. |
+| `imminentDays` | `3` | Thresholds at or below this are grouped as **closing soon** instead of their own "N days left" section. `0` is always **due today**. |
 | `language` | first of `site.languages` | Language of reminder messages. |
 | `channels` | `[google-chat]` | Any of `google-chat`, `email`. Credentials come from environment variables / GitHub secrets — see [setup-google-chat.md](setup-google-chat.md). |
 | `notifyChanges` | `true` | Send one digest per day listing dates that were announced (TBA → date), moved, removed, or sources verified again since the last run. The first run only records a watermark. |
@@ -76,7 +77,7 @@ never the URL.
 | `npm run refresh` | Reads every tracked CFP and updates `data/`. `--only id`, `--dry-run`, `--report file.md`. |
 | `npm run build` | Writes `dist/` (site, `data.json`, calendars). |
 | `npm run dev` | Serves `dist/` on <http://127.0.0.1:4173>. |
-| `npm run remind` | Sends due reminders. `--test`, `--dry-run`, `--channel x`. |
+| `npm run remind` | Sends the daily digest. `--test`, `--sample [n]`, `--dry-run`, `--channel x`. |
 | `npm run probe` | Adapter authoring helper — see [adding-a-venue.md](adding-a-venue.md). |
 | `npm run new-venue` | Scaffolds a catalog venue file. |
 | `npm test` | Unit tests. |

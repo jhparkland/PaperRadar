@@ -27,7 +27,9 @@ select:
 
 custom: []
 
+# 🆕 새로 등장 · 🔴 오늘 마감 · 🟠 마감 임박 · 🟡 N일 남음 으로 묶어 하루 한 번.
 reminders:
-  daysBefore: [60, 30, 15, 3]
+  daysBefore: [30, 15, 3, 0]
+  imminentDays: 3
   language: ko
   channels: [google-chat]

@@ -46,19 +46,17 @@ export function configProblem(env = process.env) {
  */
 export function buildPayload(digest) {
   if (digest.isTest) return { text: digest.text };
-  const sections = digest.items.map((i) => ({
-    header: `${i.dday} · ${i.heading}`,
-    widgets: [
-      {
-        decoratedText: {
-          topLabel: i.detail,
-          text: `<b>${escapeHtml(i.venueName)}</b>`,
-          bottomLabel: `${i.official}  ·  ${i.local}`,
-          wrapText: true,
-        },
+  const sections = digest.sections.map((s) => ({
+    header: `${s.label} (${s.items.length})`,
+    widgets: s.items.map((i) => ({
+      decoratedText: {
+        topLabel: [i.dday, i.heading].filter(Boolean).join(' · '),
+        text: `<b>${escapeHtml(i.detail || i.heading)}</b>`,
+        bottomLabel: [i.official, i.local].filter(Boolean).join('  ·  '),
+        wrapText: true,
+        ...(i.url ? { button: { text: t(digest.lang, 'remind.open'), onClick: { openLink: { url: i.url } } } } : {}),
       },
-      ...(i.url ? [{ buttonList: { buttons: [{ text: t(digest.lang, 'remind.open'), onClick: { openLink: { url: i.url } } }] } }] : []),
-    ],
+    })),
   }));
   sections.push({ widgets: [{ textParagraph: { text: `<i>${escapeHtml(digest.footer)}</i>` } }] });
   return {

@@ -1,25 +1,24 @@
 #!/usr/bin/env node
-// `npm run remind` — send today's due reminders and the schedule-change digest
-// through the configured channels.
+// `npm run remind` — send today's digest through the configured channels.
+//
+// One message a day, grouped into the categories a reader acts on:
+//   🆕 새로 등장 · 🔴 오늘 마감 · 🟠 마감 임박 · 🟡 N일 남음
+//   (+ 🔁 변경 · ❌ 삭제 · ✅ 재확인, when reminders.notifyChanges is on)
 //
 //   --test       send a plain "channel works" ping to every configured channel
-//   --sample [n] send what a real digest looks like, built from the next n (default 5)
-//                verified deadlines, without touching the sent-state
+//   --sample [n] preview a real digest built from the next n (default 5) verified
+//                deadlines, without touching the sent-state
 //   --dry-run    print what would be sent, send nothing, write nothing
 //   --channel x  only this channel (google-chat | email)
-//
-// Two messages at most per run: deadline reminders (D-60/30/15/3) and, when
-// reminders.notifyChanges is on, one digest of dates that were announced,
-// moved, removed or verified again since the last run.
 //
 // Exit codes: 0 sent or nothing due · 1 every channel failed while something was due
 import { loadContext, loadDotEnv, nowIso, parseArgs } from './lib/context.mjs';
 import { ROOT, PATHS, readJson, writeJson, join } from './lib/io.mjs';
 import { emptySchedules, flattenDeadlines, upcomingDeadlines } from './lib/schedule.mjs';
 import { dueReminders, markSent, isRemindable } from './lib/reminders.mjs';
-import { daysUntil } from './lib/dates.mjs';
-import { normalizeReminderState, pendingChanges, isBootstrap, markChangesNotified, buildChangesDigest } from './lib/changes.mjs';
+import { normalizeReminderState, pendingChanges, isBootstrap, markChangesNotified } from './lib/changes.mjs';
 import { buildDigest, testDigest } from './lib/notify/format.mjs';
+import { daysUntil } from './lib/dates.mjs';
 import * as googleChat from './lib/notify/google-chat.mjs';
 import * as email from './lib/notify/email.mjs';
 
@@ -37,103 +36,95 @@ async function main() {
     return CHANNELS[c];
   });
   const siteTitle = config.site.title;
-  const lang = config.reminders.language;
-  const common = { lang, timeZone: config.site.timezone, siteTitle, siteUrl: config.site.baseUrl };
+  const opts = {
+    lang: config.reminders.language,
+    timeZone: config.site.timezone,
+    imminentDays: config.reminders.imminentDays,
+    siteTitle,
+    siteUrl: config.site.baseUrl,
+  };
 
   if (args.test) {
-    const results = await deliver(testDigest({ lang, siteTitle }), channels, { siteTitle, dryRun });
+    const results = await deliver(testDigest({ lang: opts.lang, siteTitle }), channels, { siteTitle, dryRun });
     process.exit(results.some((r) => r.ok) || channels.length === 0 ? 0 : 1);
   }
 
+  const schedules = readJson(PATHS.schedules, emptySchedules());
+  const rows = venues.flatMap((v) => flattenDeadlines(v, schedules.venues[v.id]));
+
   if (args.sample) {
     // `--sample` with no value parses to boolean true, and Number(true) is 1 —
-    // only treat an explicit numeric argument as a count.
+    // only treat an explicit integer argument as a count.
     const n = typeof args.sample === 'string' && Number.isInteger(Number(args.sample)) && Number(args.sample) > 0
       ? Number(args.sample)
       : 5;
-    const rows = venues.flatMap((v) => flattenDeadlines(v, readJson(PATHS.schedules, emptySchedules()).venues[v.id]));
     const soon = upcomingDeadlines(rows, now, 365).filter(isRemindable).slice(0, n);
     if (soon.length === 0) {
       console.log('sample: no verified upcoming deadlines to show');
       return;
     }
-    const digest = buildDigest(
-      soon.map((r) => ({ row: r, remaining: daysUntil(r.at, now, config.site.timezone), threshold: 0, covers: [] })),
-      common,
-    );
+    const thresholds = [...config.reminders.daysBefore].sort((a, b) => a - b);
+    const due = soon.map((r) => {
+      const remaining = daysUntil(r.at, now, opts.timeZone);
+      return { row: r, remaining, threshold: thresholds.find((d) => remaining <= d) ?? thresholds.at(-1) };
+    });
+    const digest = buildDigest({ due }, opts);
     console.log(digest.text, '\n');
     const results = await deliver(digest, channels, { siteTitle, dryRun });
     console.log('(sample — sent-state untouched, these deadlines will still be reminded normally)');
     process.exit(dryRun || results.some((r) => r.ok) || channels.length === 0 ? 0 : 1);
   }
 
-  const schedules = readJson(PATHS.schedules, emptySchedules());
   const updates = readJson(PATHS.updates, { version: 1, entries: [] });
   let state = normalizeReminderState(readJson(PATHS.reminderState, null));
-  const rows = venues.flatMap((v) => flattenDeadlines(v, schedules.venues[v.id]));
-  let anyFailure = false;
-  let stateDirty = false;
 
-  // ---- 1. deadline reminders
-  const due = dueReminders(rows, state.deadlines, { now, timeZone: config.site.timezone, daysBefore: config.reminders.daysBefore });
-  if (due.length === 0) {
-    console.log('reminders: nothing due today');
-  } else {
-    const digest = buildDigest(due, common);
-    console.log(digest.text, '\n');
-    if (!dryRun) {
-      const results = await deliver(digest, channels, { siteTitle });
-      if (channels.length === 0) {
-        console.log('no channels configured — digest printed only (add reminders.channels in config/radar.yaml)');
-      } else if (results.some((r) => r.ok)) {
-        state = { ...state, deadlines: markSent(state.deadlines, due, rows, { now }) };
-        stateDirty = true;
-        console.log(`marked ${due.length} reminder(s) as sent`);
-      } else {
-        anyFailure = true;
-        console.error('reminders: no channel delivered — state left unchanged so it is retried next run');
-      }
-    }
-  }
+  const due = dueReminders(rows, state.deadlines, { now, timeZone: opts.timeZone, daysBefore: config.reminders.daysBefore });
 
-  // ---- 2. schedule changes
+  // Changes are only notified once a starting point exists, so a fresh
+  // deployment does not announce every deadline it just imported.
+  let changes = [];
+  let bootstrapping = false;
   if (config.reminders.notifyChanges) {
     if (isBootstrap(state)) {
+      bootstrapping = true;
       console.log('changes: first run — recording the starting point; changes from now on will be notified');
-      if (!dryRun) {
-        state = markChangesNotified(state, [], { now });
-        stateDirty = true;
-      }
     } else {
-      const pending = pendingChanges(updates, state, { now, includeFailures: config.reminders.notifyFailures });
-      if (pending.length === 0) {
-        console.log('changes: nothing new');
-      } else {
-        const rowsByUid = new Map(rows.map((r) => [r.uid, r]));
-        const venuesById = new Map(venues.map((v) => [v.id, v]));
-        const digest = buildChangesDigest(pending, { ...common, rowsByUid, venuesById });
-        console.log(digest.text, '\n');
-        if (!dryRun) {
-          const results = await deliver(digest, channels, { siteTitle });
-          if (channels.length === 0 || results.some((r) => r.ok)) {
-            state = markChangesNotified(state, pending, { now });
-            stateDirty = true;
-            console.log(`changes: ${pending.length} entr${pending.length === 1 ? 'y' : 'ies'} notified`);
-          } else {
-            anyFailure = true;
-            console.error('changes: no channel delivered — will retry next run');
-          }
-        }
-      }
+      changes = pendingChanges(updates, state, { now, includeFailures: config.reminders.notifyFailures });
     }
   }
+
+  if (due.length === 0 && changes.length === 0) {
+    console.log('nothing to send today');
+    if (bootstrapping && !dryRun) writeJson(PATHS.reminderState, markChangesNotified(state, [], { now }));
+    return;
+  }
+
+  const digest = buildDigest({ due, changes }, {
+    ...opts,
+    rowsByUid: new Map(rows.map((r) => [r.uid, r])),
+    venuesById: new Map(venues.map((v) => [v.id, v])),
+  });
+  console.log(digest.text, '\n');
+  console.log(`sections: ${digest.sections.map((s) => `${s.id}${s.id === 'window' ? '' : ''}=${s.items.length}`).join(' · ')}`);
 
   if (dryRun) {
     console.log('(dry run — nothing sent, state unchanged)');
     return;
   }
-  if (stateDirty) writeJson(PATHS.reminderState, state);
-  if (anyFailure) process.exit(1);
+
+  const results = await deliver(digest, channels, { siteTitle });
+  if (channels.length === 0) {
+    console.log('no channels configured — digest printed only (add reminders.channels in config/radar.yaml)');
+    return;
+  }
+  if (!results.some((r) => r.ok)) {
+    console.error('no channel delivered the digest — state left unchanged so it is retried next run');
+    process.exit(1);
+  }
+  state = { ...state, deadlines: markSent(state.deadlines, due, rows, { now }) };
+  if (config.reminders.notifyChanges) state = markChangesNotified(state, changes, { now });
+  writeJson(PATHS.reminderState, state);
+  console.log(`recorded ${due.length} reminder(s) and ${changes.length} change(s) as notified`);
 }
 
 async function deliver(digest, channels, { siteTitle, dryRun = false }) {

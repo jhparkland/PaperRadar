@@ -50,13 +50,16 @@ test('markSent prunes deadlines older than 60 days', () => {
 
 test('digest, Google Chat card and email message are well-formed', () => {
   const due = [{ row: row('a', '2026-09-12T23:59:00-12:00'), remaining: 11, threshold: 15, covers: [15] }];
-  const digest = buildDigest(due, { lang: 'ko', timeZone: tz, siteTitle: 'Radar', siteUrl: 'https://s.example/' });
+  const digest = buildDigest({ due }, { lang: 'ko', timeZone: tz, siteTitle: 'Radar', siteUrl: 'https://s.example/', imminentDays: 3 });
+  assert.deepEqual(digest.sections.map((s) => s.label), ['🟡 15일 남음']);
   assert.match(digest.text, /D-11 · X 2027 · 논문 마감/);
   assert.match(digest.text, /현지\(Asia\/Seoul\): 2026-09-13 20:59/);
   const payload = buildPayload(digest);
   assert.equal(payload.cardsV2[0].card.header.title, '📡 Radar · 마감 알림');
-  assert.equal(payload.cardsV2[0].card.sections[0].header, 'D-11 · X 2027');
-  assert.equal(payload.cardsV2[0].card.sections[0].widgets[1].buttonList.buttons[0].onClick.openLink.url, 'https://x.example/cfp');
+  const section = payload.cardsV2[0].card.sections[0];
+  assert.equal(section.header, '🟡 15일 남음 (1)');
+  assert.equal(section.widgets[0].decoratedText.topLabel, 'D-11 · X 2027');
+  assert.equal(section.widgets[0].decoratedText.button.onClick.openLink.url, 'https://x.example/cfp');
   // Google Chat renders `text` *and* `cardsV2` when both are present, which
   // would post the same digest twice and unfurl every raw URL in it.
   assert.equal(payload.text, undefined, 'a card payload must not carry `text`');
@@ -64,9 +67,31 @@ test('digest, Google Chat card and email message are well-formed', () => {
   const mail = buildMessage(digest, { env: { REMINDER_EMAIL_TO: 'me@x', SMTP_USER: 'u' }, siteTitle: 'Radar' });
   assert.equal(mail.subject, '[Radar] 마감 알림 · 1건');
   assert.equal(mail.from, 'u');
+  assert.match(mail.html, /<h3>🟡 15일 남음 \(1\)<\/h3>/);
   assert.match(mail.html, /<strong>D-11 · X 2027<\/strong>/);
   const t = testDigest({ lang: 'en', siteTitle: 'Radar' });
   assert.deepEqual(buildPayload(t), { text: t.text });
+});
+
+test('deadlines are grouped into today / imminent / per-threshold sections', () => {
+  const mk = (uid, at, remaining, threshold) => ({ row: row(uid, at), remaining, threshold, covers: [threshold] });
+  const due = [
+    mk('t', '2026-09-02T23:59:00-12:00', 0, 0),
+    mk('i', '2026-09-04T23:59:00-12:00', 2, 3),
+    mk('a', '2026-09-16T23:59:00-12:00', 14, 15),
+    mk('b', '2026-09-30T23:59:00-12:00', 28, 30),
+    mk('c', '2026-09-17T23:59:00-12:00', 15, 15),
+  ];
+  const d = buildDigest({ due }, { lang: 'ko', timeZone: tz, siteTitle: 'R', siteUrl: '', imminentDays: 3 });
+  assert.deepEqual(d.sections.map((s) => [s.label, s.items.length]), [
+    ['🔴 오늘 마감', 1], ['🟠 마감 임박', 1], ['🟡 15일 남음', 2], ['🟡 30일 남음', 1],
+  ]);
+  assert.equal(d.count, 5);
+  // imminentDays widens the "closing soon" bucket instead of listing 15 separately
+  const wide = buildDigest({ due }, { lang: 'en', timeZone: tz, siteTitle: 'R', siteUrl: '', imminentDays: 15 });
+  assert.deepEqual(wide.sections.map((s) => [s.label, s.items.length]), [
+    ['🔴 Due today', 1], ['🟠 Closing soon', 3], ['🟡 30 days left', 1],
+  ]);
 });
 
 test('google chat channel requires a chat.googleapis.com webhook and reports HTTP errors', async () => {

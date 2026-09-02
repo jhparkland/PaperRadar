@@ -33,7 +33,7 @@
       s5_t: 'Google Chat 알림 연결', s5_p: 'Google Workspace 계정이 필요합니다(개인 @gmail.com은 웹훅을 지원하지 않습니다). 혼자만 있는 스페이스를 만들면 개인 알림처럼 쓸 수 있습니다.',
       s5_steps: ['Google Chat → 새 스페이스 만들기 (이름 예: PaperRadar)', '스페이스 이름 ▾ → 앱 및 통합 → 웹훅 → 웹훅 추가 → 이름 입력 → 저장 → URL 복사', 'GitHub 저장소 → Settings → Secrets and variables → Actions → New repository secret → 이름 GOOGLE_CHAT_WEBHOOK_URL, 값에 URL 붙여넣기', 'config/radar.yaml의 reminders.channels에 google-chat 포함 (기본값)', 'Actions → "Daily refresh" → Run workflow → test_notification 체크 → 실행. 스페이스에 테스트 메시지가 오면 완료'],
       s6_t: '(선택) 이메일 알림', s6_p: 'SMTP 정보를 시크릿으로 넣고 reminders.channels에 email을 추가합니다: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, REMINDER_EMAIL_TO, REMINDER_EMAIL_FROM.',
-      s7_t: '매일 자동 갱신', s7_p: '.github/workflows/refresh.yml이 매일 공식 CFP를 다시 읽고, 확인된 마감의 60/30/15/3일 전에 알림을 보내며, 변경 데이터를 커밋하고 사이트를 다시 배포합니다. 출처 확인에 실패하면 마지막 값을 유지하고 이슈를 엽니다.',
+      s7_t: '매일 자동 갱신', s7_p: '.github/workflows/refresh.yml이 매일 공식 CFP를 다시 읽고, 확인된 마감을 분류해 하루 한 번 알림을 보내며, 변경 데이터를 커밋하고 사이트를 다시 배포합니다. 출처 확인에 실패하면 마지막 값을 유지하고 이슈를 엽니다.',
       s8_t: 'venue 추가하기', s8_p: '카탈로그에 없는 학회는 npm run new-venue로 파일을 만들고, npm run probe로 CFP 페이지의 날짜 위치를 확인해 패턴을 채웁니다. 자동 파싱이 어려우면 manual 어댑터로 날짜와 확인일을 직접 적습니다. 자세한 절차는 docs/adding-a-venue.md에 있습니다.',
     },
     en: {
@@ -65,7 +65,7 @@
       s5_t: 'Connect Google Chat reminders', s5_p: 'Requires a Google Workspace account (personal @gmail.com cannot add webhooks). A space with only you in it works as a personal channel.',
       s5_steps: ['Google Chat → create a space (e.g. "PaperRadar")', 'Space name ▾ → Apps & integrations → Webhooks → Add webhook → name it → Save → copy the URL', 'GitHub repo → Settings → Secrets and variables → Actions → New repository secret → name GOOGLE_CHAT_WEBHOOK_URL, paste the URL', 'Keep google-chat in reminders.channels in config/radar.yaml (default)', 'Actions → "Daily refresh" → Run workflow → tick test_notification → Run. A test message in the space means you are done'],
       s6_t: '(Optional) Email reminders', s6_p: 'Add SMTP secrets and put email in reminders.channels: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, REMINDER_EMAIL_TO, REMINDER_EMAIL_FROM.',
-      s7_t: 'Daily automation', s7_p: '.github/workflows/refresh.yml re-reads every official CFP daily, sends reminders 60/30/15/3 days before verified deadlines, commits changed data and redeploys the site. When a source cannot be verified the last value is kept and an issue is opened.',
+      s7_t: 'Daily automation', s7_p: '.github/workflows/refresh.yml re-reads every official CFP daily, sends one grouped digest a day for verified deadlines, commits changed data and redeploys the site. When a source cannot be verified the last value is kept and an issue is opened.',
       s8_t: 'Add a venue', s8_p: 'For venues missing from the catalog, scaffold a file with npm run new-venue, use npm run probe to see where the CFP page shows its dates, and fill in the patterns. If a page cannot be parsed, use the manual adapter and write the dates with the day you checked them. Full walkthrough in docs/adding-a-venue.md.',
     },
   };

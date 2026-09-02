@@ -52,9 +52,12 @@ custom: []
 #          milestones:
 #            - { type: paper, date: 2027-01-15, verifiedAt: 2026-09-02 }
 
+# One message a day, grouped into: 🆕 newly announced · 🔴 due today ·
+# 🟠 closing soon · 🟡 N days left (+ 🔁 changed · ❌ removed · ✅ re-verified).
 reminders:
-  daysBefore: [60, 30, 15, 3]   # one message per threshold; verified deadlines only
+  daysBefore: [30, 15, 3, 0]    # a section per threshold; 0 = on the day itself
+  imminentDays: 3               # thresholds at or below this are grouped as "closing soon"
   language: ko
   channels: [google-chat]       # google-chat (webhook) and/or email (SMTP) — secrets in GitHub → Settings → Secrets
-  notifyChanges: true           # daily digest when dates get announced / moved / removed / re-verified
+  notifyChanges: true           # include dates announced / moved / removed / re-verified since the last message
   notifyFailures: false         # also include source-verification failures (they open a GitHub issue anyway)

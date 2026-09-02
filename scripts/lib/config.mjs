@@ -23,7 +23,10 @@ export const DEFAULTS = Object.freeze({
   rankings: { show: [], primary: null },
   select: { fields: [], types: [...VENUE_TYPES], venues: [], exclude: [], tiers: null },
   custom: [],
-  reminders: { daysBefore: [60, 30, 15, 3], language: null, channels: ['google-chat'], notifyChanges: true, notifyFailures: false },
+  reminders: {
+    daysBefore: [30, 15, 3, 0], imminentDays: 3, language: null,
+    channels: ['google-chat'], notifyChanges: true, notifyFailures: false,
+  },
 });
 
 export function loadConfig(path = PATHS.config) {
@@ -211,8 +214,12 @@ function normalizeReminders(input, site, report) {
     if (Array.isArray(input.daysBefore) && input.daysBefore.length > 0 && input.daysBefore.every((d) => Number.isInteger(d) && d >= 0)) {
       reminders.daysBefore = [...new Set(input.daysBefore)].sort((a, b) => b - a);
     } else {
-      report.error('reminders.daysBefore', 'must be a non-empty list of non-negative integers, e.g. [60, 30, 15, 3]');
+      report.error('reminders.daysBefore', 'must be a non-empty list of non-negative integers, e.g. [30, 15, 3, 0] (0 = on the day)');
     }
+  }
+  if (input.imminentDays !== undefined) {
+    if (Number.isInteger(input.imminentDays) && input.imminentDays >= 0) reminders.imminentDays = input.imminentDays;
+    else report.error('reminders.imminentDays', 'must be a non-negative integer: thresholds at or below it are grouped as "closing soon"');
   }
   if (input.language !== undefined) {
     if (site.languages.includes(input.language)) reminders.language = input.language;

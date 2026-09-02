@@ -57,7 +57,7 @@ gh variable set GOOGLE_CHAT_SECRET_NAME --body "NOTI"
 
 ```yaml
 reminders:
-  daysBefore: [60, 30, 15, 3]
+  daysBefore: [30, 15, 3, 0]
   language: ko           # or en
   channels: [google-chat]
 ```

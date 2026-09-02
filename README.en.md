@@ -18,7 +18,8 @@ every day from the official CFPs by GitHub Actions. No server, no database.
 - **Calendars that update in place.** RFC 5545 feeds for everything, per type,
   per ranking tier and per venue, with `SEQUENCE`/`CANCELLED` handling.
 - **Reminders where you already are.** Google Chat webhook (a one-person space
-  works as a personal channel) and/or SMTP email, 60/30/15/3 days before.
+  works as a personal channel) and/or SMTP email — one digest a day, grouped
+  into newly announced / due today / closing soon / 15 / 30 days.
 - **Bilingual UI** (Korean / English), official time + your timezone, dark mode,
   keyboard accessible, and a built-in *Setup guide* tab.
 
@@ -53,7 +54,7 @@ site:
   languages: [ko, en]
   baseUrl: https://<you>.github.io/PaperRadar/
 reminders:
-  daysBefore: [60, 30, 15, 3]
+  daysBefore: [30, 15, 3, 0]
   channels: [google-chat]
 ```
 
@@ -108,62 +109,74 @@ keeps the last verified dates.
 
 | What | When | Where |
 |---|---|---|
-| **Deadline reminders** | once per `daysBefore` threshold for each verified deadline — 60·30·15·3 days by default | Google Chat space / email |
+| **Deadline digest** | once a day, grouped into the categories below | Google Chat space / email |
 | **Source verification failures** | a page could not be read or its wording changed | one GitHub issue (accumulates, auto-closes on recovery) |
-| **Schedule-change digest** | a date was announced (TBA → date), moved, removed, or a source verified again — once per day | Google Chat / email (`reminders.notifyChanges`, on by default) + the *Sources & updates* tab |
+| **Full change log** | every daily refresh | *Sources & updates* tab, `data/updates.json` |
 
-Reminder rules:
+### Categories
 
-- One run per day; everything due that day goes out as **a single digest**.
+| Section | Meaning |
+|---|---|
+| 🆕 Newly announced | a TBA date was announced, or a new milestone appeared |
+| 🔴 Due today | the deadline is today (`0` in `daysBefore`) |
+| 🟠 Closing soon | at or below `imminentDays` (default 3) |
+| 🟡 N days left | one section per remaining threshold in `daysBefore` (default 15, 30) |
+| 🔁 Date changed · ❌ Removed · ✅ Verified again | detected by the refresh (`notifyChanges`, on by default) |
+
+```text
+📡 PaperRadar · Deadline reminder
+5 deadline(s) approaching
+
+🆕 Newly announced (1)
+  HotOS 2027 · Paper deadline
+    2027-01-15 23:59 AoE
+
+🔴 Due today (1)
+  D-Day · ASPLOS 2027 · September cycle Paper deadline
+    Official: 2026-09-09 23:59 AoE
+    Local (Europe/Berlin): 2026-09-10 13:59
+
+🟠 Closing soon (1)
+🟡 15 days left (1)
+🟡 30 days left (1)
+
+Only verified deadlines are sent. Full schedule: https://<you>.github.io/PaperRadar/
+```
+
+### Rules
+
+- Everything due that day goes out as **one message**; deadlines and schedule
+  changes are not sent separately.
+- A deadline introduced under "newly announced" is not repeated in another
+  section of the same message.
 - Only author-actionable milestones: abstract, paper, camera-ready.
   Notification and event dates go to the calendars but never to reminders.
 - Each threshold fires once per deadline. What was sent is recorded in
   `data/state/reminders.json`, so re-runs never repeat. If Actions skips a day
   the reminder goes out the next day.
-- A deadline that appears 10 days out produces **one D-10 message**, not
-  60/30/15 at once.
+- A deadline that appears 10 days out is listed **once**, under the 15-day
+  section — not under 30 and 15 at the same time.
 - Deadlines whose page states no timezone (`unspecified`) are shown on the
   site but never pushed — we do not wake people on an assumption.
+- The very first run records a starting point and announces nothing, so a fresh
+  deployment does not report the 120 deadlines it just imported.
+- Source failures already open a GitHub issue, so they are excluded by default;
+  `reminders.notifyFailures: true` includes them.
 
-Example:
+To preview the formatting at any time:
 
-```text
-📡 PaperRadar · Deadline reminder
-2 deadline(s) approaching
-
-D-30 · EuroSys 2027 · Fall Paper deadline
-  Official: 2026-09-24 23:59 AoE
-  Local (Europe/Berlin): 2026-09-25 13:59
-  [Open CFP]
-…
-Only verified deadlines are sent. Full schedule: https://<you>.github.io/PaperRadar/
+```bash
+npm run remind -- --sample 5
 ```
 
-The change digest looks like this:
+On GitHub: *Actions → Daily refresh → Run workflow → **sample_notification***.
+It never touches the sent-state.
 
-```text
-📡 PaperRadar · Schedule changes
-2 change(s) detected
-
-🆕 Announced (TBA → date) · HotOS 2027 · Paper deadline
-  TBA → 2027-01-15 23:59 AoE
-  Local (Europe/Berlin): 2027-01-16 12:59
-🔁 Changed · EuroSys 2027 · Fall Paper deadline
-  2026-09-24 23:59 AoE → 2026-10-01 23:59 AoE
-  …
-```
-
-- The first run only records a starting point and sends nothing (so a fresh
-  deployment does not announce the 120 deadlines it just imported). Changes
-  detected by later refreshes are sent.
-- Source failures already open a GitHub issue, so they are excluded by
-  default; `reminders.notifyFailures: true` includes them.
-- Turn it off with `reminders.notifyChanges: false`.
-
-Nothing arriving? Check, in order: ① the `GOOGLE_CHAT_WEBHOOK_URL` secret
-exists ② `reminders.channels` in `radar.yaml` contains `google-chat` ③ the
-*Send due reminders* step log says `nothing due today` / `changes: nothing new`.
-Details in [docs/setup-google-chat.md](docs/setup-google-chat.md).
+Nothing arriving? Check, in order: ① the `GOOGLE_CHAT_WEBHOOK_URL` secret (or
+the `GOOGLE_CHAT_SECRET_NAME` variable) exists ② `reminders.channels` in
+`radar.yaml` contains `google-chat` ③ the *Send due reminders* step log says
+`nothing to send today`. Details in
+[docs/setup-google-chat.md](docs/setup-google-chat.md).
 
 ## How it works
 
@@ -201,7 +214,7 @@ Full option list: [docs/config-reference.md](docs/config-reference.md).
 | `npm run validate` | Config + catalog + data validation (CI gate) |
 | `npm run refresh` | Update `data/` from official CFPs (`--only`, `--dry-run`, `--report`) |
 | `npm run build` / `npm run dev` | Build / serve `dist/` |
-| `npm run remind` | Send due reminders (`--test`, `--dry-run`, `--channel`) |
+| `npm run remind` | Send the daily digest (`--test`, `--sample [n]`, `--dry-run`, `--channel`) |
 | `npm run probe` | Inspect a CFP page or run one venue's adapter |
 | `npm run new-venue` | Scaffold a catalog entry |
 | `npm test` | Unit tests (Node test runner) |

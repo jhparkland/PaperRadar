@@ -15,11 +15,14 @@ export function buildMessage(digest, { env = process.env, siteTitle }) {
     : [
       `<h2>${escapeHtml(digest.title)}</h2>`,
       `<p>${escapeHtml(digest.subtitle)}</p>`,
-      '<ul>',
-      ...digest.items.map((i) => `<li><strong>${escapeHtml(i.dday)} · ${escapeHtml(i.heading)}</strong> — ${escapeHtml(i.detail)}<br>`
-        + `<small>${escapeHtml(i.venueName)}<br>${escapeHtml(i.official)}<br>${escapeHtml(i.local)}</small>`
-        + (i.url ? `<br><a href="${escapeAttr(i.url)}">${escapeHtml(i.url)}</a>` : '') + '</li>'),
-      '</ul>',
+      ...digest.sections.flatMap((s) => [
+        `<h3>${escapeHtml(s.label)} (${s.items.length})</h3>`,
+        '<ul>',
+        ...s.items.map((i) => `<li><strong>${escapeHtml([i.dday, i.heading].filter(Boolean).join(' · '))}</strong> — ${escapeHtml(i.detail)}<br>`
+          + `<small>${escapeHtml(i.venueName)}<br>${escapeHtml(i.official)}${i.local ? `<br>${escapeHtml(i.local)}` : ''}</small>`
+          + (i.url ? `<br><a href="${escapeAttr(i.url)}">${escapeHtml(i.url)}</a>` : '') + '</li>'),
+        '</ul>',
+      ]),
       `<p><em>${escapeHtml(digest.footer)}</em></p>`,
     ].join('\n');
   return {

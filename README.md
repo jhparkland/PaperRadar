@@ -17,7 +17,8 @@ CFP를 다시 읽어 갱신하고 GitHub Pages에 배포합니다. 서버도 DB�
 - **제자리에서 갱신되는 캘린더.** 전체·유형별·등급별·venue별 RFC 5545 피드.
   변경 시 `SEQUENCE` 증가, 삭제 시 `CANCELLED`.
 - **쓰던 곳으로 오는 알림.** Google Chat 웹훅(혼자 있는 스페이스 = 개인 알림)
-  그리고/또는 SMTP 이메일. 60/30/15/3일 전.
+  그리고/또는 SMTP 이메일. 새로 등장 · 오늘 마감 · 임박 · 15일 · 30일로 분류해
+  하루 한 번.
 - **한국어/영어 UI**, 공식 시각 + 내 시간대, 다크 모드, 키보드 접근성,
   사이트 안에 **설정 가이드 탭** 내장.
 
@@ -52,7 +53,7 @@ site:
   languages: [ko, en]
   baseUrl: https://<you>.github.io/PaperRadar/
 reminders:
-  daysBefore: [60, 30, 15, 3]
+  daysBefore: [30, 15, 3, 0]
   channels: [google-chat]
 ```
 
@@ -107,62 +108,75 @@ LLM은 그럴듯한 날짜를 만들어내기 쉽습니다. PaperRadar의 검증
 
 | 무엇 | 언제 | 어디로 |
 |---|---|---|
-| **마감 리마인더** | 확인된(Verified) 마감의 `daysBefore` 시점마다 한 번씩. 기본 60·30·15·3일 전 | Google Chat 스페이스 / 이메일 |
+| **마감 다이제스트** | 하루 한 번, 아래 분류로 묶어서 | Google Chat 스페이스 / 이메일 |
 | **출처 확인 실패** | 공식 페이지를 못 읽거나 문구가 바뀌어 재확인이 필요할 때 | GitHub 이슈 (하나에 누적, 복구되면 자동 닫힘) |
-| **일정 변경 다이제스트** | 날짜가 확정(TBA → 날짜)·변경·삭제되거나 출처가 다시 확인됐을 때, 그날 한 번 | Google Chat / 이메일 (`reminders.notifyChanges`, 기본 켜짐) + 사이트 *갱신·출처* 탭 |
+| **전체 변경 기록** | 매일 갱신 때마다 | 사이트 *갱신·출처* 탭, `data/updates.json` |
 
-마감 리마인더의 규칙:
+### 분류
 
-- 매일 한 번 실행되며, 그날 해당되는 마감을 **메시지 하나로 묶어** 보냅니다.
+| 분류 | 뜻 |
+|---|---|
+| 🆕 새로 등장 | TBA였던 일정에 날짜가 잡혔거나 새 마감이 생김 |
+| 🔴 오늘 마감 | 오늘이 마감일 (`daysBefore`의 `0`) |
+| 🟠 마감 임박 | `imminentDays`(기본 3일) 이하 |
+| 🟡 N일 남음 | `daysBefore`의 나머지 시점마다 한 섹션 (기본 15일, 30일) |
+| 🔁 일정 변경 · ❌ 삭제 · ✅ 재확인 | 갱신에서 감지된 변경 (`notifyChanges`, 기본 켜짐) |
+
+```text
+📡 PaperRadar · 마감 알림
+5건의 마감이 다가옵니다
+
+🆕 새로 등장 (1)
+  HotOS 2027 · 논문 마감
+    2027-01-15 23:59 AoE
+    현지(Asia/Seoul): 2027-01-16 20:59
+
+🔴 오늘 마감 (1)
+  D-Day · ASPLOS 2027 · 9월 사이클 논문 마감
+    공식: 2026-09-09 23:59 AoE
+    현지(Asia/Seoul): 2026-09-10 20:59
+
+🟠 마감 임박 (1)
+  D-2 · NSDI 2027 · 가을 초록 마감
+    …
+
+🟡 15일 남음 (1)
+🟡 30일 남음 (1)
+
+확인된(Verified) 일정만 알립니다. 전체 일정: https://<you>.github.io/PaperRadar/
+```
+
+### 규칙
+
+- 그날 해당되는 것 전부가 **메시지 하나**에 들어갑니다. 마감과 일정 변경이 따로
+  오지 않습니다.
+- "새로 등장"으로 소개된 마감은 같은 메시지의 다른 섹션에 중복해서 싣지 않습니다.
 - 저자가 뭔가 해야 하는 항목만 알립니다: 초록·논문·최종본 마감. 결과 통보일과
   행사일은 캘린더에는 들어가지만 알림은 오지 않습니다.
 - 각 시점은 마감당 한 번만. 발송 기록이 `data/state/reminders.json`에 남아 다시
   실행해도 중복되지 않습니다. Actions가 하루 건너뛰면 다음 날 밀린 알림이 나갑니다.
-- 새 마감이 갑자기 10일 앞으로 등록되면 60/30/15를 다 보내지 않고 **D-10 한 건**만
-  보냅니다.
+- 새 마감이 갑자기 10일 앞으로 등록되면 30·15를 다 보내지 않고 **15일 섹션에 한 번**만
+  실립니다.
 - 시간대가 공식 페이지에 없는 마감(`unspecified`)은 사이트에 표시만 하고 알리지
   않습니다. 추정으로 사람을 깨우지 않기 위해서입니다.
-
-받는 메시지 예:
-
-```text
-📡 PaperRadar · 마감 알림
-2건의 마감이 다가옵니다
-
-D-30 · EuroSys 2027 · 가을 논문 마감
-  공식: 2026-09-24 23:59 AoE
-  현지(Asia/Seoul): 2026-09-25 20:59
-  [CFP 열기]
-
-D-15 · IPDPS 2027 · 초록 마감
-  …
-확인된(Verified) 일정만 알립니다. 전체 일정: https://<you>.github.io/PaperRadar/
-```
-
-일정 변경 다이제스트는 이렇게 옵니다:
-
-```text
-📡 PaperRadar · 일정 변경
-2건이 바뀌었습니다
-
-🆕 확정 (TBA → 날짜) · HotOS 2027 · 논문 마감
-  TBA → 2027-01-15 23:59 AoE
-  현지(Asia/Seoul): 2027-01-16 20:59
-🔁 변경 · EuroSys 2027 · 가을 논문 마감
-  2026-09-24 23:59 AoE → 2026-10-01 23:59 AoE
-  …
-```
-
-- 처음 켠 날은 기준점만 기록하고 보내지 않습니다(이미 있던 마감 120건을 "확정"으로
-  쏟아내지 않기 위해). 그 다음 갱신부터 감지된 변경만 옵니다.
+- 처음 켠 날은 변경 감지의 기준점만 기록하고 "새로 등장"을 보내지 않습니다(이미
+  있던 마감 120건을 쏟아내지 않기 위해).
 - 출처 확인 실패는 GitHub 이슈로 가므로 기본 제외. `reminders.notifyFailures: true`로
-  포함할 수 있습니다.
-- 끄려면 `reminders.notifyChanges: false`.
+  메시지에도 포함할 수 있습니다.
 
-알림이 안 오면: ① `GOOGLE_CHAT_WEBHOOK_URL` 시크릿이 있는지 ② `radar.yaml`의
-`reminders.channels`에 `google-chat`이 있는지 ③ Actions 로그의 *Send due reminders*
-단계에 `nothing due today` / `changes: nothing new`가 찍혔는지 순서로 보세요. 상세는
-[docs/setup-google-chat.md](docs/setup-google-chat.md).
+언제든 형식을 미리 보려면:
+
+```bash
+npm run remind -- --sample 5
+```
+
+GitHub에서는 *Actions → Daily refresh → Run workflow → **sample_notification*** 체크로
+실행됩니다. 발송 기록은 건드리지 않습니다.
+
+알림이 안 오면: ① `GOOGLE_CHAT_WEBHOOK_URL` 시크릿(또는 `GOOGLE_CHAT_SECRET_NAME`
+변수)이 있는지 ② `radar.yaml`의 `reminders.channels`에 `google-chat`이 있는지
+③ Actions 로그의 *Send due reminders* 단계에 `nothing to send today`가 찍혔는지
+순서로 보세요. 상세는 [docs/setup-google-chat.md](docs/setup-google-chat.md).
 
 ## 동작 구조
 
@@ -200,7 +214,7 @@ flowchart LR
 | `npm run validate` | 설정·카탈로그·데이터 검증 (CI 게이트) |
 | `npm run refresh` | 공식 CFP에서 `data/` 갱신 (`--only`, `--dry-run`, `--report`) |
 | `npm run build` / `npm run dev` | `dist/` 빌드 / 로컬 제공 |
-| `npm run remind` | 알림 발송 (`--test`, `--dry-run`, `--channel`) |
+| `npm run remind` | 알림 발송 (`--test`, `--sample [n]`, `--dry-run`, `--channel`) |
 | `npm run probe` | CFP 페이지 분석, venue 어댑터 실행 |
 | `npm run new-venue` | 카탈로그 파일 스캐폴드 |
 | `npm test` | 단위 테스트 |
