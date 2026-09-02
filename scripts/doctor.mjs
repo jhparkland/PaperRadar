@@ -76,8 +76,12 @@ async function main() {
   lines.push('', `Reminder channels (${config.reminders.channels.join(', ') || 'none'}) · ${config.reminders.daysBefore.join('/')} days before · ${config.reminders.language}`);
   for (const ch of config.reminders.channels) {
     if (ch === 'google-chat') {
-      if (googleChat.isConfigured()) lines.push(ok('GOOGLE_CHAT_WEBHOOK_URL is set'));
-      else lines.push(info('GOOGLE_CHAT_WEBHOOK_URL not set here — add it as a GitHub Actions secret (docs/setup-google-chat.md); local runs will dry-run'));
+      const problem = googleChat.configProblem();
+      if (!problem) lines.push(ok('GOOGLE_CHAT_WEBHOOK_URL is set'));
+      else {
+        lines.push(info(problem));
+        lines.push(info('(locally this only means reminders dry-run; in GitHub it is a repository secret — docs/setup-google-chat.md)'));
+      }
     }
     if (ch === 'email') {
       if (email.isConfigured()) lines.push(ok('SMTP settings are set'));

@@ -45,8 +45,11 @@ jobs:
       - run: npm run validate
       - run: npm run build
 
+      # A misconfigured notification channel must not stop the refresh from
+      # committing data and redeploying the site. The step still shows red.
       - name: Test notification channels
         if: ${{ inputs.test_notification }}
+        continue-on-error: true
         run: npm run remind -- --test
         env:
           GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.GOOGLE_CHAT_WEBHOOK_URL }}

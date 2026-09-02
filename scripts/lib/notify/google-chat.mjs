@@ -11,7 +11,27 @@ import { t } from '../i18n.mjs';
 export const ENV_VAR = 'GOOGLE_CHAT_WEBHOOK_URL';
 
 export function isConfigured(env = process.env) {
-  return typeof env[ENV_VAR] === 'string' && env[ENV_VAR].startsWith('https://chat.googleapis.com/');
+  return configProblem(env) === null;
+}
+
+/**
+ * Why the channel cannot be used, as a sentence the user can act on, or null.
+ * The most common mistake is storing the URL under a different secret name —
+ * GitHub Actions only injects the exact name the workflow references.
+ */
+export function configProblem(env = process.env) {
+  const value = env[ENV_VAR];
+  if (typeof value !== 'string' || value.trim() === '') {
+    return `${ENV_VAR} is empty. Add the webhook URL as a repository secret named exactly ${ENV_VAR} `
+      + '(Settings → Secrets and variables → Actions → New repository secret). A secret stored under any '
+      + 'other name is not read, whatever the webhook itself is called in Google Chat.';
+  }
+  if (!value.startsWith('https://chat.googleapis.com/')) {
+    return `${ENV_VAR} does not look like a Google Chat webhook URL (expected it to start with `
+      + 'https://chat.googleapis.com/v1/spaces/…). Copy the whole URL from the space\'s webhook, '
+      + 'including the ?key=…&token=… part.';
+  }
+  return null;
 }
 
 /** Build the webhook payload: plain-text fallback + a Cards v2 card. */
@@ -47,7 +67,8 @@ export function buildPayload(digest) {
 }
 
 export async function send(digest, { env = process.env, fetchImpl = globalThis.fetch } = {}) {
-  if (!isConfigured(env)) return { ok: false, skipped: true, error: `${ENV_VAR} is not set (or is not a chat.googleapis.com URL)` };
+  const problem = configProblem(env);
+  if (problem) return { ok: false, skipped: true, error: problem };
   const payload = buildPayload(digest);
   try {
     const res = await fetchImpl(env[ENV_VAR], {

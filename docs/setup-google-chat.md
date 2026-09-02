@@ -95,7 +95,8 @@ The very first run records a starting point and sends nothing. Disable with
 
 | Symptom | Cause / fix |
 |---|---|
-| `GOOGLE_CHAT_WEBHOOK_URL is not set` | The secret is missing or empty. Names are case-sensitive. |
+| `GOOGLE_CHAT_WEBHOOK_URL is empty` | The secret does not exist **under that exact name**. Workflows read the name literally, so a secret called `NOTI`, `CHAT_URL`, … is never seen — whatever you named the webhook inside Google Chat. Create a secret named `GOOGLE_CHAT_WEBHOOK_URL` with the same URL. Names are case-sensitive. |
+| `does not look like a Google Chat webhook URL` | The value was truncated when pasted. Copy the whole URL including `?key=…&token=…`. |
 | `HTTP 400 … Invalid …` | The URL was truncated when pasted. Copy it again including `?key=…&token=…`. |
 | `HTTP 403` / `404` | The webhook was deleted, or the space was deleted. Create a new webhook. |
 | Nothing arrives, workflow is green | `reminders.channels` does not include `google-chat`, or nothing is due today (check the *Send due reminders* step log: `nothing due today`). |
