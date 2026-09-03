@@ -14,6 +14,13 @@
     "allowedHosts": [
       "icpp2026.github.io"
     ],
+    "rollover": {
+      "url": "https://icpp{year}.github.io/call-for-papers/",
+      "allowedHosts": [
+        "icpp{year}.github.io"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2026,
       "label": "ICPP 2026",

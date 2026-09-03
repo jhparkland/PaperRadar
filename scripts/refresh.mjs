@@ -7,7 +7,7 @@
 //   --report path.md      write a markdown summary of source failures (used by CI to file an issue)
 //   --concurrency 4
 import { loadContext, nowIso, mapLimit, parseArgs } from './lib/context.mjs';
-import { PATHS, readJson, writeJson, writeText } from './lib/io.mjs';
+import { PATHS, readJson, writeJson, writeText, join } from './lib/io.mjs';
 import { emptySchedules, flattenDeadlines } from './lib/schedule.mjs';
 import { refreshVenue, appendUpdates } from './lib/refresh.mjs';
 import { planCalendar } from './lib/ics.mjs';
@@ -33,16 +33,19 @@ async function main() {
     const r = await refreshVenue(v, schedules.venues[v.id], { now });
     const ms = Date.now() - started;
     const status = r.failure ? `FAILED  ${r.failure.error}` : (v.cfp.adapter === 'manual' ? 'manual' : 'ok');
-    console.log(`  ${v.acronym.padEnd(14)} ${String(ms).padStart(5)} ms  ${status}`);
+    const rolled = r.rollover ? `  → rolled over to ${r.rollover.edition.label}` : '';
+    console.log(`  ${v.acronym.padEnd(14)} ${String(ms).padStart(5)} ms  ${status}${rolled}`);
     return { venue: v, ...r };
   });
 
   const changes = [];
   const failures = [];
+  const rollovers = [];
   for (const r of results) {
     schedules.venues[r.venue.id] = r.schedule;
     changes.push(...r.changes);
     if (r.failure) failures.push({ ...r.failure, acronym: r.venue.acronym, adapter: r.venue.cfp.adapter });
+    if (r.rollover) rollovers.push({ venue: r.venue, ...r.rollover });
   }
   schedules.updatedAt = now;
 
@@ -70,6 +73,22 @@ async function main() {
   writeJson(PATHS.updates, appendUpdates(updates, changes));
   writeJson(PATHS.calendarState, nextState);
   console.log(`\nwrote data/schedules.json, data/updates.json, data/state/calendar.json`);
+  for (const r of rollovers) writeRolledOverVenue(r);
+}
+
+/**
+ * Point the venue file at the edition we just adopted. The catalog stays the
+ * source of truth, so the move lands in git as a reviewable diff instead of
+ * living only in machine-written data.
+ */
+function writeRolledOverVenue({ venue, cfp, edition }) {
+  const file = join(PATHS.venues, `${venue.id}.json`);
+  const raw = readJson(file);
+  raw.cfp.url = cfp.url;
+  raw.cfp.allowedHosts = cfp.allowedHosts;
+  raw.cfp.edition = { year: edition.year, label: edition.label };
+  writeJson(file, raw);
+  console.log(`updated catalog/venues/${venue.id}.json → ${edition.label} (${cfp.url})`);
 }
 
 function failureReport(failures, now) {

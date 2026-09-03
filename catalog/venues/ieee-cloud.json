@@ -15,6 +15,13 @@
     "allowedHosts": [
       "services.conferences.computer.org"
     ],
+    "rollover": {
+      "url": "https://services.conferences.computer.org/{year}/cloud/cloud-call-for-papers/",
+      "allowedHosts": [
+        "services.conferences.computer.org"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2026,
       "label": "IEEE CLOUD 2026",

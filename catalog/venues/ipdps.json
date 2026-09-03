@@ -15,6 +15,13 @@
     "allowedHosts": [
       "www.ipdps.org"
     ],
+    "rollover": {
+      "url": "https://www.ipdps.org/ipdps{year}/{year}-call-for-papers.html",
+      "allowedHosts": [
+        "www.ipdps.org"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2027,
       "label": "IPDPS 2027",

@@ -16,6 +16,13 @@
     "allowedHosts": [
       "www.sigmetrics.org"
     ],
+    "rollover": {
+      "url": "https://www.sigmetrics.org/sigmetrics{year}/pages/cfp.html",
+      "allowedHosts": [
+        "www.sigmetrics.org"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2027,
       "label": "SIGMETRICS 2027"

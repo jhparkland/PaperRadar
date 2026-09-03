@@ -16,6 +16,13 @@
     "allowedHosts": [
       "www.asplos-conference.org"
     ],
+    "rollover": {
+      "url": "https://www.asplos-conference.org/asplos{year}/cfp/",
+      "allowedHosts": [
+        "www.asplos-conference.org"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2027,
       "label": "ASPLOS 2027"

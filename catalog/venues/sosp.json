@@ -16,6 +16,14 @@
       "sigops.org",
       "www.sigops.org"
     ],
+    "rollover": {
+      "url": "https://sigops.org/s/conferences/sosp/{year}/cfp.html",
+      "allowedHosts": [
+        "sigops.org",
+        "www.sigops.org"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2026,
       "label": "SOSP 2026"

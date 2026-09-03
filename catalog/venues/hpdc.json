@@ -16,6 +16,13 @@
     "allowedHosts": [
       "hpdc.sci.utah.edu"
     ],
+    "rollover": {
+      "url": "https://hpdc.sci.utah.edu/{year}/calls-cfp.html",
+      "allowedHosts": [
+        "hpdc.sci.utah.edu"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2026,
       "label": "HPDC 2026"

@@ -66,6 +66,11 @@ Then add the venue id (or its field) to `select` in `config/radar.yaml` and run
 `npm run doctor`. Show the user the `probe --venue` output so they can compare
 with the official page.
 
+To let a venue follow itself into next year, add a `cfp.rollover` block with
+`{year}` (or `{yy}`) in the url and hosts — see docs/adding-a-venue.md. The
+template must reproduce the tracked url at the current `edition.year`, which
+`npm run validate` enforces.
+
 Journals without deadlines: `"submission": "rolling"`, `"cfp": null`.
 Special issues with deadlines: a journal with a `cfp` block whose round has
 `"track": "special-issue"`.

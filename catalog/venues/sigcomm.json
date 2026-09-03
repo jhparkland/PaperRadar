@@ -15,6 +15,13 @@
     "allowedHosts": [
       "conferences.sigcomm.org"
     ],
+    "rollover": {
+      "url": "https://conferences.sigcomm.org/sigcomm/{year}/cfp/",
+      "allowedHosts": [
+        "conferences.sigcomm.org"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2026,
       "label": "SIGCOMM 2026"

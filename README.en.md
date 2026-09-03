@@ -149,6 +149,7 @@ keeps the last verified dates.
 | 🔴 Due today | the deadline is today (`0` in `daysBefore`) |
 | 🟠 Closing soon | at or below `imminentDays` (default 3) |
 | 🟡 N days left | one section per remaining threshold in `daysBefore` (default 15, 30) |
+| 📅 Now tracking the next edition | the tracked edition ended and the next year's CFP was adopted |
 | 🔁 Date changed · ❌ Removed · ✅ Verified again | detected by the refresh (`notifyChanges`, on by default) |
 
 ```text
@@ -205,6 +206,37 @@ the `GOOGLE_CHAT_SECRET_NAME` variable) exists ② `reminders.channels` in
 `radar.yaml` contains `google-chat` ③ the *Send due reminders* step log says
 `nothing to send today`. Details in
 [docs/setup-google-chat.md](docs/setup-google-chat.md).
+
+## When the year rolls over
+
+A venue file tracks one edition. Once its deadlines have all passed,
+PaperRadar **finds the next year's CFP by itself** — for venues that publish
+each edition at a URL differing only by the year:
+
+```json
+"rollover": {
+  "url": "https://{year}.eurosys.org/cfp.html",
+  "allowedHosts": ["{year}.eurosys.org"],
+  "maxAhead": 2
+}
+```
+
+**20 of the 26** CFP-tracked venues in the catalog carry this block. On
+adoption the venue file's `url` and `edition` are rewritten and committed, so
+the move shows up as a git diff; the old edition stays in
+`data/schedules.json` as history and the digest reports **📅 Now tracking the
+next edition**.
+
+Adoption is deliberately hard to earn: the page must parse with this venue's
+own patterns, carry at least one **future** author deadline, and not consist
+entirely of dates older than the current edition — that last rule is what
+rejects a next-year page still showing last year's CFP (SIGCOMM 2027 is
+rejected by it today). A probe that fails is silent and retried tomorrow.
+
+Venues that move host between editions (`hpdc.sci.utah.edu/2026/` → somewhere
+else) cannot be followed automatically. A human updates the file, and once the
+old page disappears the `source-failure` issue says so. See
+[docs/adding-a-venue.md](docs/adding-a-venue.md).
 
 ## How it works
 

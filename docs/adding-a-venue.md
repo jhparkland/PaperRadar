@@ -162,3 +162,60 @@ Checklist:
 | `note` | no | string or `{ko, en}` shown on the card |
 | `submission` | no | `cfp` (default) or `rolling` (default for journals) |
 | `cfp` | no | adapter block described above |
+
+## Following a venue into its next edition
+
+A venue file tracks one edition. When that edition's deadlines have all passed,
+PaperRadar can look for the next one by itself — if the venue publishes each
+edition at a URL that differs only by the year:
+
+```json
+"cfp": {
+  "url": "https://2027.eurosys.org/cfp.html",
+  "allowedHosts": ["2027.eurosys.org"],
+  "rollover": {
+    "url": "https://{year}.eurosys.org/cfp.html",
+    "allowedHosts": ["{year}.eurosys.org"],
+    "maxAhead": 2
+  }
+}
+```
+
+`{year}` becomes `2028`; use `{yy}` where the site uses two digits
+(`ppopp28.sigplan.org`). A host with no placeholder is kept as-is, which is
+right for `www.asplos-conference.org/asplos{year}/cfp/`.
+
+`npm run validate` refuses a template that does not reproduce the tracked
+`url` at the current `edition.year`, so rollover can never start reading a
+different page than the one the adapter was written against.
+
+### When it fires
+
+Only when the tracked edition has **no author deadline left in the future**
+(abstract, paper, camera-ready — a pending notification date does not count),
+or when its page has gone. Then the next year is fetched, under an allow-list
+expanded for that year alone.
+
+### What it takes to be adopted
+
+All of these, or the probe is discarded and tried again tomorrow:
+
+1. the page is reachable and parses with this venue's own patterns;
+2. it yields at least one **future** author deadline;
+3. not every date on it is older than the current edition — this is what
+   rejects a next-year page that is still a copy of the last CFP;
+4. the year is at most `maxAhead` (≤ 5) ahead, and no more than two calendar
+   years from today.
+
+On adoption the venue file's `url`, `allowedHosts` and `edition` are rewritten
+and committed, the previous edition stays in `data/schedules.json` as history,
+and the digest reports it under **📅 새 회차 추적 시작 / Now tracking the next
+edition**. `edition.event` is cleared: the new edition's dates and location are
+not known from the CFP page.
+
+### When it cannot help
+
+Venues that change host between editions (`hpdc.sci.utah.edu/2026/` →
+somewhere else entirely) will simply never find a candidate. That is not a
+failure; the source keeps its normal status and a human updates the file.
+Check what would happen with `npm run probe -- --venue <id>`.

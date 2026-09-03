@@ -14,7 +14,7 @@ import { t, dday, trackLabel } from '../i18n.mjs';
 import { pickLang } from '../errors.mjs';
 
 /** Category order in the message, most urgent first. `window` expands per threshold. */
-export const CATEGORY_ORDER = Object.freeze(['new', 'today', 'imminent', 'window', 'changed', 'removed', 'recovered', 'failed']);
+export const CATEGORY_ORDER = Object.freeze(['rolled-over', 'new', 'today', 'imminent', 'window', 'changed', 'removed', 'recovered', 'failed']);
 
 /** Which bucket a fired threshold belongs to. */
 export function categoryForThreshold(threshold, imminentDays) {
@@ -25,6 +25,7 @@ export function categoryForThreshold(threshold, imminentDays) {
 
 /** Which bucket an update-log entry belongs to. */
 export function categoryForChange(entry) {
+  if (entry.kind === 'rolled-over') return 'rolled-over';
   if (entry.kind === 'added') return 'new';
   if (entry.kind === 'changed') return entry.before ? 'changed' : 'new';
   if (entry.kind === 'removed') return 'removed';

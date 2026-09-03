@@ -15,6 +15,13 @@
     "allowedHosts": [
       "dipsa-qub.github.io"
     ],
+    "rollover": {
+      "url": "https://dipsa-qub.github.io/ICS{year}-webpage/call-for/call-for-papers.html",
+      "allowedHosts": [
+        "dipsa-qub.github.io"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2026,
       "label": "ICS 2026",

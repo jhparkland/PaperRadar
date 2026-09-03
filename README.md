@@ -146,6 +146,7 @@ LLM은 그럴듯한 날짜를 잘 만들어냅니다. PaperRadar의 검증(스�
 | 🔴 오늘 마감 | 오늘이 마감일 (`daysBefore`의 `0`) |
 | 🟠 마감 임박 | `imminentDays`(기본 3일) 이하 |
 | 🟡 N일 남음 | `daysBefore`의 나머지 시점마다 한 섹션 (기본 15일, 30일) |
+| 📅 새 회차 추적 시작 | 회차가 끝나 다음 해 CFP로 자동 전환됨 |
 | 🔁 일정 변경 · ❌ 삭제 · ✅ 재확인 | 갱신에서 감지된 변경 (`notifyChanges`, 기본 켜짐) |
 
 ```text
@@ -203,6 +204,34 @@ GitHub에서는 *Actions → Daily refresh → Run workflow → **sample_notific
 변수)이 있는지 ② `radar.yaml`의 `reminders.channels`에 `google-chat`이 있는지
 ③ Actions 로그의 *Send due reminders* 단계에 `nothing to send today`가 찍혔는지
 순서로 보세요. 상세는 [docs/setup-google-chat.md](docs/setup-google-chat.md).
+
+## 연도가 바뀌면
+
+venue 파일은 회차 하나를 추적합니다. 그 회차의 마감이 모두 지나면 **다음 해 CFP를
+스스로 찾아 넘어갑니다** — 학회가 연도만 다른 URL에 회차를 올리는 경우에 한해서.
+
+```json
+"rollover": {
+  "url": "https://{year}.eurosys.org/cfp.html",
+  "allowedHosts": ["{year}.eurosys.org"],
+  "maxAhead": 2
+}
+```
+
+카탈로그의 CFP 추적 venue 26개 중 **20개**에 이 블록이 들어 있습니다. 넘어갈 때는
+venue 파일의 `url`·`edition`이 다시 쓰이고 커밋되므로, git diff로 확인할 수 있습니다.
+옛 회차는 `data/schedules.json`에 이력으로 남고, 알림에 **📅 새 회차 추적 시작**으로
+뜹니다.
+
+받아들이는 조건은 깐깐합니다 — 페이지가 이 venue의 패턴으로 파싱되고, **미래**
+마감이 하나 이상 있고, 모든 날짜가 이전 회차보다 오래되지 않아야 합니다. 마지막
+조건이 **작년 내용을 복사해둔 껍데기 페이지**를 걸러냅니다(실제로 SIGCOMM 2027
+페이지가 여기서 거부됩니다). 조건을 못 채우면 조용히 넘어가고 다음 날 다시 시도합니다.
+
+회차마다 호스트가 완전히 바뀌는 학회(`hpdc.sci.utah.edu/2026/` → 다른 도메인)는
+자동으로 못 넘어갑니다. 그런 경우는 사람이 venue 파일을 고쳐야 하고, 옛 페이지가
+사라지면 `source-failure` 이슈로 알려줍니다. 절차는
+[docs/adding-a-venue.md](docs/adding-a-venue.md).
 
 ## 동작 구조
 

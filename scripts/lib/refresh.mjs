@@ -5,6 +5,7 @@ import { fetchSource, htmlToText } from './fetch.mjs';
 import { extractDeclarative } from './adapters/declarative.mjs';
 import { extractManual } from './adapters/manual.mjs';
 import { upsertEdition, deadlineUid } from './schedule.mjs';
+import { candidateYears, candidateSource, candidateCfp, acceptCandidate } from './rollover.mjs';
 
 /**
  * @param {object} venue      validated catalog venue
@@ -57,9 +58,26 @@ export async function refreshVenue(venue, previous, { now, fetchImpl } = {}) {
   if (error) {
     const edition = degradeEdition(cfp, prevEdition, editionBase, { now, error, contentHash });
     const changes = diffEditions(venue.id, prevEdition, edition, now);
+    let schedule = upsertEdition(prevSchedule, edition);
+
+    // A dead CFP URL is the usual sign that a venue has moved on to its next
+    // edition and taken the old page down, so this is exactly when to look.
+    const rolled = await tryRollover(venue, edition, { now, fetchImpl });
+    if (rolled) {
+      schedule = upsertEdition(schedule, rolled.edition);
+      changes.push(...diffEditions(venue.id, null, rolled.edition, now));
+      changes.push({
+        at: now, venueId: venue.id, editionId: rolled.edition.id, kind: 'rolled-over',
+        message: `${edition.label} → ${rolled.edition.label}`, url: rolled.cfp.url,
+      });
+      // Not a failure needing a human: we followed the venue forward, and the
+      // old URL is about to be replaced in the catalog anyway.
+      return { schedule, changes, failure: null, rollover: rolled };
+    }
+
     changes.push({ at: now, venueId: venue.id, editionId: edition.id, kind: 'failed', message: error });
     return {
-      schedule: upsertEdition(prevSchedule, edition),
+      schedule,
       changes,
       failure: { venueId: venue.id, editionId: edition.id, url: cfp.url, error },
     };
@@ -74,7 +92,64 @@ export async function refreshVenue(venue, previous, { now, fetchImpl } = {}) {
   if (prevEdition?.source?.status === 'failed') {
     changes.push({ at: now, venueId: venue.id, editionId: edition.id, kind: 'recovered', message: 'source verified again' });
   }
-  return { schedule: upsertEdition(prevSchedule, edition), changes, failure: null };
+  let schedule = upsertEdition(prevSchedule, edition);
+
+  // This edition is over — see whether the venue has published the next one.
+  const rolled = await tryRollover(venue, edition, { now, fetchImpl });
+  if (rolled) {
+    schedule = upsertEdition(schedule, rolled.edition);
+    changes.push(...diffEditions(venue.id, null, rolled.edition, now));
+    changes.push({
+      at: now, venueId: venue.id, editionId: rolled.edition.id, kind: 'rolled-over',
+      message: `${edition.label} → ${rolled.edition.label}`, url: rolled.cfp.url,
+    });
+    return { schedule, changes, failure: null, rollover: rolled };
+  }
+  return { schedule, changes, failure: null };
+}
+
+/**
+ * Probe the next year(s) of a venue whose current edition has run out.
+ * Returns the adopted edition and the cfp it was read with, or null. A probe
+ * that 404s or yields nothing usable is not a failure: the venue simply has
+ * not published yet, and we try again tomorrow.
+ */
+async function tryRollover(venue, currentEdition, { now, fetchImpl }) {
+  const cfp = venue.cfp;
+  const attempts = [];
+  for (const year of candidateYears(cfp, currentEdition, { now })) {
+    const source = candidateSource(cfp, year);
+    if (!source) continue;
+    const next = candidateCfp(cfp, year, source, venue.acronym);
+    const fetched = await fetchSource(source.url, { allowedHosts: source.allowedHosts, fetchImpl });
+    if (!fetched.ok) {
+      attempts.push({ year, url: source.url, reason: fetched.error });
+      continue;
+    }
+    const extracted = extractDeclarative(next, htmlToText(fetched.text));
+    if (!extracted.ok) {
+      attempts.push({ year, url: source.url, reason: `extraction failed: ${extracted.errors.join('; ')}` });
+      continue;
+    }
+    const verdict = acceptCandidate(extracted.rounds, currentEdition, { now });
+    if (!verdict.ok) {
+      attempts.push({ year, url: source.url, reason: verdict.reason });
+      continue;
+    }
+    return {
+      cfp: next,
+      attempts,
+      edition: {
+        id: next.edition.id,
+        year: next.edition.year,
+        label: next.edition.label,
+        event: null,
+        source: { url: source.url, adapter: 'declarative', status: 'ok', checkedAt: now, lastOkAt: now, error: null, contentHash: fetched.contentHash },
+        rounds: extracted.rounds,
+      },
+    };
+  }
+  return null;
 }
 
 /**

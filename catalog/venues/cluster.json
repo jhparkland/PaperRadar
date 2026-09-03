@@ -16,6 +16,13 @@
     "allowedHosts": [
       "clustercomp.org"
     ],
+    "rollover": {
+      "url": "https://clustercomp.org/{year}/papers/",
+      "allowedHosts": [
+        "clustercomp.org"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2026,
       "label": "CLUSTER 2026",

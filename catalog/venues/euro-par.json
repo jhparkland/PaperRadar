@@ -15,6 +15,13 @@
     "allowedHosts": [
       "2026.euro-par.org"
     ],
+    "rollover": {
+      "url": "https://{year}.euro-par.org/calls/papers",
+      "allowedHosts": [
+        "{year}.euro-par.org"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2026,
       "label": "Euro-Par 2026"

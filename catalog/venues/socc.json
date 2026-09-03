@@ -15,6 +15,13 @@
     "allowedHosts": [
       "acmsocc.org"
     ],
+    "rollover": {
+      "url": "https://acmsocc.org/{year}/papers.html",
+      "allowedHosts": [
+        "acmsocc.org"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2026,
       "label": "SoCC 2026"

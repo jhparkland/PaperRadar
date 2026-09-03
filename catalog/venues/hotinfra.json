@@ -16,6 +16,13 @@
     "allowedHosts": [
       "hotinfra.org"
     ],
+    "rollover": {
+      "url": "https://hotinfra.org/{year}/",
+      "allowedHosts": [
+        "hotinfra.org"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2026,
       "label": "HotInfra 2026",

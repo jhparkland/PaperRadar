@@ -16,6 +16,13 @@
     "allowedHosts": [
       "middleware-conf.github.io"
     ],
+    "rollover": {
+      "url": "https://middleware-conf.github.io/{year}/important-dates/",
+      "allowedHosts": [
+        "middleware-conf.github.io"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2026,
       "label": "Middleware 2026"

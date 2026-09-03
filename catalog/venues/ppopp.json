@@ -15,6 +15,13 @@
     "allowedHosts": [
       "ppopp27.sigplan.org"
     ],
+    "rollover": {
+      "url": "https://ppopp{yy}.sigplan.org/track/PPoPP-{year}-papers",
+      "allowedHosts": [
+        "ppopp{yy}.sigplan.org"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2027,
       "label": "PPoPP 2027",

@@ -15,6 +15,13 @@
     "allowedHosts": [
       "icdcs2026.icdcs.org"
     ],
+    "rollover": {
+      "url": "https://icdcs{year}.icdcs.org/",
+      "allowedHosts": [
+        "icdcs{year}.icdcs.org"
+      ],
+      "maxAhead": 2
+    },
     "edition": {
       "year": 2026,
       "label": "ICDCS 2026"

@@ -9,6 +9,7 @@ import { Report, isPlainObject, isNonEmptyString, ID_RE, isHttpUrl, isLocalized,
 import { DATE_RE_SOURCE, resolveOffset, normalizeTime, isValidDateOnly } from './dates.mjs';
 import { PATHS, readJson, listJsonFiles, existsSync } from './io.mjs';
 import { VENUE_TYPES } from './config.mjs';
+import { validateRollover } from './rollover.mjs';
 
 export const MILESTONE_TYPES = Object.freeze(['abstract', 'paper', 'notification', 'camera-ready', 'event', 'other']);
 export const MILESTONE_STATES = Object.freeze(['dated', 'tba', 'not-required']);
@@ -121,6 +122,18 @@ function validateCfp(input, report, path, venue) {
       }
     }
     cfp.edition = { id: e.id ?? `${venue.id}-${e.year}`, year: e.year, label: e.label, event: e.event ?? null };
+  }
+
+  // optional: how to follow this venue into its next edition
+  if (cfp.rollover !== undefined && cfp.rollover !== null) {
+    if (cfp.adapter !== 'declarative') {
+      bad('rollover', 'only a declarative adapter can follow a venue to the next year');
+      cfp.rollover = null;
+    } else {
+      cfp.rollover = validateRollover(cfp.rollover, report, `${path}.rollover`, cfp);
+    }
+  } else {
+    cfp.rollover = null;
   }
 
   // timezone defaults

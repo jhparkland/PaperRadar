@@ -9,7 +9,7 @@
 // A null notifiedThrough means "never notified": the first run only records
 // the current time so a fresh deployment does not blast every deadline it
 // imported as a "change".
-export const NOTIFY_KINDS = Object.freeze(['added', 'changed', 'removed', 'recovered']);
+export const NOTIFY_KINDS = Object.freeze(['rolled-over', 'added', 'changed', 'removed', 'recovered']);
 
 export function emptyReminderState() {
   return { version: 1, deadlines: {}, changes: { notifiedThrough: null } };
