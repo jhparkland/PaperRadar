@@ -5,7 +5,16 @@ Fork it, list your fields in one config file, and get a static site with
 D-days, subscribable calendars and Google Chat / email reminders — refreshed
 every day from the official CFPs by GitHub Actions. No server, no database.
 
+### 🔗 <https://jhparkland.github.io/PaperRadar/>
+
+The example site this repository publishes. A fork of it lives at
+`https://<your account>.github.io/PaperRadar/`.
+
 [한국어 → README.md](README.md)
+
+[![Upcoming deadlines](docs/images/site-upcoming.png)](https://jhparkland.github.io/PaperRadar/)
+
+<sub>Upcoming — D-day, official time and yours, verification status, CFP link</sub>
 
 - **Config-driven.** `config/radar.yaml` picks fields, venues, rankings,
   timezone, languages and reminder thresholds. Everything else is shared.
@@ -57,6 +66,10 @@ reminders:
   daysBefore: [30, 15, 3, 0]
   channels: [google-chat]
 ```
+
+[![All venues](docs/images/site-venues.png)](https://jhparkland.github.io/PaperRadar/#venues)
+
+<sub>All venues — filter by type, field and tier; untracked venues say why they are untracked</sub>
 
 ### The catalog is an example — fill it with your own field
 
@@ -206,6 +219,14 @@ the `GOOGLE_CHAT_SECRET_NAME` variable) exists ② `reminders.channels` in
 `radar.yaml` contains `google-chat` ③ the *Send due reminders* step log says
 `nothing to send today`. Details in
 [docs/setup-google-chat.md](docs/setup-google-chat.md).
+
+## Calendar feeds
+
+[![Calendar feeds](docs/images/site-calendars.png)](https://jhparkland.github.io/PaperRadar/#calendars)
+
+Paste a feed URL into any calendar app: everything, per type, per ranking tier
+or per venue. Feeds refresh twice a day; a changed date bumps `SEQUENCE` so the
+existing entry is edited in place, and a removed one arrives as `CANCELLED`.
 
 ## When the year rolls over
 

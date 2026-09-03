@@ -5,7 +5,15 @@
 캘린더, Google Chat / 이메일 리마인더가 생깁니다. GitHub Actions가 매일 공식
 CFP를 다시 읽어 갱신하고 GitHub Pages에 배포합니다. 서버도 DB도 없습니다.
 
+### 🔗 <https://jhparkland.github.io/PaperRadar/>
+
+이 저장소가 배포한 예시 사이트입니다. 포크하면 `https://<본인 계정>.github.io/PaperRadar/`가 됩니다.
+
 [English → README.en.md](README.en.md)
+
+[![임박 마감 화면](docs/images/site-upcoming.png)](https://jhparkland.github.io/PaperRadar/)
+
+<sub>임박 마감 — D-day, 공식 시각과 내 시간대, 확인 상태, CFP 링크</sub>
 
 - **설정 파일 하나.** `config/radar.yaml`에서 분야·venue·등급 체계·시간대·언어·알림
   시점을 고릅니다. 나머지는 모두 공유 자산입니다.
@@ -56,6 +64,10 @@ reminders:
   daysBefore: [30, 15, 3, 0]
   channels: [google-chat]
 ```
+
+[![전체 venue 화면](docs/images/site-venues.png)](https://jhparkland.github.io/PaperRadar/#venues)
+
+<sub>전체 venue — 유형·분야·등급으로 거르고, 추적 중이 아닌 venue와 그 이유까지 표시</sub>
 
 ### 카탈로그는 예시입니다 — 내 분야로 채워 넣으세요
 
@@ -204,6 +216,14 @@ GitHub에서는 *Actions → Daily refresh → Run workflow → **sample_notific
 변수)이 있는지 ② `radar.yaml`의 `reminders.channels`에 `google-chat`이 있는지
 ③ Actions 로그의 *Send due reminders* 단계에 `nothing to send today`가 찍혔는지
 순서로 보세요. 상세는 [docs/setup-google-chat.md](docs/setup-google-chat.md).
+
+## 캘린더 구독
+
+[![캘린더 구독 화면](docs/images/site-calendars.png)](https://jhparkland.github.io/PaperRadar/#calendars)
+
+전체·유형별·등급별·venue별 피드를 캘린더 앱에 URL로 붙여넣으면 됩니다. 하루 두 번
+갱신되고, 날짜가 바뀌면 `SEQUENCE`가 올라가 기존 일정이 제자리에서 수정됩니다.
+사라진 일정은 `CANCELLED`로 전달됩니다.
 
 ## 연도가 바뀌면
 
