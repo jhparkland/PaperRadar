@@ -16,6 +16,8 @@ The example site this repository publishes. A fork of it lives at
 
 <sub>Upcoming — D-day, official time and yours, verification status, CFP link</sub>
 
+You never have to open it: [one digest a day](#what-gets-sent-and-when) arrives in Google Chat.
+
 - **Config-driven.** `config/radar.yaml` picks fields, venues, rankings,
   timezone, languages and reminder thresholds. Everything else is shared.
 - **Catalog, not scraping heuristics.** `catalog/` holds one file per venue
@@ -153,6 +155,10 @@ keeps the last verified dates.
 | **Deadline digest** | once a day, grouped into the categories below | Google Chat space / email |
 | **Source verification failures** | a page could not be read or its wording changed | one GitHub issue (accumulates, auto-closes on recovery) |
 | **Full change log** | every daily refresh | *Sources & updates* tab, `data/updates.json` |
+
+![The daily digest as it arrives in Google Chat](docs/images/chat-digest.png)
+
+<sub>A message as actually delivered: grouped by category, each line carrying the official time, the local conversion and a CFP button. (Korean UI — the digest follows `reminders.language`.)</sub>
 
 ### Categories
 
