@@ -2,6 +2,13 @@
   "version": 1,
   "entries": [
     {
+      "at": "2026-09-09T19:45:11Z",
+      "venueId": "eurosys",
+      "editionId": "eurosys-2027",
+      "kind": "failed",
+      "message": "extraction failed: spring/camera-ready: pattern not found on page; fall/camera-ready: pattern not found on page"
+    },
+    {
       "at": "2026-09-08T19:53:55Z",
       "venueId": "eurosys",
       "editionId": "eurosys-2027",
