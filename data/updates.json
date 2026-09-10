@@ -2,6 +2,20 @@
   "version": 1,
   "entries": [
     {
+      "at": "2026-09-10T19:41:15Z",
+      "venueId": "eurosys",
+      "editionId": "eurosys-2027",
+      "kind": "failed",
+      "message": "extraction failed: spring/camera-ready: pattern not found on page; fall/camera-ready: pattern not found on page"
+    },
+    {
+      "at": "2026-09-10T19:41:15Z",
+      "venueId": "ccgrid",
+      "editionId": "ccgrid-2027",
+      "kind": "failed",
+      "message": "extraction failed: main/abstract: pattern not found on page; main/paper: pattern not found on page; main/notification: pattern not found on page; main/camera-ready: pattern not found on page"
+    },
+    {
       "at": "2026-09-09T19:45:11Z",
       "venueId": "eurosys",
       "editionId": "eurosys-2027",

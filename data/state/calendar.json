@@ -20,23 +20,23 @@
     "cancelledAt": null
   },
   "ccgrid/ccgrid-2027/main/full/abstract": {
-    "sequence": 0,
-    "fingerprint": "2026-11-24T23:59:00-12:00|CCGrid 2027 · 초록 마감|CONFIRMED",
+    "sequence": 1,
+    "fingerprint": "2026-11-24T23:59:00-12:00|CCGrid 2027 · 초록 마감|TENTATIVE",
     "cancelledAt": null
   },
   "ccgrid/ccgrid-2027/main/full/paper": {
-    "sequence": 0,
-    "fingerprint": "2026-12-01T23:59:00-12:00|CCGrid 2027 · 논문 마감|CONFIRMED",
+    "sequence": 1,
+    "fingerprint": "2026-12-01T23:59:00-12:00|CCGrid 2027 · 논문 마감|TENTATIVE",
     "cancelledAt": null
   },
   "ccgrid/ccgrid-2027/main/full/notification": {
-    "sequence": 0,
-    "fingerprint": "2027-02-01T23:59:00-12:00|CCGrid 2027 · 결과 통보|CONFIRMED",
+    "sequence": 1,
+    "fingerprint": "2027-02-01T23:59:00-12:00|CCGrid 2027 · 결과 통보|TENTATIVE",
     "cancelledAt": null
   },
   "ccgrid/ccgrid-2027/main/full/camera-ready": {
-    "sequence": 0,
-    "fingerprint": "2027-03-16T23:59:00-12:00|CCGrid 2027 · 최종본 마감|CONFIRMED",
+    "sequence": 1,
+    "fingerprint": "2027-03-16T23:59:00-12:00|CCGrid 2027 · 최종본 마감|TENTATIVE",
     "cancelledAt": null
   },
   "cluster/cluster-2026/main/full/abstract": {
