@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-26T00:59:12Z",
+  "updatedAt": "2026-11-27T01:00:10Z",
   "venues": {
     "asplos": {
       "editions": [
@@ -13,10 +13,10 @@
             "url": "https://www.asplos-conference.org/asplos2027/cfp/",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
-            "contentHash": "357a87e105dcd9dd5b6b6d71778eac4308db260b80621b51efa2962e06780b6f"
+            "contentHash": "7e286e9b2d8b46f0860a3ca5eb6edc71c85d3a3c2340e8bc8eed4a58313a6158"
           },
           "rounds": [
             {
@@ -116,7 +116,7 @@
             "url": "https://hpcclab.org/ccgrid27/",
             "adapter": "declarative",
             "status": "failed",
-            "checkedAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
             "lastOkAt": "2026-09-09T19:45:11Z",
             "error": "extraction failed: main/abstract: pattern not found on page; main/paper: pattern not found on page; main/notification: pattern not found on page; main/camera-ready: pattern not found on page",
             "contentHash": "fa4ca3488aa5aed4b45172d47964cb1c29ee1b3cbf823e610c653e9ac089f114"
@@ -188,8 +188,8 @@
             "url": "https://clustercomp.org/2026/papers/",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "b4ebc993701a2b02a5eb057c4b63828ebfa340b73958ebaca1dc9f657ced3e55"
           },
@@ -259,8 +259,8 @@
             "url": "https://ayeshaafzal91.github.io/eesp/",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "f7e8c82d3c0b170cfdaeca4d15ecfc6d8e885a0474310d753b588371dbd1beb9"
           },
@@ -326,8 +326,8 @@
             "url": "https://2026.euro-par.org/calls/papers",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "276ce0eaf591cbbbbd62a074787a5292d25f0213e092889d6bba9649bbdb9286"
           },
@@ -398,7 +398,7 @@
             "url": "https://2027.eurosys.org/cfp.html",
             "adapter": "declarative",
             "status": "failed",
-            "checkedAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
             "lastOkAt": "2026-09-07T20:33:55Z",
             "error": "extraction failed: spring/camera-ready: pattern not found on page; fall/camera-ready: pattern not found on page",
             "contentHash": "50af5f254e477e9bbd900bd9acea1422ce9ee7f0c7c81a7a4c1324f29a4fd4da"
@@ -523,8 +523,8 @@
             "url": "https://hotcarbon.org/cfp",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "dbc2534257e47d5546a754f12ea8943731e9a3187b29cf7e216e760af7f6e798"
           },
@@ -585,8 +585,8 @@
             "url": "https://hotinfra.org/2026/",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "0ccb1c65e2755409f92787318b42d1c6715deffe66e18f9e2586e26ed9b86f98"
           },
@@ -656,8 +656,8 @@
             "url": "https://sigops.org/s/conferences/hotos/2027/cfp.html",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "f4e311f5c65bac5b7f94cc6dcb4b53dbd296574a91b69715b32cad32064ff23c"
           },
@@ -720,8 +720,8 @@
             "url": "https://hpdc.sci.utah.edu/2026/calls-cfp.html",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "afca8bdd266833d0926898583547bb0a5800810b29cd18fae7d48052a5431b3f"
           },
@@ -788,10 +788,10 @@
             "url": "https://icdcs2026.icdcs.org/",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
-            "contentHash": "8e92cda3cec59f1be93b62f980db0d98c9d61523f98945e460d6928cf7bf619a"
+            "contentHash": "df77386210f860ce7ab0847c7b5becce712df00cbb709953ea91fa1a37fbcbef"
           },
           "rounds": [
             {
@@ -860,8 +860,8 @@
             "url": "https://icpp2026.github.io/call-for-papers/",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "84070a461d6b86f81c09de9c573fc0311c040b8bc69094577986285d3572ad38"
           },
@@ -932,8 +932,8 @@
             "url": "https://dipsa-qub.github.io/ICS2026-webpage/call-for/call-for-papers.html",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "6216bf753e339dabc5561ca2fdb7daef81223f6b4409826f65886a41d46682de"
           },
@@ -1057,10 +1057,10 @@
             "url": "https://services.conferences.computer.org/2026/cloud/cloud-call-for-papers/",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
-            "contentHash": "dc43f2283330e72512cf457951077f384f61b93cca16ea144536cf3ae20aa9b8"
+            "contentHash": "249d95bda699833af53692009d11c3eb51a9e0f4a29a658a46972bda2d8fce46"
           },
           "rounds": [
             {
@@ -1127,10 +1127,10 @@
             "url": "https://www.igscc.org/",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
-            "contentHash": "67427dc309555db479ae330ea534059bab02b5b800d030b01d2574f6d4270d75"
+            "contentHash": "4cf5a91c783bd4ad50cf592b0e3e6faf6f82ef26a6a4caf633a9c58573cda642"
           },
           "rounds": [
             {
@@ -1196,8 +1196,8 @@
             "url": "https://www.ipdps.org/ipdps2027/2027-call-for-papers.html",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "e66fa7f12bb4ec8d2a8e3f684df17075f9e054cb34a00fb321339f727bdf815f"
           },
@@ -1267,8 +1267,8 @@
             "url": "https://microarch.org/micro59/submit/papers.php",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "58f0d93a17d44a1444e85e3ba751b5a478fa333e0237307ad034ed04d3c4de45"
           },
@@ -1335,8 +1335,8 @@
             "url": "https://middleware-conf.github.io/2026/important-dates/",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "6417960162b5339bac761aadfacc94dadc5b26763397e89f9011fab773b335f4"
           },
@@ -1456,8 +1456,8 @@
             "url": "https://www.usenix.org/conference/nsdi27/call-for-papers",
             "adapter": "manual",
             "status": "manual",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": null
           },
@@ -1587,8 +1587,8 @@
             "url": "https://www.usenix.org/conference/osdi27/call-for-papers",
             "adapter": "manual",
             "status": "manual",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": null
           },
@@ -1663,10 +1663,10 @@
             "url": "https://ppopp27.sigplan.org/track/PPoPP-2027-papers",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
-            "contentHash": "535d8bcff07b3f0427c0d67a6120e8ad671643b1ff5480de0aa5448623f3da38"
+            "contentHash": "73d8ed599372e7c7c96f033c0441ffe821a71dc1f53f302270bebd2221c30bb0"
           },
           "rounds": [
             {
@@ -1730,8 +1730,8 @@
             "url": "https://conferences.sigcomm.org/sigcomm/2026/cfp/",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "fa1d6a7b651371565a062fe493202709782dfbd0583ebba13ed36f545b66bd64"
           },
@@ -1798,8 +1798,8 @@
             "url": "https://www.sigmetrics.org/sigmetrics2027/pages/cfp.html",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "65df3db6e43828b4c619e85f3c9f9764bcd4052a0e898d9fcfe9f8a2e948f166"
           },
@@ -1939,8 +1939,8 @@
             "url": "https://acmsocc.org/2026/papers.html",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "948077f622bbbdad2d827a04188d7e8f31a2a6ff1e1535ba0579c1fad8804902"
           },
@@ -2050,8 +2050,8 @@
             "url": "https://sigops.org/s/conferences/sosp/2026/cfp.html",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "ff9f290ab18d5ad111f51845267fa3babae12ea500fdb758e3ebd596d23b24b9"
           },
@@ -2122,8 +2122,8 @@
             "url": "https://icpp2026.github.io/sustain-hpc-2026/call-for-papers/",
             "adapter": "declarative",
             "status": "ok",
-            "checkedAt": "2026-11-26T00:59:12Z",
-            "lastOkAt": "2026-11-26T00:59:12Z",
+            "checkedAt": "2026-11-27T01:00:10Z",
+            "lastOkAt": "2026-11-27T01:00:10Z",
             "error": null,
             "contentHash": "899acadd0a201818623c725ba7e3c4030b8618edffbcb234d074d305a3fb616a"
           },
